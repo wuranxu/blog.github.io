@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://wuranxu.github.io</id>
     <title>Klose</title>
-    <updated>2020-09-18T08:59:23.236Z</updated>
+    <updated>2020-09-18T09:02:34.208Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://wuranxu.github.io"/>
     <link rel="self" href="https://wuranxu.github.io/atom.xml"/>
@@ -30,7 +30,7 @@
 <p>有想一起交流测试/开发技术的伙伴儿们，可以加群一起呀！<br>
 🎧 QQ群号: 450505138</p>
 <p>QQ: 619434176(偶尔不在)<br>
-微信: wuranxu</p>
+微信: <mark>wuranxu</mark></p>
 ]]></content>
     </entry>
     <entry>
