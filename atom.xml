@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://wuranxu.github.io</id>
     <title>Klose</title>
-    <updated>2020-09-18T08:41:02.379Z</updated>
+    <updated>2020-09-18T08:56:55.546Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://wuranxu.github.io"/>
     <link rel="self" href="https://wuranxu.github.io/atom.xml"/>
@@ -12,8 +12,8 @@
     <rights>All rights reserved 2020, Klose</rights>
     <entry>
         <title type="html"><![CDATA[关于]]></title>
-        <id>https://wuranxu.github.io/post/about/</id>
-        <link href="https://wuranxu.github.io/post/about/">
+        <id>https://wuranxu.github.io/about/</id>
+        <link href="https://wuranxu.github.io/about/">
         </link>
         <updated>2020-09-18T08:24:07.000Z</updated>
         <content type="html"><![CDATA[<blockquote>
@@ -35,8 +35,8 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[写给大家的一个接口测试平台]]></title>
-        <id>https://wuranxu.github.io/post/xie-gei-da-jia-de-yi-ge-jie-kou-ce-shi-ping-tai/</id>
-        <link href="https://wuranxu.github.io/post/xie-gei-da-jia-de-yi-ge-jie-kou-ce-shi-ping-tai/">
+        <id>https://wuranxu.github.io/xie-gei-da-jia-de-yi-ge-jie-kou-ce-shi-ping-tai/</id>
+        <link href="https://wuranxu.github.io/xie-gei-da-jia-de-yi-ge-jie-kou-ce-shi-ping-tai/">
         </link>
         <updated>2020-09-18T08:06:55.000Z</updated>
         <content type="html"><![CDATA[<ul>
