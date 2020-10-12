@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://wuranxu.github.io</id>
     <title>刻螺丝</title>
-    <updated>2020-09-29T05:50:37.997Z</updated>
+    <updated>2020-10-12T09:00:15.384Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://wuranxu.github.io"/>
     <link rel="self" href="https://wuranxu.github.io/atom.xml"/>
@@ -10,6 +10,60 @@
     <logo>https://wuranxu.github.io/images/avatar.png</logo>
     <icon>https://wuranxu.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 刻螺丝</rights>
+    <entry>
+        <title type="html"><![CDATA[推荐一个接口测试工具--Apifox]]></title>
+        <id>https://wuranxu.github.io/post/tui-jian-yi-ge-jie-kou-ce-shi-gong-ju-apifox/</id>
+        <link href="https://wuranxu.github.io/post/tui-jian-yi-ge-jie-kou-ce-shi-gong-ju-apifox/">
+        </link>
+        <updated>2020-10-12T08:31:23.000Z</updated>
+        <content type="html"><![CDATA[<h3 id="apifox">Apifox</h3>
+<pre><code>今天闲来无事，看到了这款工具。相当于出个小评测吧，说下自己的感受。先放地址:
+
+[Apifox官网](https://www.apifox.cn/)
+
+具体的介绍都可以在官网看到，官网会比我详细，下面来说说我自己的感受。
+</code></pre>
+<h3 id="感受">感受</h3>
+<pre><code>首先呢，这个工具对于yapi、postman和jmeter的使用者来说肯定是很友好的，因为操作流程基本上一致。
+
+大家可以看到他的首页，基本上长得很想postman的&quot;汉化版&quot;:
+</code></pre>
+<figure data-type="image" tabindex="1"><img src="https://wuranxu.github.io/post-images/1602491849512.jpg" alt="" loading="lazy"></figure>
+<pre><code>==但是, 他们也有区别==
+
+postman是一个十分纯粹的http调用工具，只需要输入http的url、headers、body等信息即可，他十分轻量，虽然后面也迭代了不少的关于test的功能。
+
+总的来看，这个工具是对接口文档/接口请求/接口测试的一次整合。
+
+当然这种整合也带来了一些麻烦，也就是说你需要录入一个接口的相关信息才能完成对这个接口的请求。因为这毕竟是针对团队，针对自身接口的一个测试工具。所以情有可原，复杂点能够理解。
+
+--
+
+可是，当我觉得它复杂化了postman的时候，我发现它也有快捷调试的功能。因为有时候很多接口，可能是第三方的，比如我常常试用的[百度api](https://ai.baidu.com/) (这个是宝藏api)，我可能只是需要简单调用下，并不想那么麻烦，可能只需要随手一个调用即可。原来这个便捷调试也是存在的:
+</code></pre>
+<figure data-type="image" tabindex="2"><img src="https://wuranxu.github.io/post-images/1602492392171.jpg" alt="" loading="lazy"></figure>
+<pre><code>打开后长这样, 这才是最纯粹的postman呀！还是汉化版，爱了爱了！
+</code></pre>
+<figure data-type="image" tabindex="3"><img src="https://wuranxu.github.io/post-images/1602492422864.jpg" alt="" loading="lazy"></figure>
+<pre><code>那么有的同学可能会有疑问了，既然你就是个汉化版的postman，为什么我不用postman呢？
+
+我想这个工具吸引我的可能有以下几点:
+
+1. 它解决了我平时不写接口文档的问题，因为平时我自己开发接口完了以后，用postman去调试一下，后续可能需要搜索才能找到对应的数据，而且别人根本不知道这个接口怎么调用，只能口口相传。
+2. 它支持换肤功能，对比postman，虽然二者UI类似。
+3. 它的测试功能强于postman，支持直接导入接口文档当做测试用例。
+4. 它完全支持mock功能，这点基本上和yapi提供的一致，如果后端接口还没编写完毕的时候前端已经可以开始通过mock开始调试了。
+5. 如果有现有的接口文档工具，它支持了大部分主流数据的导入，比如yapi、rap、swagger等，接入门槛很低。
+</code></pre>
+<h3 id="写在最后">写在最后</h3>
+<pre><code>这个工具，挺适合小团队，比如2-3人的项目组且公司没有内部统一的接口文档管理平台比如yapi或者rap2或者自研的，例如我要和一个朋友开发一个项目，那我觉得这个就很合适，适合自测，也适合前端提前介入开发，还能输出文档。
+
+但是如果只是个人开发自己的项目或者很简单的项目，在接口数量不多的时候，对测试要求不高，不需要花费时间写测试脚本的时候，==postman还是最合适的工具==！
+
+看后续apifox还有新的迭代计划，比如完成性能测试相关，但那时候我觉得可能会收费了吧，对于这种高级功能。其实本人比较欣赏他们的UI设计，毕竟是一个公司的产物，整个设计相对来说还是比较美观的。也期待他们的后续吧！
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[golang下载指定版本（go get）]]></title>
         <id>https://wuranxu.github.io/post/golang-xia-zai-zhi-ding-ban-ben-go-get/</id>
