@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://wuranxu.github.io</id>
-    <title>刻螺丝</title>
-    <updated>2020-10-12T09:15:35.674Z</updated>
+    <title>小克的blog</title>
+    <updated>2020-10-12T09:25:49.972Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://wuranxu.github.io"/>
     <link rel="self" href="https://wuranxu.github.io/atom.xml"/>
     <subtitle>欢迎来到我的小窝~这里不仅有博客，也有日记。</subtitle>
     <logo>https://wuranxu.github.io/images/avatar.png</logo>
     <icon>https://wuranxu.github.io/favicon.ico</icon>
-    <rights>All rights reserved 2020, 刻螺丝</rights>
+    <rights>All rights reserved 2020, 小克的blog</rights>
     <entry>
         <title type="html"><![CDATA[推荐一个接口测试工具--Apifox]]></title>
         <id>https://wuranxu.github.io/post/tui-jian-yi-ge-jie-kou-ce-shi-gong-ju-apifox/</id>
