@@ -4,7 +4,7 @@
 <meta name="description" content=""/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-<title>关于 | 小克的blog</title>
+<title>每日一题之20201102（349. 两个数组的交集） | 小克的blog</title>
 
 <link rel="shortcut icon" href="https://wuranxu.github.io/favicon.ico?v=1604318769210">
 
@@ -93,30 +93,55 @@
         <div class="post-detail gt-bg-theme-color-second">
             <article class="gt-post-content">
                 <h2 class="post-title">
-                    关于
+                    每日一题之20201102（349. 两个数组的交集）
                 </h2>
                 <div class="post-info">
                     <time class="post-time gt-c-content-color-first">
-                        · 2020-09-18 16:24:07 ·
+                        · 2020-11-02 20:05:18 ·
                     </time>
+                    
+                        <a href="https://wuranxu.github.io/vp-bY7-nD/" class="post-tags">
+                            # leetcode
+                        </a>
                     
                 </div>
                 <div class="post-content">
-                    <blockquote>
-<p>欢迎来到我的小站呀，很高兴遇见你！🤝</p>
-</blockquote>
-<h2 id="关于本站">🏠 关于本站</h2>
-<p>这是业余时间写东西的一个小网站啦</p>
-<h2 id="博主是谁">👨‍💻 博主是谁</h2>
-<p>博主是一名测试开发工程师，目前在上海工作。平时喜欢捣鼓些测试相关的开发工作，是个不折不扣的技术宅。</p>
-<h2 id="兴趣爱好">⛹ 兴趣爱好</h2>
-<p>平时偶尔打打LOL，但是水平一直不怎么好。s3开始就是老黄金了，最近都只打大乱斗。有一起的可以加我一起玩呀~</p>
-<p>艾欧尼亚：丶丶君已陌路丶丶</p>
-<h2 id="联系我呀">📬 联系我呀</h2>
-<p>有想一起交流测试/开发技术的伙伴儿们，可以加群一起呀！<br>
-🎧 QQ群号: 450505138</p>
-<p>QQ: 619434176(偶尔不在)<br>
-微信: <mark>wuranxu</mark></p>
+                    <p>空间换时间，hash表2次遍历(Python)</p>
+<ul>
+<li>
+<p>潇洒解法:</p>
+<p>利用Python的set数据结构，完成交集操作</p>
+</li>
+</ul>
+<pre><code class="language-Python">class Solution:
+    def intersection(self, nums1: List[int], nums2: List[int]) -&gt; List[int]:
+        return list(set(nums1) &amp; set(nums2))
+
+</code></pre>
+<figure data-type="image" tabindex="1"><img src="https://upload-images.jianshu.io/upload_images/6053915-650c186e46412d86.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="11.jpg" loading="lazy"></figure>
+<ul>
+<li>
+<p>啰嗦解法（但很快）</p>
+<p>先建立一个dict，遍历数组1，然后将数组里面的值都放到temp里面，由于dict本身不能有重复的key，相当于天然过滤掉了重复的数据此步骤约等于set(nums1)</p>
+<p>接着就是取并集，遍历数组2，如果数组2的元素在temp里面出现，则添加到result数组中。</p>
+<p><strong>但是这里要注意的是，result可能重复添加</strong></p>
+<p>所以我们在添加一个数字到result以后，将temp里面该数字对应的value改成False，以防重复添加。</p>
+</li>
+</ul>
+<figure data-type="image" tabindex="2"><img src="https://upload-images.jianshu.io/upload_images/6053915-1ef3c12edec440d8.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="222.jpg" loading="lazy"></figure>
+<pre><code class="language-Python">class Solution:
+    def intersection(self, nums1: List[int], nums2: List[int]) -&gt; List[int]:
+        temp = {}
+        result = []
+        for n in nums1:
+            temp[n] = True
+        for x in nums2:
+            if temp.get(x):
+                result.append(x)
+                temp[x] = False
+        return result
+</code></pre>
+<!-- more -->
 
                 </div>
             </article>
@@ -125,14 +150,14 @@
         
             <div class="next-post">
                 <div class="next gt-c-content-color-first">下一篇</div>
-                <a href="https://wuranxu.github.io/post/xie-gei-da-jia-de-yi-ge-jie-kou-ce-shi-ping-tai/" class="post-title gt-a-link">
-                    写给大家的一个接口测试平台
+                <a href="https://wuranxu.github.io/post/tui-jian-yi-ge-jie-kou-ce-shi-gong-ju-apifox/" class="post-title gt-a-link">
+                    推荐一个接口测试工具--Apifox
                 </a>
             </div>
         
 
         
-            <span id="/post/" class="leancloud_visitors" data-flag-title="关于">
+            <span id="/post/" class="leancloud_visitors" data-flag-title="每日一题之20201102（349. 两个数组的交集）">
                 <em class="post-meta-item-text">阅读量 </em>
                 <i class="leancloud-visitors-count">0</i>
             </span>
