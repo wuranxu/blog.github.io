@@ -1,11 +1,10 @@
 <html>
-
 <head>
     <meta charset="utf-8"/>
 <meta name="description" content=""/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-<title>友情链接 - 小克的blog</title>
+<title>每日一题之20201103（941. 有效的山脉数组） | 小克的blog</title>
 
 <link rel="shortcut icon" href="https://wuranxu.github.io/favicon.ico?v=1604372413522">
 
@@ -38,12 +37,11 @@
     </script>
 
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
 </head>
-
 <body>
 <div class="main gt-bg-theme-color-first">
-        <div class="main-content">
-            <nav class="navbar navbar-expand-lg">
+    <nav class="navbar navbar-expand-lg">
     <div class="navbar-brand">
         <img class="user-avatar" src="/images/avatar.png" alt="头像">
         <div class="site-name gt-c-content-color-first">
@@ -91,28 +89,97 @@
     </div>
 </nav>
 
-            <div class="post-container">
-                <div class="post-detail">
-                    <article>
-                        <!-- <div class="post-content-wrapper"> -->
-                            <div class="post-content">
-                                <div class="friends-desc">
-                                    
-                                </div>
-                                <h3 id="linklist">友链列表</h3>
-                                
-                                    
-                                
-                            </div>
-                        <!-- </div> -->
-                    </article>
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    每日一题之20201103（941. 有效的山脉数组）
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2020-11-03 10:59:27 ·
+                    </time>
+                    
+                        <a href="https://wuranxu.github.io/vp-bY7-nD/" class="post-tags">
+                            # leetcode
+                        </a>
+                    
                 </div>
-                
+                <div class="post-content">
+                    <h5 id="首先要弄清楚题目的意图曾经在字节面试遇到过类似的题目但那题是需要找出这个峰值">首先要弄清楚题目的意图，曾经在字节面试遇到过类似的题目，但那题是需要找出这个峰值。</h5>
+<h5 id="所以解法也肯定不一样">所以解法也肯定不一样。</h5>
+<p>官方给的题解是直接遍历，我们这里采用双指针分别从头和尾往中间遍历，如果山脉符合要求，那么<strong>2个指针会停在同一个山脉</strong>。</p>
+<hr>
+<pre><code class="language-Python">class Solution:
+    def validMountainArray(self, A: List[int]) -&gt; bool:
+        start, end = 0, len(A)-1
+        # 保证start在正常范围并且左边的值小于右边, 循环如果退出，那么左侧的
+        # 峰值也就找到了
+        while start &lt; len(A)-1 and A[start] &lt; A[start+1]:
+            start += 1
+        # 右侧同理，保证左值大于右值
+        while end &gt; 0 and A[end-1] &gt; A[end] :
+            end -= 1
+        # 这里需要注意的是，start可能和end在0索引处相遇，比如[2, 1]
+        # 所以需要保证他们不在数组两端相遇
+        # 如果数组为[] start != end 会返回False
+        return start == end and 0 &lt; start &lt; len(A)-1
+
+</code></pre>
+<figure data-type="image" tabindex="1"><img src="https://upload-images.jianshu.io/upload_images/6053915-714c6d9fb6c34d44.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="777.jpg" loading="lazy"></figure>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://wuranxu.github.io/post/mei-ri-yi-ti-zhi-20201102349-liang-ge-shu-zu-de-jiao-ji/" class="post-title gt-a-link">
+                    每日一题之20201102（349. 两个数组的交集）
+                </a>
             </div>
+        
+
+        
+            <span id="/post/" class="leancloud_visitors" data-flag-title="每日一题之20201103（941. 有效的山脉数组）">
+                <em class="post-meta-item-text">阅读量 </em>
+                <i class="leancloud-visitors-count">0</i>
+            </span>
+        
+
+        
+
+        
+            <script src='https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js'></script>
+
+<style>
+	div#vcomments{
+		width:100%;
+		max-width: 1000px;
+		padding: 2.5%
+	}
+</style>
 
 
+	<div id="vcomments"></div>
 
-            <div class="site-footer gt-c-content-color-first">
+<script>
+	new Valine({
+		el: '#vcomments',
+		appId: 'fT8wvEVNtx1cOcCQEs7rVwnV-gzGzoHsz',
+		appKey: 'xV6aDHKSkLfP7u0cBRIzpmcy',
+		avatar: 'monsterid',
+		pageSize: 10,
+		recordIp: true,
+		placeholder: '不要吝啬你的评论~',
+		visitor: true,
+	});
+</script>
+
+        
+
+        <div class="site-footer gt-c-content-color-first">
     <div class="slogan gt-c-content-color-first">欢迎来到我的小窝~这里不仅有博客，也有日记。</div>
     <div class="social-container">
         
@@ -142,8 +209,7 @@
   hljs.initHighlightingOnLoad()
 </script>
 
-        </div>
     </div>
+</div>
 </body>
-
 </html>
