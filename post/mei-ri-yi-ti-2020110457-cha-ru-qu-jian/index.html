@@ -4,7 +4,7 @@
 <meta name="description" content=""/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-<title>写给大家的一个接口测试平台 | 小克的blog</title>
+<title>每日一题20201104（57. 插入区间） | 小克的blog</title>
 
 <link rel="shortcut icon" href="https://wuranxu.github.io/favicon.ico?v=1604482696384">
 
@@ -93,27 +93,56 @@
         <div class="post-detail gt-bg-theme-color-second">
             <article class="gt-post-content">
                 <h2 class="post-title">
-                    写给大家的一个接口测试平台
+                    每日一题20201104（57. 插入区间）
                 </h2>
                 <div class="post-info">
                     <time class="post-time gt-c-content-color-first">
-                        · 2020-09-18 16:06:55 ·
+                        · 2020-11-04 17:37:52 ·
                     </time>
                     
-                        <a href="https://wuranxu.github.io/3-BnLV1sl/" class="post-tags">
-                            # eagle
+                        <a href="https://wuranxu.github.io/vp-bY7-nD/" class="post-tags">
+                            # leetcode
                         </a>
                     
                 </div>
                 <div class="post-content">
-                    <ul>
+                    <pre><code>今天的每日一题不是自己想的，虽然理解了，但是感觉还是别人讲的更好，所以就随便打个卡了！
+</code></pre>
+<pre><code class="language-Python">class Solution:
+    def insert(self, intervals: List[List[int]], newInterval: List[int]) -&gt; List[List[int]]:
+        ans = []
+        done = False
+        left, right= newInterval
+        for x, y in intervals:
+            if x &gt; right:
+                if not done:
+                    ans.append([left, right])
+                    done = True
+                ans.append([x, y])
+            elif y &lt; left:
+                ans.append([x, y])
+            else:
+                left = min(left, x)
+                right = max(right, y)
+        if not done:
+            ans.append([left, right])
+
+        return ans
+
+</code></pre>
+<p>还是直接去题解吧，虽然今天很敷衍。</p>
+<p>题解 <a href="https://leetcode-cn.com/problems/insert-interval/solution/cha-ru-qu-jian-by-leetcode-solution/">https://leetcode-cn.com/problems/insert-interval/solution/cha-ru-qu-jian-by-leetcode-solution/</a></p>
+<p>注意点:</p>
+<ul>
 <li>
-<p>🍦初衷</p>
-<p>在2018年的时候，来到这家公司，在领导的规划下，完成了接口测试平台从0到1的建设。可惜的是某些方面还是做的不够好吧~希望能够开发一套较为通用，服务大众的产品。毕竟世界上不只是那些大公司，还有很多才起步但没有合适工具支持的小公司。</p>
+<p>2个区间的交集怎么取</p>
 </li>
 <li>
-<p>🍩目前进度</p>
-<p>基本上才处于<mark>起步阶段</mark>，也希望自己能够坚持下去吧~</p>
+<p>done标志位是为了不漏掉数据</p>
+</li>
+<li>
+<p>新区间有3种情况</p>
+<p>分别落在已有区间的左侧 右侧和中间</p>
 </li>
 </ul>
 
@@ -122,9 +151,16 @@
         </div>
 
         
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://wuranxu.github.io/post/mei-ri-yi-ti-zhi-20201103941-you-xiao-de-shan-mai-shu-zu/" class="post-title gt-a-link">
+                    每日一题之20201103（941. 有效的山脉数组）
+                </a>
+            </div>
+        
 
         
-            <span id="/post/" class="leancloud_visitors" data-flag-title="写给大家的一个接口测试平台">
+            <span id="/post/" class="leancloud_visitors" data-flag-title="每日一题20201104（57. 插入区间）">
                 <em class="post-meta-item-text">阅读量 </em>
                 <i class="leancloud-visitors-count">0</i>
             </span>
