@@ -4,7 +4,7 @@
 <meta name="description" content=""/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-<title>golang下载指定版本（go get） | 小克的blog</title>
+<title>每日一题20201105（771. 宝石与石头） | 小克的blog</title>
 
 <link rel="shortcut icon" href="https://wuranxu.github.io/favicon.ico?v=1604579158215">
 
@@ -93,50 +93,44 @@
         <div class="post-detail gt-bg-theme-color-second">
             <article class="gt-post-content">
                 <h2 class="post-title">
-                    golang下载指定版本（go get）
+                    每日一题20201105（771. 宝石与石头）
                 </h2>
                 <div class="post-info">
                     <time class="post-time gt-c-content-color-first">
-                        · 2020-09-29 13:41:48 ·
+                        · 2020-11-05 20:25:39 ·
                     </time>
                     
-                        <a href="https://wuranxu.github.io/z9o1SKNlx/" class="post-tags">
-                            # golang
+                        <a href="https://wuranxu.github.io/vp-bY7-nD/" class="post-tags">
+                            # leetcode
                         </a>
                     
                 </div>
                 <div class="post-content">
-                    <pre><code>是这样的，大概在去年的时候，自己学习grpc写了一些相关的代码包括proto和一些生成的pb。
-
-但是今年发现grpc版本有更新，对应的protoc-gen-go这样的插件也进行了一番更新，而这些更新又和etcd不太兼容。所以为了降级，需要获取旧版本。
-
-如果你用的还是GOPATH管理包，那么我建议你现在开始，使用==go module==来管理，当然这需要你的golang版本在1.11以上~
-
-好了废话不多说了，直接上命令吧！
+                    <h3 id="暴力解法">暴力解法</h3>
+<pre><code class="language-Python">class Solution:
+    def numJewelsInStones(self, J: str, S: str) -&gt; int:
+        total = 0
+        for j in J:
+            for s in S:
+                if s == j:
+                    total+=1
+        return total
 </code></pre>
-<pre><code class="language-shell">go get -u -v github.com/golang/protobuf/protoc-gen-go@v1.2.7
-</code></pre>
-<pre><code>以上就是下载1.2.7版本protoc-gen-go的方式了！
-</code></pre>
-<h3 id="使用gomodule注意">使用GOMODULE注意</h3>
-<pre><code>首先保证GO111MODULE变量是on, 如果是off的话，可在环境变量更新为on。
-</code></pre>
-<pre><code class="language-shell">export GO111MODULE=on
-</code></pre>
-<pre><code>或者更新~/.bash_profile文件设置此变量
-
-如果遇到下载慢或者失败的时候，可以切换GOPROXY源:
-</code></pre>
-<ul>
-<li>GOPROXY源</li>
-</ul>
-<pre><code class="language-shell"> export GOPROXY=https://goproxy.io 
+<p>很简单，就不多说了，依次遍历，复杂度O(N²)</p>
+<h3 id="hash表">hash表</h3>
+<pre><code class="language-Python">class Solution:
+    def numJewelsInStones(self, J: str, S: str) -&gt; int:
+        mp = {x: 0 for x in J}
+        for s in S:
+            if mp.get(s) is not None:
+                mp[s] += 1
+        return sum(mp.values())
 </code></pre>
 <ul>
-<li>阿里云源</li>
+<li>先创建一个map, 里面存放类型</li>
+<li>遍历字符串，如果找到了类型，则map里面的值+1</li>
+<li>累加所有map的value</li>
 </ul>
-<pre><code class="language-shell">export GOPROXY=https://mirrors.aliyun.com/goproxy/ 
-</code></pre>
 
                 </div>
             </article>
@@ -145,14 +139,14 @@
         
             <div class="next-post">
                 <div class="next gt-c-content-color-first">下一篇</div>
-                <a href="https://wuranxu.github.io/post/wei-fu-wu-xiang-guan-si-kao-yi/" class="post-title gt-a-link">
-                    微服务相关思考(一)
+                <a href="https://wuranxu.github.io/post/mei-ri-yi-ti-2020110457-cha-ru-qu-jian/" class="post-title gt-a-link">
+                    每日一题20201104（57. 插入区间）
                 </a>
             </div>
         
 
         
-            <span id="/post/" class="leancloud_visitors" data-flag-title="golang下载指定版本（go get）">
+            <span id="/post/" class="leancloud_visitors" data-flag-title="每日一题20201105（771. 宝石与石头）">
                 <em class="post-meta-item-text">阅读量 </em>
                 <i class="leancloud-visitors-count">0</i>
             </span>

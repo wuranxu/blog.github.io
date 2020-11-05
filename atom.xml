@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://wuranxu.github.io</id>
     <title>小克的blog</title>
-    <updated>2020-11-04T09:38:18.517Z</updated>
+    <updated>2020-11-05T12:26:00.844Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://wuranxu.github.io"/>
     <link rel="self" href="https://wuranxu.github.io/atom.xml"/>
@@ -10,6 +10,39 @@
     <logo>https://wuranxu.github.io/images/avatar.png</logo>
     <icon>https://wuranxu.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 小克的blog</rights>
+    <entry>
+        <title type="html"><![CDATA[每日一题20201105（771. 宝石与石头）]]></title>
+        <id>https://wuranxu.github.io/post/mei-ri-yi-ti-20201105771-bao-shi-yu-shi-tou/</id>
+        <link href="https://wuranxu.github.io/post/mei-ri-yi-ti-20201105771-bao-shi-yu-shi-tou/">
+        </link>
+        <updated>2020-11-05T12:25:39.000Z</updated>
+        <content type="html"><![CDATA[<h3 id="暴力解法">暴力解法</h3>
+<pre><code class="language-Python">class Solution:
+    def numJewelsInStones(self, J: str, S: str) -&gt; int:
+        total = 0
+        for j in J:
+            for s in S:
+                if s == j:
+                    total+=1
+        return total
+</code></pre>
+<p>很简单，就不多说了，依次遍历，复杂度O(N²)</p>
+<h3 id="hash表">hash表</h3>
+<pre><code class="language-Python">class Solution:
+    def numJewelsInStones(self, J: str, S: str) -&gt; int:
+        mp = {x: 0 for x in J}
+        for s in S:
+            if mp.get(s) is not None:
+                mp[s] += 1
+        return sum(mp.values())
+</code></pre>
+<ul>
+<li>先创建一个map, 里面存放类型</li>
+<li>遍历字符串，如果找到了类型，则map里面的值+1</li>
+<li>累加所有map的value</li>
+</ul>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[每日一题20201104（57. 插入区间）]]></title>
         <id>https://wuranxu.github.io/post/mei-ri-yi-ti-2020110457-cha-ru-qu-jian/</id>
@@ -436,24 +469,6 @@ React 提供了一些方法来实现组件的选择性渲染或复用，如 Rend
 🎧 QQ群号: 450505138</p>
 <p>QQ: 619434176(偶尔不在)<br>
 微信: <mark>wuranxu</mark></p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[写给大家的一个接口测试平台]]></title>
-        <id>https://wuranxu.github.io/post/xie-gei-da-jia-de-yi-ge-jie-kou-ce-shi-ping-tai/</id>
-        <link href="https://wuranxu.github.io/post/xie-gei-da-jia-de-yi-ge-jie-kou-ce-shi-ping-tai/">
-        </link>
-        <updated>2020-09-18T08:06:55.000Z</updated>
-        <content type="html"><![CDATA[<ul>
-<li>
-<p>🍦初衷</p>
-<p>在2018年的时候，来到这家公司，在领导的规划下，完成了接口测试平台从0到1的建设。可惜的是某些方面还是做的不够好吧~希望能够开发一套较为通用，服务大众的产品。毕竟世界上不只是那些大公司，还有很多才起步但没有合适工具支持的小公司。</p>
-</li>
-<li>
-<p>🍩目前进度</p>
-<p>基本上才处于<mark>起步阶段</mark>，也希望自己能够坚持下去吧~</p>
-</li>
-</ul>
 ]]></content>
     </entry>
 </feed>
