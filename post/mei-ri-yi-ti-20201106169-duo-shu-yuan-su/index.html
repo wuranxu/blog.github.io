@@ -1,10 +1,10 @@
-<html lang="zh">
+<html>
 <head>
     <meta charset="utf-8"/>
 <meta name="description" content=""/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-<title>关于 - 小克的blog</title>
+<title>每日一题20201106（169. 多数元素） | 小克的blog</title>
 
 <link rel="shortcut icon" href="https://wuranxu.github.io/favicon.ico?v=1604633001105">
 
@@ -37,7 +37,7 @@
     </script>
 
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
 </head>
 <body>
 <div class="main gt-bg-theme-color-first">
@@ -90,14 +90,88 @@
 </nav>
 
     <div class="post-container">
-        <div class="post-detail">
+        <div class="post-detail gt-bg-theme-color-second">
             <article class="gt-post-content">
-                <div class="post-content">
+                <h2 class="post-title">
+                    每日一题20201106（169. 多数元素）
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2020-11-06 11:23:00 ·
+                    </time>
                     
+                        <a href="https://wuranxu.github.io/vp-bY7-nD/" class="post-tags">
+                            # leetcode
+                        </a>
+                    
+                </div>
+                <div class="post-content">
+                    <figure data-type="image" tabindex="1"><img src="https://upload-images.jianshu.io/upload_images/6053915-13c477602a678a5d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png" loading="lazy"></figure>
+<h4 id="hash表">hash表</h4>
+<pre><code>1. 思路很简单，先遍历数组，存储每个元素的个数
+2. 遍历hash表，拿到大于 n/2的数字，直接return
+</code></pre>
+<pre><code class="language-Python">class Solution:
+    def majorityElement(self, nums: List[int]) -&gt; int:
+        hash = dict()
+        for n in nums:
+            if n not in hash:
+                hash[n] = 1
+            else:
+                hash[n] += 1
+        for k, v in hash.items():
+            if v &gt; len(nums) / 2:
+                return k
+        return -1
+
+</code></pre>
+<p>时间复杂度: O(N)<br>
+空间复杂度: O(N)</p>
+<h4 id="投票算法">投票算法</h4>
+<pre><code>思路很简单，假设你是秦始皇，数组里面有很多其他国家，你们秦兵遇到自己人就+1，遇到其他人就-1，如果你超过了所有国家一半的兵力，那么最后活下来的肯定就是你的士兵。这里之所以能这么确定，是因为题目强调了一定存在多数元素！
+
+代码思路是，开始遍历数组，如果当前的士兵数量是0，则把当前士兵设置为遍历到的元素，比如: 秦
+
+接下来如果遇到秦，则count+1, 遇到的是赵或者其他士兵，则秦和赵士兵同归于尽。下一轮遍历，由于秦的count是0了，则将当前士兵设置为遍历到的士兵。
+</code></pre>
+<pre><code class="language-Python">class Solution:
+    def majorityElement(self, nums: List[int]) -&gt; int:
+        if len(nums) == 0:
+            return -1
+        # 当前士兵数量
+        count = 0
+        # 当前士兵
+        current = None
+        for n in nums:
+            if count == 0:
+                current = n
+            count += 1 if n == current else -1
+        return current
+
+</code></pre>
+<p>时间复杂度: O(N)<br>
+空间复杂度: O(1)</p>
+
                 </div>
             </article>
         </div>
-        <br>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://wuranxu.github.io/post/mei-ri-yi-ti-20201105771-bao-shi-yu-shi-tou/" class="post-title gt-a-link">
+                    每日一题20201105（771. 宝石与石头）
+                </a>
+            </div>
+        
+
+        
+            <span id="/post/" class="leancloud_visitors" data-flag-title="每日一题20201106（169. 多数元素）">
+                <em class="post-meta-item-text">阅读量 </em>
+                <i class="leancloud-visitors-count">0</i>
+            </span>
+        
+
         
 
         
@@ -128,7 +202,6 @@
 </script>
 
         
-
 
         <div class="site-footer gt-c-content-color-first">
     <div class="slogan gt-c-content-color-first">欢迎来到我的小窝~这里不仅有博客，也有日记。</div>

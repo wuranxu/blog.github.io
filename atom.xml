@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://wuranxu.github.io</id>
     <title>小克的blog</title>
-    <updated>2020-11-05T12:26:00.844Z</updated>
+    <updated>2020-11-06T03:23:24.214Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://wuranxu.github.io"/>
     <link rel="self" href="https://wuranxu.github.io/atom.xml"/>
@@ -10,6 +10,59 @@
     <logo>https://wuranxu.github.io/images/avatar.png</logo>
     <icon>https://wuranxu.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 小克的blog</rights>
+    <entry>
+        <title type="html"><![CDATA[每日一题20201106（169. 多数元素）]]></title>
+        <id>https://wuranxu.github.io/post/mei-ri-yi-ti-20201106169-duo-shu-yuan-su/</id>
+        <link href="https://wuranxu.github.io/post/mei-ri-yi-ti-20201106169-duo-shu-yuan-su/">
+        </link>
+        <updated>2020-11-06T03:23:00.000Z</updated>
+        <content type="html"><![CDATA[<figure data-type="image" tabindex="1"><img src="https://upload-images.jianshu.io/upload_images/6053915-13c477602a678a5d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png" loading="lazy"></figure>
+<h4 id="hash表">hash表</h4>
+<pre><code>1. 思路很简单，先遍历数组，存储每个元素的个数
+2. 遍历hash表，拿到大于 n/2的数字，直接return
+</code></pre>
+<pre><code class="language-Python">class Solution:
+    def majorityElement(self, nums: List[int]) -&gt; int:
+        hash = dict()
+        for n in nums:
+            if n not in hash:
+                hash[n] = 1
+            else:
+                hash[n] += 1
+        for k, v in hash.items():
+            if v &gt; len(nums) / 2:
+                return k
+        return -1
+
+</code></pre>
+<p>时间复杂度: O(N)<br>
+空间复杂度: O(N)</p>
+<h4 id="投票算法">投票算法</h4>
+<pre><code>思路很简单，假设你是秦始皇，数组里面有很多其他国家，你们秦兵遇到自己人就+1，遇到其他人就-1，如果你超过了所有国家一半的兵力，那么最后活下来的肯定就是你的士兵。这里之所以能这么确定，是因为题目强调了一定存在多数元素！
+
+代码思路是，开始遍历数组，如果当前的士兵数量是0，则把当前士兵设置为遍历到的元素，比如: 秦
+
+接下来如果遇到秦，则count+1, 遇到的是赵或者其他士兵，则秦和赵士兵同归于尽。下一轮遍历，由于秦的count是0了，则将当前士兵设置为遍历到的士兵。
+</code></pre>
+<pre><code class="language-Python">class Solution:
+    def majorityElement(self, nums: List[int]) -&gt; int:
+        if len(nums) == 0:
+            return -1
+        # 当前士兵数量
+        count = 0
+        # 当前士兵
+        current = None
+        for n in nums:
+            if count == 0:
+                current = n
+            count += 1 if n == current else -1
+        return current
+
+</code></pre>
+<p>时间复杂度: O(N)<br>
+空间复杂度: O(1)</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[每日一题20201105（771. 宝石与石头）]]></title>
         <id>https://wuranxu.github.io/post/mei-ri-yi-ti-20201105771-bao-shi-yu-shi-tou/</id>
@@ -446,29 +499,6 @@ React 提供了一些方法来实现组件的选择性渲染或复用，如 Rend
 <p><mark>上一天自习不难，难的是上一辈自习！</mark></p>
 <pre><code>后续我也会继续更新这个刷题过程，一方面是为了继续鞭策自己，另一方面就是为了加深自己对数据结构与算法的印象。加油吧！
 </code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[关于]]></title>
-        <id>https://wuranxu.github.io/post/about/</id>
-        <link href="https://wuranxu.github.io/post/about/">
-        </link>
-        <updated>2020-09-18T08:24:07.000Z</updated>
-        <content type="html"><![CDATA[<blockquote>
-<p>欢迎来到我的小站呀，很高兴遇见你！🤝</p>
-</blockquote>
-<h2 id="关于本站">🏠 关于本站</h2>
-<p>这是业余时间写东西的一个小网站啦</p>
-<h2 id="博主是谁">👨‍💻 博主是谁</h2>
-<p>博主是一名测试开发工程师，目前在上海工作。平时喜欢捣鼓些测试相关的开发工作，是个不折不扣的技术宅。</p>
-<h2 id="兴趣爱好">⛹ 兴趣爱好</h2>
-<p>平时偶尔打打LOL，但是水平一直不怎么好。s3开始就是老黄金了，最近都只打大乱斗。有一起的可以加我一起玩呀~</p>
-<p>艾欧尼亚：丶丶君已陌路丶丶</p>
-<h2 id="联系我呀">📬 联系我呀</h2>
-<p>有想一起交流测试/开发技术的伙伴儿们，可以加群一起呀！<br>
-🎧 QQ群号: 450505138</p>
-<p>QQ: 619434176(偶尔不在)<br>
-微信: <mark>wuranxu</mark></p>
 ]]></content>
     </entry>
 </feed>
