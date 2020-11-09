@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://wuranxu.github.io</id>
     <title>小克的blog</title>
-    <updated>2020-11-06T03:23:24.214Z</updated>
+    <updated>2020-11-09T12:08:53.358Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://wuranxu.github.io"/>
     <link rel="self" href="https://wuranxu.github.io/atom.xml"/>
@@ -10,6 +10,79 @@
     <logo>https://wuranxu.github.io/images/avatar.png</logo>
     <icon>https://wuranxu.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 小克的blog</rights>
+    <entry>
+        <title type="html"><![CDATA[每日一题20201109（15. 三数之和）]]></title>
+        <id>https://wuranxu.github.io/post/mei-ri-yi-ti-2020110915-san-shu-zhi-he/</id>
+        <link href="https://wuranxu.github.io/post/mei-ri-yi-ti-2020110915-san-shu-zhi-he/">
+        </link>
+        <updated>2020-11-09T12:08:27.000Z</updated>
+        <content type="html"><![CDATA[<p>题目链接:  <a href="https://leetcode-cn.com/problems/3sum/">15. 三数之和</a></p>
+<figure data-type="image" tabindex="1"><img src="https://upload-images.jianshu.io/upload_images/6053915-69e10b376ebe0244.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png" loading="lazy"></figure>
+<h4 id="解法">解法</h4>
+<ul>
+<li>
+<p><s>暴力法</s></p>
+<p>首先可以确定的是暴力法的时间复杂度是O(N³), 所以基本上不考虑此等解法。</p>
+</li>
+<li>
+<p>排序+双指针</p>
+<p>思路是先将数组排序（从小到大），然后固定数组的第一位。</p>
+<p>定义2个指针（左右指针）分别指向定位数组的后一位和数组最后一位。</p>
+<p>如果3个数字加起来比0小，则左指针右移，循环继续。</p>
+<p>如果3个数字加起来比0大，则右指针左移，循环继续。</p>
+<p>如果3个数字等于0，说明找到了结果，将3个数字放入结果数组中并把左指针右移，右指针左移。</p>
+<ol>
+<li>
+<p>这里需要注意的是，可能会有重复数据产生，为了不产生重复数据，需要确保左移/右移后的值与之前不一致。</p>
+</li>
+<li>
+<p>如果从固定的数字大于0了，说明右侧不可能有结果了，因为右侧都是大于0的数字，加起来不会大于0了。</p>
+</li>
+<li>
+<p>如果固定位置与上一个固定位置的值相同，也会产生重复数据，遇到直接跳过就行。</p>
+</li>
+</ol>
+</li>
+</ul>
+<figure data-type="image" tabindex="2"><img src="https://upload-images.jianshu.io/upload_images/6053915-1956974a795b240a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png" loading="lazy"></figure>
+<h4 id="最终代码">最终代码</h4>
+<pre><code class="language-Python">class Solution:
+    def threeSum(self, nums: List[int]) -&gt; List[List[int]]:
+        # 先对数组进行排序, 为了方便比较元素
+        nums = sorted(nums)
+        i = 0  # 数组起点
+        result = []    # 结果
+        while i &lt; len(nums):
+            if nums[i] &gt; 0:
+                # 大于0的数字可以直接跳过
+                break
+            if i &gt; 0 and nums[i] == nums[i-1]:
+                # 与上一个固定位重复的数字直接跳过
+                i += 1
+                continue 
+            front, back = i+1, len(nums)-1
+            while front &lt; back:
+                val = nums[i] + nums[back] + nums[front]
+                if val &lt; 0:
+                    # 说明需要增大数字, front+1
+                    front += 1
+                elif val &gt; 0:
+                    # 说明需要缩小数字, back-1
+                    back -= 1
+                else:
+                    result.append([nums[i], nums[back], nums[front]])
+                    front += 1
+                    back -= 1
+                    # 保证没有重复数组
+                    while front &lt; len(nums) and nums[front] == nums[front-1]:
+                        front += 1
+                    while back &gt;= 0 and nums[back] == nums[back+1]:
+                        back -= 1
+            i += 1
+        return result
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[每日一题20201106（169. 多数元素）]]></title>
         <id>https://wuranxu.github.io/post/mei-ri-yi-ti-20201106169-duo-shu-yuan-su/</id>
@@ -450,55 +523,6 @@ React 提供了一些方法来实现组件的选择性渲染或复用，如 Rend
 </code></pre>
 <h3 id="我这个初学者的理解手动微笑">我这个初学者的理解（手动微笑）</h3>
 <pre><code>我是觉得这个hook给我带来最大的感受就是，一个组件的开发变得更加简单了。第一是因为函数组件本来就显得更简练，第二是可以用useEffect的第二个参数去处理生命周期，比之前的componentDidMount等更为简洁。关于使用方面，其实我自己还在使用dva的connect管理状态，用函数组件connect也能使用，所以暂时体会不到。先稍微记录下自己的感受，后面再更！</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[刷题日记·开篇]]></title>
-        <id>https://wuranxu.github.io/post/shua-ti-ri-ji-kai-pian/</id>
-        <link href="https://wuranxu.github.io/post/shua-ti-ri-ji-kai-pian/">
-        </link>
-        <updated>2020-09-18T09:16:49.000Z</updated>
-        <content type="html"><![CDATA[<figure data-type="image" tabindex="1"><img src="https://wuranxu.github.io/post-images/1600420645602.png" alt="" loading="lazy"></figure>
-<pre><code>记录一下自己的刷题过程，里面可能有大概10%的抄答案，实际上估计刷了60道了吧。
-
-😅说实话，做得多了，确实也慢慢熟练了一些吧。做题也是需要套路的，就好像自己以前s6之前从来不会玩旧版女警，改版以后也不会。有一次在诺克萨斯打排位，黄金分段。当时一级团拿了4杀，出门多一个十字镐，还是打不过对面奥巴马。不敢想象一盘被4个队友怒骂，硬撑到20分钟的场景了。于是我下决心一定要练好女警！
-
-后面看了一些女警的教学，那段时间开始不断练习，之后女警已经成为我拿到手最有把握的英雄了。
-
-做题目也是一样，其实什么事情都是一样，熟能生巧~
-</code></pre>
-<h3 id="为什么要刷题">为什么要刷题🤣</h3>
-<pre><code>有的小伙伴儿可能会有一些疑问，觉得自己只是个测试，为什么要刷题？
-
-但很多时候，就算你是测试甚至不是测开，外边公司也会对数据结构/算法有一定的要求。针对测开/开发来说，面试手撕算法就更加常见了！
-
-根据本人这几年的面试经验来说，项目相关的问题是一方面，另一个很重要的方面就是算法题了。某些公司甚至每面都会有，本人在tx的3面就因为这个败下阵来，然而后悔并没有用~
-</code></pre>
-<ul>
-<li>
-<p>诀窍🤥</p>
-<ul>
-<li>
-<p>链表:</p>
-<ol>
-<li>倒数第N个节点，可以用双指针，通过指针差将慢的指针停留在倒数第N个节点</li>
-<li>链表的中间节点，其实也很简单，也是双指针，只不过是快慢指针，快指针一次走2步，慢指针一次走1步，这样快指针走完，慢指针就<mark>留在中间节点</mark>了。</li>
-</ol>
-<p>这样的套路还有很多，还有看到什么二叉树阿之类的，都别太怕，这也是说给我自己听的。其实做下来的感觉也就是模板套一下（当然只针对easy和部分medium），树就是递归，链表大多是while迭代。</p>
-</li>
-<li>
-<p>HashMap:</p>
-<p>很多都是用来临时存储数据，比如<a href="https://leetcode-cn.com/problems/two-sum/">1. 两数之和</a>，就可以用hashmap来解决。</p>
-<p>我们用hashmap的时候，可以知道key是不可重复的，很多时候是利用了这样的特点。</p>
-</li>
-</ul>
-</li>
-</ul>
-<p>--</p>
-<p>想起以前一个实况8队友的QQ签名：</p>
-<p><mark>上一天自习不难，难的是上一辈自习！</mark></p>
-<pre><code>后续我也会继续更新这个刷题过程，一方面是为了继续鞭策自己，另一方面就是为了加深自己对数据结构与算法的印象。加油吧！
-</code></pre>
 ]]></content>
     </entry>
 </feed>
