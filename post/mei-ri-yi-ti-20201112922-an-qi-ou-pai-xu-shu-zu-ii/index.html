@@ -4,7 +4,7 @@
 <meta name="description" content=""/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-<title>写给大家的一个接口测试平台 | 小克的blog</title>
+<title>每日一题20201112（922. 按奇偶排序数组 II） | 小克的blog</title>
 
 <link rel="shortcut icon" href="https://wuranxu.github.io/favicon.ico?v=1605149452310">
 
@@ -93,38 +93,69 @@
         <div class="post-detail gt-bg-theme-color-second">
             <article class="gt-post-content">
                 <h2 class="post-title">
-                    写给大家的一个接口测试平台
+                    每日一题20201112（922. 按奇偶排序数组 II）
                 </h2>
                 <div class="post-info">
                     <time class="post-time gt-c-content-color-first">
-                        · 2020-09-18 16:06:55 ·
+                        · 2020-11-12 10:50:36 ·
                     </time>
                     
-                        <a href="https://wuranxu.github.io/3-BnLV1sl/" class="post-tags">
-                            # eagle
+                        <a href="https://wuranxu.github.io/vp-bY7-nD/" class="post-tags">
+                            # leetcode
                         </a>
                     
                 </div>
                 <div class="post-content">
-                    <ul>
-<li>
-<p>🍦初衷</p>
-<p>在2018年的时候，来到这家公司，在领导的规划下，完成了接口测试平台从0到1的建设。可惜的是某些方面还是做的不够好吧~希望能够开发一套较为通用，服务大众的产品。毕竟世界上不只是那些大公司，还有很多才起步但没有合适工具支持的小公司。</p>
-</li>
-<li>
-<p>🍩目前进度</p>
-<p>基本上才处于<mark>起步阶段</mark>，也希望自己能够坚持下去吧~</p>
-</li>
-</ul>
+                    <h4 id="题目链接-922-按奇偶排序数组-ii">题目链接： <a href="https://leetcode-cn.com/problems/sort-array-by-parity-ii/">922. 按奇偶排序数组 II</a></h4>
+<figure data-type="image" tabindex="1"><img src="https://upload-images.jianshu.io/upload_images/6053915-37d0c2bc9694c05a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png" loading="lazy"></figure>
+<h4 id="思路">思路</h4>
+<pre><code>很简单，搞懂问题的核心就行，假设现在有奇数在偶数位上，偶数在奇数位上。
+
+那么我们要做的就是，找到分别在对方位置上的数字，然后交换他们就行。
+</code></pre>
+<pre><code class="language-Python">class Solution:
+    def sortArrayByParityII(self, A: List[int]) -&gt; List[int]:
+        # 判断数组大小是否小于等于1，是则直接返回数组
+        if len(A) &lt;= 1:
+            return A
+        # 定义2个指针，i指向第一个偶数位，j指向第一个奇数位
+        i, j = 0, 1
+        # 循环结束的条件是i或者j超出数组范围
+        while i &lt; len(A) and j &lt; len(A):
+            # i不是偶数位且j不是奇数位 直接交换，并把i j分别挪到下一个位置
+            if A[i] % 2 == 1 and A[j] % 2 == 0:
+                A[i], A[j] = A[j], A[i]
+                i += 2
+                j += 2
+            # i不是偶数, j是奇数 那么j去下一个位置
+            elif A[i] % 2 == 1:
+                j += 2
+            # j不是奇数 i去下一个位置
+            elif A[j] % 2 == 0:
+                i += 2
+            # i j位置都正确
+            else:
+                i += 2
+                j += 2
+        return A
+</code></pre>
+<figure data-type="image" tabindex="2"><img src="https://upload-images.jianshu.io/upload_images/6053915-c410d82cda5fe8da.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png" loading="lazy"></figure>
 
                 </div>
             </article>
         </div>
 
         
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://wuranxu.github.io/post/mei-ri-yi-ti-2020110915-san-shu-zhi-he/" class="post-title gt-a-link">
+                    每日一题20201109（15. 三数之和）
+                </a>
+            </div>
+        
 
         
-            <span id="/post/" class="leancloud_visitors" data-flag-title="写给大家的一个接口测试平台">
+            <span id="/post/" class="leancloud_visitors" data-flag-title="每日一题20201112（922. 按奇偶排序数组 II）">
                 <em class="post-meta-item-text">阅读量 </em>
                 <i class="leancloud-visitors-count">0</i>
             </span>

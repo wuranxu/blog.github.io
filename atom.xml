@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://wuranxu.github.io</id>
     <title>小克的blog</title>
-    <updated>2020-11-09T12:08:53.358Z</updated>
+    <updated>2020-11-12T02:50:55.433Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://wuranxu.github.io"/>
     <link rel="self" href="https://wuranxu.github.io/atom.xml"/>
@@ -10,6 +10,48 @@
     <logo>https://wuranxu.github.io/images/avatar.png</logo>
     <icon>https://wuranxu.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 小克的blog</rights>
+    <entry>
+        <title type="html"><![CDATA[每日一题20201112（922. 按奇偶排序数组 II）]]></title>
+        <id>https://wuranxu.github.io/post/mei-ri-yi-ti-20201112922-an-qi-ou-pai-xu-shu-zu-ii/</id>
+        <link href="https://wuranxu.github.io/post/mei-ri-yi-ti-20201112922-an-qi-ou-pai-xu-shu-zu-ii/">
+        </link>
+        <updated>2020-11-12T02:50:36.000Z</updated>
+        <content type="html"><![CDATA[<h4 id="题目链接-922-按奇偶排序数组-ii">题目链接： <a href="https://leetcode-cn.com/problems/sort-array-by-parity-ii/">922. 按奇偶排序数组 II</a></h4>
+<figure data-type="image" tabindex="1"><img src="https://upload-images.jianshu.io/upload_images/6053915-37d0c2bc9694c05a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png" loading="lazy"></figure>
+<h4 id="思路">思路</h4>
+<pre><code>很简单，搞懂问题的核心就行，假设现在有奇数在偶数位上，偶数在奇数位上。
+
+那么我们要做的就是，找到分别在对方位置上的数字，然后交换他们就行。
+</code></pre>
+<pre><code class="language-Python">class Solution:
+    def sortArrayByParityII(self, A: List[int]) -&gt; List[int]:
+        # 判断数组大小是否小于等于1，是则直接返回数组
+        if len(A) &lt;= 1:
+            return A
+        # 定义2个指针，i指向第一个偶数位，j指向第一个奇数位
+        i, j = 0, 1
+        # 循环结束的条件是i或者j超出数组范围
+        while i &lt; len(A) and j &lt; len(A):
+            # i不是偶数位且j不是奇数位 直接交换，并把i j分别挪到下一个位置
+            if A[i] % 2 == 1 and A[j] % 2 == 0:
+                A[i], A[j] = A[j], A[i]
+                i += 2
+                j += 2
+            # i不是偶数, j是奇数 那么j去下一个位置
+            elif A[i] % 2 == 1:
+                j += 2
+            # j不是奇数 i去下一个位置
+            elif A[j] % 2 == 0:
+                i += 2
+            # i j位置都正确
+            else:
+                i += 2
+                j += 2
+        return A
+</code></pre>
+<figure data-type="image" tabindex="2"><img src="https://upload-images.jianshu.io/upload_images/6053915-c410d82cda5fe8da.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png" loading="lazy"></figure>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[每日一题20201109（15. 三数之和）]]></title>
         <id>https://wuranxu.github.io/post/mei-ri-yi-ti-2020110915-san-shu-zhi-he/</id>
@@ -474,55 +516,6 @@ gRPC 基于 HTTP/2 标准设计，带来诸如双向流、流控、头部压缩�
 <p>以下内容参考自 <a href="https://www.v2ex.com/t/684586">关于微服务网关的选择</a>:</p>
 <pre><code>&quot;nginx 性能虽强，但功能有限。我们一般只用来做负载均衡和反向代理。后面还是 gateway 来实现做身份验证、鉴权、限流、接口访问日志等功能。&quot;
 </code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[react hook]]></title>
-        <id>https://wuranxu.github.io/post/react-hook/</id>
-        <link href="https://wuranxu.github.io/post/react-hook/">
-        </link>
-        <updated>2020-09-21T09:38:16.000Z</updated>
-        <summary type="html"><![CDATA[<h3 id="背景">🙃背景</h3>
-<pre><code>在好奇心的驱使下，还是打开了==react hook==的大门，但是有些东西吧，还是得靠自己琢磨琢磨才能体会。</code></pre>
-]]></summary>
-        <content type="html"><![CDATA[<h3 id="背景">🙃背景</h3>
-<pre><code>在好奇心的驱使下，还是打开了==react hook==的大门，但是有些东西吧，还是得靠自己琢磨琢磨才能体会。
-</code></pre>
-<!-- more -->
-<h3 id="优势">优势</h3>
-<pre><code>在react hook里，函数式组件也能有状态管理了。它大概长这样！
-</code></pre>
-<pre><code class="language-Javascript">import React, {useState, useEffect} from 'react';
-
-export default () =&gt; {
-    // count是该函数组件的属性, 初始值是0
-    const [count, setCount] = useState(0);
-
-    return (
-        &lt;div onClick={()=&gt;setCount(count+1)}&gt;当前点击次数为{count}&lt;/div&gt;
-    )
-}
-</code></pre>
-<pre><code>对比以前，可以发现这样写出来简单粗暴，几乎可以说是让我放弃了class的编写，但是我想不明白的是，如果一个组件里面有很多state，岂不是要写很多setXXX. 也可能是我自己的组件太过于耦合了，其实该拆的地方应该要拆。
-
-官方给出的解释就是以下好处: 
-</code></pre>
-<p>以下内容搬运自掘金: https://juejin.im/post/6844903908335173645</p>
-<h3 id="为什么会有-hook">为什么会有 Hook?</h3>
-<pre><code>在组件之间复用状态逻辑很难
-
-React 提供了一些方法来实现组件的选择性渲染或复用，如 Render Props、高阶组件 等，但这些方法组成的组件也带来了“嵌套地狱”的问题，复杂了组件的结构，增大了阅读理解代码的难度。React 提供了自定义 Hook 来解决上面提到的问题。
-
-
-复杂组件变得难以理解
-在一些复杂的组件中往往都包含了较多的状态逻辑和方法，如组件常常在 componentDidMount 中获取数据。但是，同时在该生命周期中也包含很多其它的逻辑，如设置事件监听，而之后需在 componentWillUnmount 中清除。一些原本没关联的的代码因为修改了相同的状态而冗杂在一起。当然 React 也引入了 Redux 用来实现状态管理，但这也引入了很多抽象概念，文件也相对应复杂起来。Hook 将组件中相互关联的部分拆分成更小的函数，而并非强制按照生命周期划分。
-
-
-难以理解的 class
-在组件中使用 class 时，开发者必须去理解 JavaScript 中 this 的工作方式，需要处理事件绑定等等，另外，class 还存在不能很好的压缩等问题。Hook 使你在非 class 的情况下可以使用更多的 React 特性。
-</code></pre>
-<h3 id="我这个初学者的理解手动微笑">我这个初学者的理解（手动微笑）</h3>
-<pre><code>我是觉得这个hook给我带来最大的感受就是，一个组件的开发变得更加简单了。第一是因为函数组件本来就显得更简练，第二是可以用useEffect的第二个参数去处理生命周期，比之前的componentDidMount等更为简洁。关于使用方面，其实我自己还在使用dva的connect管理状态，用函数组件connect也能使用，所以暂时体会不到。先稍微记录下自己的感受，后面再更！</code></pre>
 ]]></content>
     </entry>
 </feed>
