@@ -4,7 +4,7 @@
 <meta name="description" content=""/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-<title>grpc | 小克的blog</title>
+<title>每日一题20201113（328. 奇偶链表） | 小克的blog</title>
 
 <link rel="shortcut icon" href="https://wuranxu.github.io/favicon.ico?v=1605275057517">
 
@@ -37,11 +37,11 @@
     </script>
 
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
 </head>
 <body>
 <div class="main gt-bg-theme-color-first">
-    <div class="main-content">
-        <nav class="navbar navbar-expand-lg">
+    <nav class="navbar navbar-expand-lg">
     <div class="navbar-brand">
         <img class="user-avatar" src="/images/avatar.png" alt="头像">
         <div class="site-name gt-c-content-color-first">
@@ -89,45 +89,109 @@
     </div>
 </nav>
 
-        <div class="current-tag-container">
-            <h2 class="title gt-c-content-color-first">
-                #grpc
-            </h2>
-        </div>
-        <div class="post-list-container">
-    <div class="post-inner">
-        
-            <div class="post gt-bg-theme-color-second">
-                <div class="post-left">
-                    <div>
-                        
-                        <a href="https://wuranxu.github.io/post/wei-fu-wu-xiang-guan-si-kao-yi/">
-                            <span class="post-title gt-c-content-color-first">微服务相关思考(一)</span>
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    每日一题20201113（328. 奇偶链表）
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2020-11-13 21:43:41 ·
+                    </time>
+                    
+                        <a href="https://wuranxu.github.io/vp-bY7-nD/" class="post-tags">
+                            # leetcode
                         </a>
-                    </div>
-                    <div class="gt-post-content post-abstract gt-c-content-color-second">
-                        
-                    </div>
-                    <div class="post-info">
-                        <time class="post-time gt-c-content-color-first">
-                            发布于 · 2020-09-23 18:59:41 ·
-                        </time>
-                        
-                            <a href="https://wuranxu.github.io/S8t-Fanls/" class="post-tag">
-                                # grpc
-                            </a>
-                        
-                    </div>
+                    
                 </div>
-                
+                <div class="post-content">
+                    <p>题目: <a href="https://leetcode-cn.com/problems/odd-even-linked-list/">328. 奇偶链表</a></p>
+<figure data-type="image" tabindex="1"><img src="https://upload-images.jianshu.io/upload_images/6053915-771873d65639009d.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image-20201113175101832" loading="lazy"></figure>
+<h4 id="思路">思路</h4>
+<pre><code>定义3个指针，分别为jishu(指向第一个节点), oushu(第一个偶数节点)和oushu_head(第一个偶数节点)
+</code></pre>
+<pre><code class="language-Python"># Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def oddEvenList(self, head: ListNode) -&gt; ListNode:
+        if head is None:
+            return head
+        # 指向第一个奇数节点
+        jishu = head
+        # 指向第一个偶数节点
+        oushu_head = oushu = head.next
+        # 当偶数节点不存在或者偶数节点后面没有节点时循环结束
+        while oushu is not None and oushu.next is not None:
+            # 把偶数的下一个节点（奇数节点）给jishu
+            jishu.next = oushu.next
+            # jishu奇数指针指向刚才赋予的奇数节点（这样jishu指向第二个奇数节点） 
+            jishu = jishu.next
+            # 把奇数的下一个节点（偶数节点）指向给偶数
+            oushu.next = jishu.next
+            # 把偶数节点往后挪一位 此时oushu: 2-&gt;4
+            oushu = oushu.next
+        # 把oushu_head接入jishu的后面节点（这里其实jishu节点已经到最后一个奇数了）
+        jishu.next = oushu_head
+        # 返回修改后的head即可
+        return head
+
+</code></pre>
+<figure data-type="image" tabindex="2"><img src="https://upload-images.jianshu.io/upload_images/6053915-3b1e05acacd3c84c.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image-20201113214140509" loading="lazy"></figure>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://wuranxu.github.io/post/mei-ri-yi-ti-20201112922-an-qi-ou-pai-xu-shu-zu-ii/" class="post-title gt-a-link">
+                    每日一题20201112（922. 按奇偶排序数组 II）
+                </a>
             </div>
         
-    </div>
-</div>
-        <div class="pagination-container">
-    
-    
-</div>
+
+        
+            <span id="/post/" class="leancloud_visitors" data-flag-title="每日一题20201113（328. 奇偶链表）">
+                <em class="post-meta-item-text">阅读量 </em>
+                <i class="leancloud-visitors-count">0</i>
+            </span>
+        
+
+        
+
+        
+            <script src='https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js'></script>
+
+<style>
+	div#vcomments{
+		width:100%;
+		max-width: 1000px;
+		padding: 2.5%
+	}
+</style>
+
+
+	<div id="vcomments"></div>
+
+<script>
+	new Valine({
+		el: '#vcomments',
+		appId: 'fT8wvEVNtx1cOcCQEs7rVwnV-gzGzoHsz',
+		appKey: 'xV6aDHKSkLfP7u0cBRIzpmcy',
+		avatar: 'monsterid',
+		pageSize: 10,
+		recordIp: true,
+		placeholder: '不要吝啬你的评论~',
+		visitor: true,
+	});
+</script>
+
+        
 
         <div class="site-footer gt-c-content-color-first">
     <div class="slogan gt-c-content-color-first">欢迎来到我的小窝~这里不仅有博客，也有日记。</div>
