@@ -4,7 +4,7 @@
 <meta name="description" content=""/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-<title>每日一题20201109（15. 三数之和） | 小克的blog</title>
+<title>每日一题20201115（55. 跳跃游戏） | 小克的blog</title>
 
 <link rel="shortcut icon" href="https://wuranxu.github.io/favicon.ico?v=1605518911762">
 
@@ -93,11 +93,11 @@
         <div class="post-detail gt-bg-theme-color-second">
             <article class="gt-post-content">
                 <h2 class="post-title">
-                    每日一题20201109（15. 三数之和）
+                    每日一题20201115（55. 跳跃游戏）
                 </h2>
                 <div class="post-info">
                     <time class="post-time gt-c-content-color-first">
-                        · 2020-11-09 20:08:27 ·
+                        · 2020-11-16 17:27:35 ·
                     </time>
                     
                         <a href="https://wuranxu.github.io/vp-bY7-nD/" class="post-tags">
@@ -106,71 +106,49 @@
                     
                 </div>
                 <div class="post-content">
-                    <p>题目链接:  <a href="https://leetcode-cn.com/problems/3sum/">15. 三数之和</a></p>
-<figure data-type="image" tabindex="1"><img src="https://upload-images.jianshu.io/upload_images/6053915-69e10b376ebe0244.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png" loading="lazy"></figure>
-<h4 id="解法">解法</h4>
-<ul>
-<li>
-<p><s>暴力法</s></p>
-<p>首先可以确定的是暴力法的时间复杂度是O(N³), 所以基本上不考虑此等解法。</p>
-</li>
-<li>
-<p>排序+双指针</p>
-<p>思路是先将数组排序（从小到大），然后固定数组的第一位。</p>
-<p>定义2个指针（左右指针）分别指向定位数组的后一位和数组最后一位。</p>
-<p>如果3个数字加起来比0小，则左指针右移，循环继续。</p>
-<p>如果3个数字加起来比0大，则右指针左移，循环继续。</p>
-<p>如果3个数字等于0，说明找到了结果，将3个数字放入结果数组中并把左指针右移，右指针左移。</p>
-<ol>
-<li>
-<p>这里需要注意的是，可能会有重复数据产生，为了不产生重复数据，需要确保左移/右移后的值与之前不一致。</p>
-</li>
-<li>
-<p>如果从固定的数字大于0了，说明右侧不可能有结果了，因为右侧都是大于0的数字，加起来不会大于0了。</p>
-</li>
-<li>
-<p>如果固定位置与上一个固定位置的值相同，也会产生重复数据，遇到直接跳过就行。</p>
-</li>
-</ol>
-</li>
-</ul>
-<figure data-type="image" tabindex="2"><img src="https://upload-images.jianshu.io/upload_images/6053915-1956974a795b240a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png" loading="lazy"></figure>
-<h4 id="最终代码">最终代码</h4>
-<pre><code class="language-Python">class Solution:
-    def threeSum(self, nums: List[int]) -&gt; List[List[int]]:
-        # 先对数组进行排序, 为了方便比较元素
-        nums = sorted(nums)
-        i = 0  # 数组起点
-        result = []    # 结果
-        while i &lt; len(nums):
-            if nums[i] &gt; 0:
-                # 大于0的数字可以直接跳过
-                break
-            if i &gt; 0 and nums[i] == nums[i-1]:
-                # 与上一个固定位重复的数字直接跳过
-                i += 1
-                continue 
-            front, back = i+1, len(nums)-1
-            while front &lt; back:
-                val = nums[i] + nums[back] + nums[front]
-                if val &lt; 0:
-                    # 说明需要增大数字, front+1
-                    front += 1
-                elif val &gt; 0:
-                    # 说明需要缩小数字, back-1
-                    back -= 1
-                else:
-                    result.append([nums[i], nums[back], nums[front]])
-                    front += 1
-                    back -= 1
-                    # 保证没有重复数组
-                    while front &lt; len(nums) and nums[front] == nums[front-1]:
-                        front += 1
-                    while back &gt;= 0 and nums[back] == nums[back+1]:
-                        back -= 1
-            i += 1
-        return result
+                    <h4 id="55-跳跃游戏"><a href="https://leetcode-cn.com/problems/jump-game/">55. 跳跃游戏</a></h4>
+<figure data-type="image" tabindex="1"><img src="https://i.loli.net/2020/11/16/GQCFVayXdAuWOfB.png" alt="image.png" loading="lazy"></figure>
+<h3 id="方法一-贪心算法">方法一: 贪心算法</h3>
+<pre><code>维护一个能跳到最大距离的变量，遍历数组，每次更新这个变量。可以遍历完成后比较这个值与数组的长度-1，也可以每次遍历的时候判断是否大于了数组长度-1，如果是则直接return
 </code></pre>
+<pre><code class="language-Python">class Solution:
+    def canJump(self, nums: List[int]) -&gt; bool:
+        max_distance = 0
+        for i, n in enumerate(nums):
+            # 当i = 0的时候，最大距离肯定为0，i &gt; max_distance是因为第i个索引的位置都跳不到就更不可能跳到最后一个了，这时候跳出循环
+            if i &gt; max_distance and i != 0:
+                break
+            if n + i &gt; max_distance:
+                max_distance = n + i
+        # 最后判断是否大于等于数组长度-1（也就是能达到最后一个元素）
+        return max_distance &gt;= len(nums) - 1
+
+</code></pre>
+<figure data-type="image" tabindex="2"><img src="https://upload-images.jianshu.io/upload_images/6053915-0d39bdabe1cccaef.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png" loading="lazy"></figure>
+<h3 id="方法二-动态规划一开始的思路python直接超时-可以上go">方法二 动态规划（一开始的思路，Python直接超时, 可以上go）</h3>
+<pre><code>思路也很简单，类似于跳台阶，维护一个dp数组，看达到最后一个台阶的方式有多少种，并判断他是否大于0.
+</code></pre>
+<pre><code class="language-go">func canJump(nums []int) bool {
+    if len(nums) == 0 {
+        return false
+    }
+    result := make([]int, len(nums), len(nums))
+    for i, _ := range nums {
+        if i == 0 {
+            result[i] = 1
+            continue
+        }
+        for j:=0; j&lt;i; j++ {
+            if nums[j] &gt;= i-j {
+                result[i] += result[j]
+            }
+        }
+    }
+    return result[len(nums)-1] &gt; 0
+}
+
+</code></pre>
+<figure data-type="image" tabindex="3"><img src="https://i.loli.net/2020/11/16/6FRTiNpX5GsHYvr.png" alt="image.png" loading="lazy"></figure>
 
                 </div>
             </article>
@@ -179,14 +157,14 @@
         
             <div class="next-post">
                 <div class="next gt-c-content-color-first">下一篇</div>
-                <a href="https://wuranxu.github.io/post/mei-ri-yi-ti-20201106169-duo-shu-yuan-su/" class="post-title gt-a-link">
-                    每日一题20201106（169. 多数元素）
+                <a href="https://wuranxu.github.io/post/mei-ri-yi-ti-2020111611-sheng-zui-duo-shui-de-rong-qi/" class="post-title gt-a-link">
+                    每日一题20201116（11. 盛最多水的容器）
                 </a>
             </div>
         
 
         
-            <span id="/post/" class="leancloud_visitors" data-flag-title="每日一题20201109（15. 三数之和）">
+            <span id="/post/" class="leancloud_visitors" data-flag-title="每日一题20201115（55. 跳跃游戏）">
                 <em class="post-meta-item-text">阅读量 </em>
                 <i class="leancloud-visitors-count">0</i>
             </span>

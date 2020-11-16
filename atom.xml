@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://wuranxu.github.io</id>
     <title>小克的blog</title>
-    <updated>2020-11-16T08:30:26.967Z</updated>
+    <updated>2020-11-16T09:28:34.098Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://wuranxu.github.io"/>
     <link rel="self" href="https://wuranxu.github.io/atom.xml"/>
@@ -10,6 +10,57 @@
     <logo>https://wuranxu.github.io/images/avatar.png</logo>
     <icon>https://wuranxu.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 小克的blog</rights>
+    <entry>
+        <title type="html"><![CDATA[每日一题20201115（55. 跳跃游戏）]]></title>
+        <id>https://wuranxu.github.io/post/mei-ri-yi-ti-2020111555-tiao-yue-you-xi/</id>
+        <link href="https://wuranxu.github.io/post/mei-ri-yi-ti-2020111555-tiao-yue-you-xi/">
+        </link>
+        <updated>2020-11-16T09:27:35.000Z</updated>
+        <content type="html"><![CDATA[<h4 id="55-跳跃游戏"><a href="https://leetcode-cn.com/problems/jump-game/">55. 跳跃游戏</a></h4>
+<figure data-type="image" tabindex="1"><img src="https://i.loli.net/2020/11/16/GQCFVayXdAuWOfB.png" alt="image.png" loading="lazy"></figure>
+<h3 id="方法一-贪心算法">方法一: 贪心算法</h3>
+<pre><code>维护一个能跳到最大距离的变量，遍历数组，每次更新这个变量。可以遍历完成后比较这个值与数组的长度-1，也可以每次遍历的时候判断是否大于了数组长度-1，如果是则直接return
+</code></pre>
+<pre><code class="language-Python">class Solution:
+    def canJump(self, nums: List[int]) -&gt; bool:
+        max_distance = 0
+        for i, n in enumerate(nums):
+            # 当i = 0的时候，最大距离肯定为0，i &gt; max_distance是因为第i个索引的位置都跳不到就更不可能跳到最后一个了，这时候跳出循环
+            if i &gt; max_distance and i != 0:
+                break
+            if n + i &gt; max_distance:
+                max_distance = n + i
+        # 最后判断是否大于等于数组长度-1（也就是能达到最后一个元素）
+        return max_distance &gt;= len(nums) - 1
+
+</code></pre>
+<figure data-type="image" tabindex="2"><img src="https://upload-images.jianshu.io/upload_images/6053915-0d39bdabe1cccaef.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png" loading="lazy"></figure>
+<h3 id="方法二-动态规划一开始的思路python直接超时-可以上go">方法二 动态规划（一开始的思路，Python直接超时, 可以上go）</h3>
+<pre><code>思路也很简单，类似于跳台阶，维护一个dp数组，看达到最后一个台阶的方式有多少种，并判断他是否大于0.
+</code></pre>
+<pre><code class="language-go">func canJump(nums []int) bool {
+    if len(nums) == 0 {
+        return false
+    }
+    result := make([]int, len(nums), len(nums))
+    for i, _ := range nums {
+        if i == 0 {
+            result[i] = 1
+            continue
+        }
+        for j:=0; j&lt;i; j++ {
+            if nums[j] &gt;= i-j {
+                result[i] += result[j]
+            }
+        }
+    }
+    return result[len(nums)-1] &gt; 0
+}
+
+</code></pre>
+<figure data-type="image" tabindex="3"><img src="https://i.loli.net/2020/11/16/6FRTiNpX5GsHYvr.png" alt="image.png" loading="lazy"></figure>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[每日一题20201116（11. 盛最多水的容器）]]></title>
         <id>https://wuranxu.github.io/post/mei-ri-yi-ti-2020111611-sheng-zui-duo-shui-de-rong-qi/</id>
@@ -444,86 +495,6 @@ class Solution:
 
 </code></pre>
 <figure data-type="image" tabindex="1"><img src="https://upload-images.jianshu.io/upload_images/6053915-714c6d9fb6c34d44.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="777.jpg" loading="lazy"></figure>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[每日一题之20201102（349. 两个数组的交集）]]></title>
-        <id>https://wuranxu.github.io/post/mei-ri-yi-ti-zhi-20201102349-liang-ge-shu-zu-de-jiao-ji/</id>
-        <link href="https://wuranxu.github.io/post/mei-ri-yi-ti-zhi-20201102349-liang-ge-shu-zu-de-jiao-ji/">
-        </link>
-        <updated>2020-11-02T12:05:18.000Z</updated>
-        <summary type="html"><![CDATA[<p>空间换时间，hash表2次遍历(Python)</p>
-<ul>
-<li>
-<p>潇洒解法:</p>
-<p>利用Python的set数据结构，完成交集操作</p>
-</li>
-</ul>
-<pre><code class="language-Python">class Solution:
-    def intersection(self, nums1: List[int], nums2: List[int]) -&gt; List[int]:
-        return list(set(nums1) &amp; set(nums2))
-
-</code></pre>
-<figure data-type="image" tabindex="1"><img src="https://upload-images.jianshu.io/upload_images/6053915-650c186e46412d86.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="11.jpg" loading="lazy"></figure>
-<ul>
-<li>
-<p>啰嗦解法（但很快）</p>
-<p>先建立一个dict，遍历数组1，然后将数组里面的值都放到temp里面，由于dict本身不能有重复的key，相当于天然过滤掉了重复的数据此步骤约等于set(nums1)</p>
-<p>接着就是取并集，遍历数组2，如果数组2的元素在temp里面出现，则添加到result数组中。</p>
-<p><strong>但是这里要注意的是，result可能重复添加</strong></p>
-<p>所以我们在添加一个数字到result以后，将temp里面该数字对应的value改成False，以防重复添加。</p>
-</li>
-</ul>
-<figure data-type="image" tabindex="2"><img src="https://upload-images.jianshu.io/upload_images/6053915-1ef3c12edec440d8.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="222.jpg" loading="lazy"></figure>
-<pre><code class="language-Python">class Solution:
-    def intersection(self, nums1: List[int], nums2: List[int]) -&gt; List[int]:
-        temp = {}
-        result = []
-        for n in nums1:
-            temp[n] = True
-        for x in nums2:
-            if temp.get(x):
-                result.append(x)
-                temp[x] = False
-        return result
-</code></pre>
-]]></summary>
-        <content type="html"><![CDATA[<p>空间换时间，hash表2次遍历(Python)</p>
-<ul>
-<li>
-<p>潇洒解法:</p>
-<p>利用Python的set数据结构，完成交集操作</p>
-</li>
-</ul>
-<pre><code class="language-Python">class Solution:
-    def intersection(self, nums1: List[int], nums2: List[int]) -&gt; List[int]:
-        return list(set(nums1) &amp; set(nums2))
-
-</code></pre>
-<figure data-type="image" tabindex="1"><img src="https://upload-images.jianshu.io/upload_images/6053915-650c186e46412d86.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="11.jpg" loading="lazy"></figure>
-<ul>
-<li>
-<p>啰嗦解法（但很快）</p>
-<p>先建立一个dict，遍历数组1，然后将数组里面的值都放到temp里面，由于dict本身不能有重复的key，相当于天然过滤掉了重复的数据此步骤约等于set(nums1)</p>
-<p>接着就是取并集，遍历数组2，如果数组2的元素在temp里面出现，则添加到result数组中。</p>
-<p><strong>但是这里要注意的是，result可能重复添加</strong></p>
-<p>所以我们在添加一个数字到result以后，将temp里面该数字对应的value改成False，以防重复添加。</p>
-</li>
-</ul>
-<figure data-type="image" tabindex="2"><img src="https://upload-images.jianshu.io/upload_images/6053915-1ef3c12edec440d8.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="222.jpg" loading="lazy"></figure>
-<pre><code class="language-Python">class Solution:
-    def intersection(self, nums1: List[int], nums2: List[int]) -&gt; List[int]:
-        temp = {}
-        result = []
-        for n in nums1:
-            temp[n] = True
-        for x in nums2:
-            if temp.get(x):
-                result.append(x)
-                temp[x] = False
-        return result
-</code></pre>
-<!-- more -->
 ]]></content>
     </entry>
 </feed>
