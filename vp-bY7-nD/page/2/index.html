@@ -4,7 +4,7 @@
 <meta name="description" content=""/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-<title>golang下载指定版本（go get） | 小克的blog</title>
+<title>leetcode | 小克的blog</title>
 
 <link rel="shortcut icon" href="https://wuranxu.github.io/favicon.ico?v=1605515424728">
 
@@ -37,11 +37,11 @@
     </script>
 
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
 </head>
 <body>
 <div class="main gt-bg-theme-color-first">
-    <nav class="navbar navbar-expand-lg">
+    <div class="main-content">
+        <nav class="navbar navbar-expand-lg">
     <div class="navbar-brand">
         <img class="user-avatar" src="/images/avatar.png" alt="头像">
         <div class="site-name gt-c-content-color-first">
@@ -89,105 +89,47 @@
     </div>
 </nav>
 
-    <div class="post-container">
-        <div class="post-detail gt-bg-theme-color-second">
-            <article class="gt-post-content">
-                <h2 class="post-title">
-                    golang下载指定版本（go get）
-                </h2>
-                <div class="post-info">
-                    <time class="post-time gt-c-content-color-first">
-                        · 2020-09-29 13:41:48 ·
-                    </time>
-                    
-                        <a href="https://wuranxu.github.io/z9o1SKNlx/" class="post-tags">
-                            # golang
-                        </a>
-                    
-                </div>
-                <div class="post-content">
-                    <pre><code>是这样的，大概在去年的时候，自己学习grpc写了一些相关的代码包括proto和一些生成的pb。
-
-但是今年发现grpc版本有更新，对应的protoc-gen-go这样的插件也进行了一番更新，而这些更新又和etcd不太兼容。所以为了降级，需要获取旧版本。
-
-如果你用的还是GOPATH管理包，那么我建议你现在开始，使用==go module==来管理，当然这需要你的golang版本在1.11以上~
-
-好了废话不多说了，直接上命令吧！
-</code></pre>
-<pre><code class="language-shell">go get -u -v github.com/golang/protobuf/protoc-gen-go@v1.2.7
-</code></pre>
-<pre><code>以上就是下载1.2.7版本protoc-gen-go的方式了！
-</code></pre>
-<h3 id="使用gomodule注意">使用GOMODULE注意</h3>
-<pre><code>首先保证GO111MODULE变量是on, 如果是off的话，可在环境变量更新为on。
-</code></pre>
-<pre><code class="language-shell">export GO111MODULE=on
-</code></pre>
-<pre><code>或者更新~/.bash_profile文件设置此变量
-
-如果遇到下载慢或者失败的时候，可以切换GOPROXY源:
-</code></pre>
-<ul>
-<li>GOPROXY源</li>
-</ul>
-<pre><code class="language-shell"> export GOPROXY=https://goproxy.io 
-</code></pre>
-<ul>
-<li>阿里云源</li>
-</ul>
-<pre><code class="language-shell">export GOPROXY=https://mirrors.aliyun.com/goproxy/ 
-</code></pre>
-
-                </div>
-            </article>
+        <div class="current-tag-container">
+            <h2 class="title gt-c-content-color-first">
+                #leetcode
+            </h2>
         </div>
-
+        <div class="post-list-container">
+    <div class="post-inner">
         
-            <div class="next-post">
-                <div class="next gt-c-content-color-first">下一篇</div>
-                <a href="https://wuranxu.github.io/post/wei-fu-wu-xiang-guan-si-kao-yi/" class="post-title gt-a-link">
-                    微服务相关思考(一)
-                </a>
+            <div class="post gt-bg-theme-color-second">
+                <div class="post-left">
+                    <div>
+                        
+                        <a href="https://wuranxu.github.io/post/shua-ti-ri-ji-kai-pian/">
+                            <span class="post-title gt-c-content-color-first">刷题日记·开篇</span>
+                        </a>
+                    </div>
+                    <div class="gt-post-content post-abstract gt-c-content-color-second">
+                        
+                    </div>
+                    <div class="post-info">
+                        <time class="post-time gt-c-content-color-first">
+                            发布于 · 2020-09-18 17:16:49 ·
+                        </time>
+                        
+                            <a href="https://wuranxu.github.io/vp-bY7-nD/" class="post-tag">
+                                # leetcode
+                            </a>
+                        
+                    </div>
+                </div>
+                
             </div>
         
-
-        
-            <span id="/post/" class="leancloud_visitors" data-flag-title="golang下载指定版本（go get）">
-                <em class="post-meta-item-text">阅读量 </em>
-                <i class="leancloud-visitors-count">0</i>
-            </span>
-        
-
-        
-
-        
-            <script src='https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js'></script>
-
-<style>
-	div#vcomments{
-		width:100%;
-		max-width: 1000px;
-		padding: 2.5%
-	}
-</style>
-
-
-	<div id="vcomments"></div>
-
-<script>
-	new Valine({
-		el: '#vcomments',
-		appId: 'fT8wvEVNtx1cOcCQEs7rVwnV-gzGzoHsz',
-		appKey: 'xV6aDHKSkLfP7u0cBRIzpmcy',
-		avatar: 'monsterid',
-		pageSize: 10,
-		recordIp: true,
-		placeholder: '不要吝啬你的评论~',
-		visitor: true,
-	});
-</script>
-
-        
+    </div>
+</div>
+        <div class="pagination-container">
+    
+        <a href="https://wuranxu.github.io/vp-bY7-nD" class="prev-page gt-a-link">上一页</a>
+    
+    
+</div>
 
         <div class="site-footer gt-c-content-color-first">
     <div class="slogan gt-c-content-color-first">欢迎来到我的小窝~这里不仅有博客，也有日记。</div>

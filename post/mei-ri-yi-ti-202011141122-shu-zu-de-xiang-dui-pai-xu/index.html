@@ -4,7 +4,7 @@
 <meta name="description" content=""/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-<title>react hook | 小克的blog</title>
+<title>每日一题20201114（1122. 数组的相对排序） | 小克的blog</title>
 
 <link rel="shortcut icon" href="https://wuranxu.github.io/favicon.ico?v=1605515424728">
 
@@ -93,57 +93,80 @@
         <div class="post-detail gt-bg-theme-color-second">
             <article class="gt-post-content">
                 <h2 class="post-title">
-                    react hook
+                    每日一题20201114（1122. 数组的相对排序）
                 </h2>
                 <div class="post-info">
                     <time class="post-time gt-c-content-color-first">
-                        · 2020-09-21 17:38:16 ·
+                        · 2020-11-16 15:36:35 ·
                     </time>
                     
-                        <a href="https://wuranxu.github.io/5VtBytyNp/" class="post-tags">
-                            # 前端入坑
+                        <a href="https://wuranxu.github.io/vp-bY7-nD/" class="post-tags">
+                            # leetcode
                         </a>
                     
                 </div>
                 <div class="post-content">
-                    <h3 id="背景">🙃背景</h3>
-<pre><code>在好奇心的驱使下，还是打开了==react hook==的大门，但是有些东西吧，还是得靠自己琢磨琢磨才能体会。
+                    <figure data-type="image" tabindex="1"><img src="https://i.loli.net/2020/11/16/gexU8aKzlYApIod.png" alt="image.png" loading="lazy"></figure>
+<h4 id="重点">重点</h4>
+<pre><code>首先注意几个重点：
+
+1. arr1和arr2里最大的元素不会超过1000
+2. arr2里面没有重复的元素
+3. arr2里面每个元素必定在arr1里面出现
 </code></pre>
-<!-- more -->
-<h3 id="优势">优势</h3>
-<pre><code>在react hook里，函数式组件也能有状态管理了。它大概长这样！
+<h4 id="思路">思路</h4>
+<pre><code>1. 先创建一个大小为1001的数组data用来存放arr1中每个元素出现的次数（因为最大值可能是1000），其实这里可以简化，只要这个数组的长度等于max(arr1)+1即可覆盖到所有arr1中的数字；
+2. 创建一个大小为arr1的数组或者直接沿用arr1（因为arr1的信息已经被记录到data数组里面了）
+3. 遍历arr2，去data中取出arr1中包含arr2元素的数量，分别插入这个新数组并把data里面arr2的相关数据都置为0，保证后续data中只有arr1中特有的元素。
+4. 遍历data，把剩下的数据写到新数组。
 </code></pre>
-<pre><code class="language-Javascript">import React, {useState, useEffect} from 'react';
-
-export default () =&gt; {
-    // count是该函数组件的属性, 初始值是0
-    const [count, setCount] = useState(0);
-
-    return (
-        &lt;div onClick={()=&gt;setCount(count+1)}&gt;当前点击次数为{count}&lt;/div&gt;
-    )
-}
+<h3 id="方法一">方法一:</h3>
+<pre><code class="language-Python">class Solution:
+    def relativeSortArray(self, arr1: List[int], arr2: List[int]) -&gt; List[int]:
+        # 创建一个能容纳arr1最大值的数组
+        data = [0] * (max(arr1)+1)
+        # 存储arr1中的元素值和数量
+        for a in arr1:
+            data[a] += 1
+        # 最终结果数组
+        result = []
+        # 把arr2的所有元素写入result数组
+        for d in arr2:
+            length = data[d]
+            for x in range(length):
+                result.append(d)
+            data[d] = 0
+        # i是data中剩余arr1数据的值，可能会有多个，所以需要插入n个i，当n等于0的时候代表n不存在或者n是arr2里的元素，直接continue
+        for i, n in enumerate(data):
+            if n == 0:
+                continue
+            for x in range(n):
+                result.append(i)
+        return result
 </code></pre>
-<pre><code>对比以前，可以发现这样写出来简单粗暴，几乎可以说是让我放弃了class的编写，但是我想不明白的是，如果一个组件里面有很多state，岂不是要写很多setXXX. 也可能是我自己的组件太过于耦合了，其实该拆的地方应该要拆。
-
-官方给出的解释就是以下好处: 
+<h3 id="优化少用一个result数组直接在arr1修改">优化(少用一个result数组，直接在arr1修改)</h3>
+<pre><code class="language-Python">class Solution:
+    def relativeSortArray(self, arr1: List[int], arr2: List[int]) -&gt; List[int]:
+        data = [0] * (max(arr1)+1)
+        for a in arr1:
+            data[a] += 1
+        # 定义一个指针指向当前已经替换的元素
+        i = 0
+        for d in arr2:
+            length = data[d]
+            for x in range(i, i+length):
+                arr1[x] = d
+            i += length
+            data[d] = 0
+        for j, n in enumerate(data):
+            if n == 0:
+                continue
+            for x in range(i, i+n):
+                arr1[x] = j
+            i += n
+        return arr1
 </code></pre>
-<p>以下内容搬运自掘金: https://juejin.im/post/6844903908335173645</p>
-<h3 id="为什么会有-hook">为什么会有 Hook?</h3>
-<pre><code>在组件之间复用状态逻辑很难
-
-React 提供了一些方法来实现组件的选择性渲染或复用，如 Render Props、高阶组件 等，但这些方法组成的组件也带来了“嵌套地狱”的问题，复杂了组件的结构，增大了阅读理解代码的难度。React 提供了自定义 Hook 来解决上面提到的问题。
-
-
-复杂组件变得难以理解
-在一些复杂的组件中往往都包含了较多的状态逻辑和方法，如组件常常在 componentDidMount 中获取数据。但是，同时在该生命周期中也包含很多其它的逻辑，如设置事件监听，而之后需在 componentWillUnmount 中清除。一些原本没关联的的代码因为修改了相同的状态而冗杂在一起。当然 React 也引入了 Redux 用来实现状态管理，但这也引入了很多抽象概念，文件也相对应复杂起来。Hook 将组件中相互关联的部分拆分成更小的函数，而并非强制按照生命周期划分。
-
-
-难以理解的 class
-在组件中使用 class 时，开发者必须去理解 JavaScript 中 this 的工作方式，需要处理事件绑定等等，另外，class 还存在不能很好的压缩等问题。Hook 使你在非 class 的情况下可以使用更多的 React 特性。
-</code></pre>
-<h3 id="我这个初学者的理解手动微笑">我这个初学者的理解（手动微笑）</h3>
-<pre><code>我是觉得这个hook给我带来最大的感受就是，一个组件的开发变得更加简单了。第一是因为函数组件本来就显得更简练，第二是可以用useEffect的第二个参数去处理生命周期，比之前的componentDidMount等更为简洁。关于使用方面，其实我自己还在使用dva的connect管理状态，用函数组件connect也能使用，所以暂时体会不到。先稍微记录下自己的感受，后面再更！</code></pre>
+<figure data-type="image" tabindex="2"><img src="https://i.loli.net/2020/11/16/fYDsk2uK1oazCXi.png" alt="image.png" loading="lazy"></figure>
 
                 </div>
             </article>
@@ -152,14 +175,14 @@ React 提供了一些方法来实现组件的选择性渲染或复用，如 Rend
         
             <div class="next-post">
                 <div class="next gt-c-content-color-first">下一篇</div>
-                <a href="https://wuranxu.github.io/post/shua-ti-ri-ji-kai-pian/" class="post-title gt-a-link">
-                    刷题日记·开篇
+                <a href="https://wuranxu.github.io/post/mei-ri-yi-ti-20201113328-qi-ou-lian-biao/" class="post-title gt-a-link">
+                    每日一题20201113（328. 奇偶链表）
                 </a>
             </div>
         
 
         
-            <span id="/post/" class="leancloud_visitors" data-flag-title="react hook">
+            <span id="/post/" class="leancloud_visitors" data-flag-title="每日一题20201114（1122. 数组的相对排序）">
                 <em class="post-meta-item-text">阅读量 </em>
                 <i class="leancloud-visitors-count">0</i>
             </span>
