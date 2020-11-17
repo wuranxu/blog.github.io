@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://wuranxu.github.io</id>
     <title>小克的blog</title>
-    <updated>2020-11-17T03:31:54.208Z</updated>
+    <updated>2020-11-17T07:11:33.192Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://wuranxu.github.io"/>
     <link rel="self" href="https://wuranxu.github.io/atom.xml"/>
@@ -10,6 +10,56 @@
     <logo>https://wuranxu.github.io/images/avatar.png</logo>
     <icon>https://wuranxu.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 小克的blog</rights>
+    <entry>
+        <title type="html"><![CDATA[每日二题20201117（34. 在排序数组中查找元素的第一个和最后一个位置）]]></title>
+        <id>https://wuranxu.github.io/post/mei-ri-er-ti-2020111734-zai-pai-xu-shu-zu-zhong-cha-zhao-yuan-su-de-di-yi-ge-he-zui-hou-yi-ge-wei-zhi/</id>
+        <link href="https://wuranxu.github.io/post/mei-ri-er-ti-2020111734-zai-pai-xu-shu-zu-zhong-cha-zhao-yuan-su-de-di-yi-ge-he-zui-hou-yi-ge-wei-zhi/">
+        </link>
+        <updated>2020-11-17T07:11:05.000Z</updated>
+        <content type="html"><![CDATA[<h4 id="34-在排序数组中查找元素的第一个和最后一个位置"><a href="https://leetcode-cn.com/problems/find-first-and-last-position-of-element-in-sorted-array/">34. 在排序数组中查找元素的第一个和最后一个位置</a></h4>
+<figure data-type="image" tabindex="1"><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gks6dz1e10j310a0r2adq.jpg" alt="image-20201117145554994" loading="lazy"></figure>
+<h4 id="思路">思路</h4>
+<p>看到排序数组，基本上二分解法占一半，记得刚开始去字节面试的时候，面试官出了一题找出数组（先递增再递减）的峰值，也就是什么时候开始递减的。</p>
+<p>答的是扫描，那样如果峰值很靠后的话，算法不是最优解，利用二分可以达到O(logN)，虽然最终在面试官的引导下一步一步写了出来，不过肯定有很多bug吧。</p>
+<pre><code>好像说了许多废话，说思路，首先找到那个匹配的数字，如果找不到，直接return [-1, -1]
+
+如果找到了，2个while循环，一左一右开始找最小和最大索引。
+</code></pre>
+<pre><code class="language-Python">class Solution:
+    def searchRange(self, nums: List[int], target: int) -&gt; List[int]:
+        low, high = 0, len(nums)-1
+        # start是标志位 确认是否找到target
+        start = None
+        while low &lt;= high:
+            mid = (low + high) // 2
+            if nums[mid] &gt; target:
+                high = mid - 1
+            elif nums[mid] &lt; target:
+                low = mid + 1
+            else:
+                start = mid
+                break
+        if start is None:
+            return [-1, -1]
+        # 否则开始寻找两侧的节点
+        left = right = start
+        while left &gt;= 0:
+            # 如果左侧的不等于target了直接退出循环
+            if left - 1 &lt; 0 or nums[left-1] != target:
+                break
+            left -= 1
+
+        while right &lt; len(nums):
+            if right + 1 &gt;= len(nums) or nums[right+1] != target:
+                break
+            right += 1
+        
+        return left ,right
+
+</code></pre>
+<figure data-type="image" tabindex="2"><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gks6sfywz0j30xy0eg75t.jpg" alt="image-20201117151000953" loading="lazy"></figure>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[每日一题20201117（221. 最大正方形）]]></title>
         <id>https://wuranxu.github.io/post/mei-ri-yi-ti-20201117221-zui-da-zheng-fang-xing/</id>
@@ -473,53 +523,6 @@ class Solution:
 <li>先创建一个map, 里面存放类型</li>
 <li>遍历字符串，如果找到了类型，则map里面的值+1</li>
 <li>累加所有map的value</li>
-</ul>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[每日一题20201104（57. 插入区间）]]></title>
-        <id>https://wuranxu.github.io/post/mei-ri-yi-ti-2020110457-cha-ru-qu-jian/</id>
-        <link href="https://wuranxu.github.io/post/mei-ri-yi-ti-2020110457-cha-ru-qu-jian/">
-        </link>
-        <updated>2020-11-04T09:37:52.000Z</updated>
-        <content type="html"><![CDATA[<pre><code>今天的每日一题不是自己想的，虽然理解了，但是感觉还是别人讲的更好，所以就随便打个卡了！
-</code></pre>
-<pre><code class="language-Python">class Solution:
-    def insert(self, intervals: List[List[int]], newInterval: List[int]) -&gt; List[List[int]]:
-        ans = []
-        done = False
-        left, right= newInterval
-        for x, y in intervals:
-            if x &gt; right:
-                if not done:
-                    ans.append([left, right])
-                    done = True
-                ans.append([x, y])
-            elif y &lt; left:
-                ans.append([x, y])
-            else:
-                left = min(left, x)
-                right = max(right, y)
-        if not done:
-            ans.append([left, right])
-
-        return ans
-
-</code></pre>
-<p>还是直接去题解吧，虽然今天很敷衍。</p>
-<p>题解 <a href="https://leetcode-cn.com/problems/insert-interval/solution/cha-ru-qu-jian-by-leetcode-solution/">https://leetcode-cn.com/problems/insert-interval/solution/cha-ru-qu-jian-by-leetcode-solution/</a></p>
-<p>注意点:</p>
-<ul>
-<li>
-<p>2个区间的交集怎么取</p>
-</li>
-<li>
-<p>done标志位是为了不漏掉数据</p>
-</li>
-<li>
-<p>新区间有3种情况</p>
-<p>分别落在已有区间的左侧 右侧和中间</p>
-</li>
 </ul>
 ]]></content>
     </entry>
