@@ -4,7 +4,7 @@
 <meta name="description" content=""/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-<title>测试 | 小克的blog</title>
+<title>每日一题20201117（221. 最大正方形） | 小克的blog</title>
 
 <link rel="shortcut icon" href="https://wuranxu.github.io/favicon.ico?v=1605583911718">
 
@@ -37,11 +37,11 @@
     </script>
 
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
 </head>
 <body>
 <div class="main gt-bg-theme-color-first">
-    <div class="main-content">
-        <nav class="navbar navbar-expand-lg">
+    <nav class="navbar navbar-expand-lg">
     <div class="navbar-brand">
         <img class="user-avatar" src="/images/avatar.png" alt="头像">
         <div class="site-name gt-c-content-color-first">
@@ -89,45 +89,121 @@
     </div>
 </nav>
 
-        <div class="current-tag-container">
-            <h2 class="title gt-c-content-color-first">
-                #测试
-            </h2>
-        </div>
-        <div class="post-list-container">
-    <div class="post-inner">
-        
-            <div class="post gt-bg-theme-color-second">
-                <div class="post-left">
-                    <div>
-                        
-                        <a href="https://wuranxu.github.io/post/tui-jian-yi-ge-jie-kou-ce-shi-gong-ju-apifox/">
-                            <span class="post-title gt-c-content-color-first">推荐一个接口测试工具--Apifox</span>
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    每日一题20201117（221. 最大正方形）
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2020-11-17 11:31:25 ·
+                    </time>
+                    
+                        <a href="https://wuranxu.github.io/vp-bY7-nD/" class="post-tags">
+                            # leetcode
                         </a>
-                    </div>
-                    <div class="gt-post-content post-abstract gt-c-content-color-second">
-                        
-                    </div>
-                    <div class="post-info">
-                        <time class="post-time gt-c-content-color-first">
-                            发布于 · 2020-10-12 16:31:23 ·
-                        </time>
-                        
-                            <a href="https://wuranxu.github.io/qpx0ZeaOX/" class="post-tag">
-                                # 测试
-                            </a>
-                        
-                    </div>
+                    
                 </div>
-                
+                <div class="post-content">
+                    <h4 id="221-最大正方形"><a href="https://leetcode-cn.com/problems/maximal-square/">221. 最大正方形</a></h4>
+<figure data-type="image" tabindex="1"><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gkrzqo43nvj30yy0oatb4.jpg" alt="image-20201117110606881" loading="lazy"></figure>
+<h3 id="动态规划">动态规划</h3>
+<pre><code>求的是最大面积，可以转换为求最大边长。
+
+创建一个二维数组dp
+
+dp是以i, j坐标为右下角的正方形的最大边长。
+
+状态转移方程式：
+
+matrix[i][j] == &quot;1&quot;的时候:
+f(i, j) = min(f(i-1, j), f(i, j-1), f(i-1, j-1)) + 1 
+
+matrix[i][j] == &quot;0&quot;的时候，以这个位置为边的长度肯定为0：
+
+ f(i, j) = 0
+</code></pre>
+<pre><code class="language-Python">class Solution:
+    def maximalSquare(self, matrix: List[List[str]]) -&gt; int:
+        # 判断数组是否为空
+        if len(matrix) == 0 or len(matrix[0]) == 0:
+            return 0
+        dp = [[0 for _ in n] for n in matrix]
+        # 定义最大边长
+        max_len = 0
+        for i in range(len(matrix)):
+            for j in range(len(matrix[i])):
+                # 如果i = 0 或者 j = 0 他们是靠边的，所以最多只能以他们本身为边
+                if i == 0 or j == 0:
+                    dp[i][j] = int(matrix[i][j])
+                    if dp[i][j] &gt; max_len:
+                        max_len = dp[i][j]
+                    continue
+                if matrix[i][j] == '0':
+                    dp[i][j] = 0
+                else:
+                    # 找到3个之中最小的+1，因为已经确定matrix[i][j]不为'0'
+                    dp[i][j] = min(dp[i-1][j], dp[i][j-1], dp[i-1][j-1]) + 1
+                    if dp[i][j] &gt; max_len:
+                        max_len = dp[i][j]
+        return max_len * max_len
+
+</code></pre>
+<hr>
+<p><strong>需要注意的是，matrix里面的元素都是字符串不是int</strong></p>
+<figure data-type="image" tabindex="2"><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gkrzpe79huj30ye0eita8.jpg" alt="image-20201117110450683" loading="lazy"></figure>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://wuranxu.github.io/post/mei-ri-yi-ti-2020111555-tiao-yue-you-xi/" class="post-title gt-a-link">
+                    每日一题20201115（55. 跳跃游戏）
+                </a>
             </div>
         
-    </div>
-</div>
-        <div class="pagination-container">
-    
-    
-</div>
+
+        
+            <span id="/post/" class="leancloud_visitors" data-flag-title="每日一题20201117（221. 最大正方形）">
+                <em class="post-meta-item-text">阅读量 </em>
+                <i class="leancloud-visitors-count">0</i>
+            </span>
+        
+
+        
+
+        
+            <script src='https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js'></script>
+
+<style>
+	div#vcomments{
+		width:100%;
+		max-width: 1000px;
+		padding: 2.5%
+	}
+</style>
+
+
+	<div id="vcomments"></div>
+
+<script>
+	new Valine({
+		el: '#vcomments',
+		appId: 'fT8wvEVNtx1cOcCQEs7rVwnV-gzGzoHsz',
+		appKey: 'xV6aDHKSkLfP7u0cBRIzpmcy',
+		avatar: 'monsterid',
+		pageSize: 10,
+		recordIp: true,
+		placeholder: '不要吝啬你的评论~',
+		visitor: true,
+	});
+</script>
+
+        
 
         <div class="site-footer gt-c-content-color-first">
     <div class="slogan gt-c-content-color-first">欢迎来到我的小窝~这里不仅有博客，也有日记。</div>

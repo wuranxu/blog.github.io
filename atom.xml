@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://wuranxu.github.io</id>
     <title>小克的blog</title>
-    <updated>2020-11-16T09:28:34.098Z</updated>
+    <updated>2020-11-17T03:31:54.208Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://wuranxu.github.io"/>
     <link rel="self" href="https://wuranxu.github.io/atom.xml"/>
@@ -10,6 +10,61 @@
     <logo>https://wuranxu.github.io/images/avatar.png</logo>
     <icon>https://wuranxu.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 小克的blog</rights>
+    <entry>
+        <title type="html"><![CDATA[每日一题20201117（221. 最大正方形）]]></title>
+        <id>https://wuranxu.github.io/post/mei-ri-yi-ti-20201117221-zui-da-zheng-fang-xing/</id>
+        <link href="https://wuranxu.github.io/post/mei-ri-yi-ti-20201117221-zui-da-zheng-fang-xing/">
+        </link>
+        <updated>2020-11-17T03:31:25.000Z</updated>
+        <content type="html"><![CDATA[<h4 id="221-最大正方形"><a href="https://leetcode-cn.com/problems/maximal-square/">221. 最大正方形</a></h4>
+<figure data-type="image" tabindex="1"><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gkrzqo43nvj30yy0oatb4.jpg" alt="image-20201117110606881" loading="lazy"></figure>
+<h3 id="动态规划">动态规划</h3>
+<pre><code>求的是最大面积，可以转换为求最大边长。
+
+创建一个二维数组dp
+
+dp是以i, j坐标为右下角的正方形的最大边长。
+
+状态转移方程式：
+
+matrix[i][j] == &quot;1&quot;的时候:
+f(i, j) = min(f(i-1, j), f(i, j-1), f(i-1, j-1)) + 1 
+
+matrix[i][j] == &quot;0&quot;的时候，以这个位置为边的长度肯定为0：
+
+ f(i, j) = 0
+</code></pre>
+<pre><code class="language-Python">class Solution:
+    def maximalSquare(self, matrix: List[List[str]]) -&gt; int:
+        # 判断数组是否为空
+        if len(matrix) == 0 or len(matrix[0]) == 0:
+            return 0
+        dp = [[0 for _ in n] for n in matrix]
+        # 定义最大边长
+        max_len = 0
+        for i in range(len(matrix)):
+            for j in range(len(matrix[i])):
+                # 如果i = 0 或者 j = 0 他们是靠边的，所以最多只能以他们本身为边
+                if i == 0 or j == 0:
+                    dp[i][j] = int(matrix[i][j])
+                    if dp[i][j] &gt; max_len:
+                        max_len = dp[i][j]
+                    continue
+                if matrix[i][j] == '0':
+                    dp[i][j] = 0
+                else:
+                    # 找到3个之中最小的+1，因为已经确定matrix[i][j]不为'0'
+                    dp[i][j] = min(dp[i-1][j], dp[i][j-1], dp[i-1][j-1]) + 1
+                    if dp[i][j] &gt; max_len:
+                        max_len = dp[i][j]
+        return max_len * max_len
+
+</code></pre>
+<hr>
+<p><strong>需要注意的是，matrix里面的元素都是字符串不是int</strong></p>
+<figure data-type="image" tabindex="2"><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gkrzpe79huj30ye0eita8.jpg" alt="image-20201117110450683" loading="lazy"></figure>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[每日一题20201115（55. 跳跃游戏）]]></title>
         <id>https://wuranxu.github.io/post/mei-ri-yi-ti-2020111555-tiao-yue-you-xi/</id>
@@ -466,35 +521,6 @@ class Solution:
 <p>分别落在已有区间的左侧 右侧和中间</p>
 </li>
 </ul>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[每日一题之20201103（941. 有效的山脉数组）]]></title>
-        <id>https://wuranxu.github.io/post/mei-ri-yi-ti-zhi-20201103941-you-xiao-de-shan-mai-shu-zu/</id>
-        <link href="https://wuranxu.github.io/post/mei-ri-yi-ti-zhi-20201103941-you-xiao-de-shan-mai-shu-zu/">
-        </link>
-        <updated>2020-11-03T02:59:27.000Z</updated>
-        <content type="html"><![CDATA[<h5 id="首先要弄清楚题目的意图曾经在字节面试遇到过类似的题目但那题是需要找出这个峰值">首先要弄清楚题目的意图，曾经在字节面试遇到过类似的题目，但那题是需要找出这个峰值。</h5>
-<h5 id="所以解法也肯定不一样">所以解法也肯定不一样。</h5>
-<p>官方给的题解是直接遍历，我们这里采用双指针分别从头和尾往中间遍历，如果山脉符合要求，那么<strong>2个指针会停在同一个山脉</strong>。</p>
-<hr>
-<pre><code class="language-Python">class Solution:
-    def validMountainArray(self, A: List[int]) -&gt; bool:
-        start, end = 0, len(A)-1
-        # 保证start在正常范围并且左边的值小于右边, 循环如果退出，那么左侧的
-        # 峰值也就找到了
-        while start &lt; len(A)-1 and A[start] &lt; A[start+1]:
-            start += 1
-        # 右侧同理，保证左值大于右值
-        while end &gt; 0 and A[end-1] &gt; A[end] :
-            end -= 1
-        # 这里需要注意的是，start可能和end在0索引处相遇，比如[2, 1]
-        # 所以需要保证他们不在数组两端相遇
-        # 如果数组为[] start != end 会返回False
-        return start == end and 0 &lt; start &lt; len(A)-1
-
-</code></pre>
-<figure data-type="image" tabindex="1"><img src="https://upload-images.jianshu.io/upload_images/6053915-714c6d9fb6c34d44.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="777.jpg" loading="lazy"></figure>
 ]]></content>
     </entry>
 </feed>
