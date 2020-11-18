@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://wuranxu.github.io</id>
     <title>小克的blog</title>
-    <updated>2020-11-17T07:11:33.192Z</updated>
+    <updated>2020-11-18T06:29:22.951Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://wuranxu.github.io"/>
     <link rel="self" href="https://wuranxu.github.io/atom.xml"/>
@@ -10,6 +10,66 @@
     <logo>https://wuranxu.github.io/images/avatar.png</logo>
     <icon>https://wuranxu.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 小克的blog</rights>
+    <entry>
+        <title type="html"><![CDATA[每日一题20201118（31. 下一个排列）]]></title>
+        <id>https://wuranxu.github.io/post/mei-ri-yi-ti-2020111831-xia-yi-ge-pai-lie/</id>
+        <link href="https://wuranxu.github.io/post/mei-ri-yi-ti-2020111831-xia-yi-ge-pai-lie/">
+        </link>
+        <updated>2020-11-18T06:28:47.000Z</updated>
+        <content type="html"><![CDATA[<h4 id="31-下一个排列"><a href="https://leetcode-cn.com/problems/next-permutation/">31. 下一个排列</a></h4>
+<figure data-type="image" tabindex="1"><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gktavcwbfsj30u00zedjn.jpg" alt="image-20201118141644763" loading="lazy"></figure>
+<h4 id="思路">思路</h4>
+<p>首先说一下什么是字典序，把1 2 3当作a b c的话，abc有6种排列顺序。</p>
+<pre><code>abc acb bac bca cab cba
+</code></pre>
+<p>上图就是字典序，题目的要求狠简单： 找到下一个字典序，如果没有的话，则输出最小的序号。</p>
+<p>首先明确一下，没有下一个序列的情况，那么就是大的全部在前面，所以只需要反转数组就行，就可以回到最小的序列。</p>
+<pre><code>再看有下一个排序的情况，我们需要先从右侧找到一个比最右边数字小的数.
+
+然后再和右边第一个大于这个数的数进行交换，以571632为例子：
+
+第一个小于右侧数字的数是1，第一个大于1的数字是2，交换之后:
+
+572631, 由于之前确定的，是通过升序找到的1，所以还需要反转2后面的数字: 572136 就是最终结果了！
+
+正好可以和上面反转的一起处理。
+</code></pre>
+<pre><code class="language-Python">class Solution:
+    def nextPermutation(self, nums: List[int]) -&gt; None:
+        &quot;&quot;&quot;
+        Do not return anything, modify nums in-place instead.
+        &quot;&quot;&quot;
+        # 左侧的第一个非升序数字，这里也可以len(nums)-2
+        j = len(nums)-1
+        while j-1 &gt;= 0:
+            if nums[j] &gt; nums[j-1]:
+                break
+            j -= 1
+        # 如果j-1&gt;=0说明找到了这个数字，否则说明数组
+        # 是降序排列的
+        if j-1 &gt;= 0:
+            right = len(nums)-1
+            # 找到右边第一个大于nums[j-1]的数字
+            while right &gt; j-1 and nums[right] &lt;= nums[j-1]:
+                right -= 1
+            # 交换他们
+            nums[j-1], nums[right] = nums[right], nums[j-1]
+            self.reverse(nums, j, len(nums)-1)
+        else:
+            self.reverse(nums, 0, len(nums)-1)
+            
+    # 反转数组
+    def reverse(self, nums, i, j):
+        while i &lt; j:
+            nums[i], nums[j] = nums[j], nums[i]
+            i += 1
+            j -= 1
+        return nums
+
+</code></pre>
+<figure data-type="image" tabindex="2"><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gktb6z1z4hj30xs0e03zz.jpg" alt="image-20201118142757008" loading="lazy"></figure>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[每日二题20201117（34. 在排序数组中查找元素的第一个和最后一个位置）]]></title>
         <id>https://wuranxu.github.io/post/mei-ri-er-ti-2020111734-zai-pai-xu-shu-zu-zhong-cha-zhao-yuan-su-de-di-yi-ge-he-zui-hou-yi-ge-wei-zhi/</id>
@@ -491,39 +551,6 @@ class Solution:
 </code></pre>
 <p>时间复杂度: O(N)<br>
 空间复杂度: O(1)</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[每日一题20201105（771. 宝石与石头）]]></title>
-        <id>https://wuranxu.github.io/post/mei-ri-yi-ti-20201105771-bao-shi-yu-shi-tou/</id>
-        <link href="https://wuranxu.github.io/post/mei-ri-yi-ti-20201105771-bao-shi-yu-shi-tou/">
-        </link>
-        <updated>2020-11-05T12:25:39.000Z</updated>
-        <content type="html"><![CDATA[<h3 id="暴力解法">暴力解法</h3>
-<pre><code class="language-Python">class Solution:
-    def numJewelsInStones(self, J: str, S: str) -&gt; int:
-        total = 0
-        for j in J:
-            for s in S:
-                if s == j:
-                    total+=1
-        return total
-</code></pre>
-<p>很简单，就不多说了，依次遍历，复杂度O(N²)</p>
-<h3 id="hash表">hash表</h3>
-<pre><code class="language-Python">class Solution:
-    def numJewelsInStones(self, J: str, S: str) -&gt; int:
-        mp = {x: 0 for x in J}
-        for s in S:
-            if mp.get(s) is not None:
-                mp[s] += 1
-        return sum(mp.values())
-</code></pre>
-<ul>
-<li>先创建一个map, 里面存放类型</li>
-<li>遍历字符串，如果找到了类型，则map里面的值+1</li>
-<li>累加所有map的value</li>
-</ul>
 ]]></content>
     </entry>
 </feed>
