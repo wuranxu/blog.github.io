@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://wuranxu.github.io</id>
     <title>小克的blog</title>
-    <updated>2020-11-18T06:29:22.951Z</updated>
+    <updated>2020-11-19T02:49:31.979Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://wuranxu.github.io"/>
     <link rel="self" href="https://wuranxu.github.io/atom.xml"/>
@@ -10,6 +10,40 @@
     <logo>https://wuranxu.github.io/images/avatar.png</logo>
     <icon>https://wuranxu.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 小克的blog</rights>
+    <entry>
+        <title type="html"><![CDATA[每日一题20201119（283. 移动零）]]></title>
+        <id>https://wuranxu.github.io/post/mei-ri-yi-ti-20201119283-yi-dong-ling/</id>
+        <link href="https://wuranxu.github.io/post/mei-ri-yi-ti-20201119283-yi-dong-ling/">
+        </link>
+        <updated>2020-11-19T02:48:26.000Z</updated>
+        <content type="html"><![CDATA[<h4 id="283-移动零"><a href="https://leetcode-cn.com/problems/move-zeroes/">283. 移动零</a></h4>
+<figure data-type="image" tabindex="1"><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gkua7o18rbj31040j4go1.jpg" alt="image-20201119103934250" loading="lazy"></figure>
+<h4 id="思路">思路</h4>
+<p><em>双指针</em></p>
+<pre><code>左指针指向左边已经排好序的尾部，右指针指向当前数字，右指针如果指向的数字不为0，则交换左右指针。
+
+注意：当非0数字在前面时，左右指针会相等。
+</code></pre>
+<pre><code class="language-Python">class Solution:
+    def moveZeroes(self, nums: List[int]) -&gt; None:
+        &quot;&quot;&quot;
+        Do not return anything, modify nums in-place instead.
+        &quot;&quot;&quot;
+        if len(nums) == 0:
+            return
+        i = j = 0
+        while j &lt; len(nums):
+            if nums[j] != 0:
+                # 如果i和j不等则替换
+                if i != j:
+                    nums[i], nums[j] = nums[j], nums[i]
+                i += 1
+            j += 1 
+               
+</code></pre>
+<figure data-type="image" tabindex="2"><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gkuab5jarbj30y60eeta7.jpg" alt="image-20201119104255205" loading="lazy"></figure>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[每日一题20201118（31. 下一个排列）]]></title>
         <id>https://wuranxu.github.io/post/mei-ri-yi-ti-2020111831-xia-yi-ge-pai-lie/</id>
@@ -498,59 +532,6 @@ class Solution:
             i += 1
         return result
 </code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[每日一题20201106（169. 多数元素）]]></title>
-        <id>https://wuranxu.github.io/post/mei-ri-yi-ti-20201106169-duo-shu-yuan-su/</id>
-        <link href="https://wuranxu.github.io/post/mei-ri-yi-ti-20201106169-duo-shu-yuan-su/">
-        </link>
-        <updated>2020-11-06T03:23:00.000Z</updated>
-        <content type="html"><![CDATA[<figure data-type="image" tabindex="1"><img src="https://upload-images.jianshu.io/upload_images/6053915-13c477602a678a5d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png" loading="lazy"></figure>
-<h4 id="hash表">hash表</h4>
-<pre><code>1. 思路很简单，先遍历数组，存储每个元素的个数
-2. 遍历hash表，拿到大于 n/2的数字，直接return
-</code></pre>
-<pre><code class="language-Python">class Solution:
-    def majorityElement(self, nums: List[int]) -&gt; int:
-        hash = dict()
-        for n in nums:
-            if n not in hash:
-                hash[n] = 1
-            else:
-                hash[n] += 1
-        for k, v in hash.items():
-            if v &gt; len(nums) / 2:
-                return k
-        return -1
-
-</code></pre>
-<p>时间复杂度: O(N)<br>
-空间复杂度: O(N)</p>
-<h4 id="投票算法">投票算法</h4>
-<pre><code>思路很简单，假设你是秦始皇，数组里面有很多其他国家，你们秦兵遇到自己人就+1，遇到其他人就-1，如果你超过了所有国家一半的兵力，那么最后活下来的肯定就是你的士兵。这里之所以能这么确定，是因为题目强调了一定存在多数元素！
-
-代码思路是，开始遍历数组，如果当前的士兵数量是0，则把当前士兵设置为遍历到的元素，比如: 秦
-
-接下来如果遇到秦，则count+1, 遇到的是赵或者其他士兵，则秦和赵士兵同归于尽。下一轮遍历，由于秦的count是0了，则将当前士兵设置为遍历到的士兵。
-</code></pre>
-<pre><code class="language-Python">class Solution:
-    def majorityElement(self, nums: List[int]) -&gt; int:
-        if len(nums) == 0:
-            return -1
-        # 当前士兵数量
-        count = 0
-        # 当前士兵
-        current = None
-        for n in nums:
-            if count == 0:
-                current = n
-            count += 1 if n == current else -1
-        return current
-
-</code></pre>
-<p>时间复杂度: O(N)<br>
-空间复杂度: O(1)</p>
 ]]></content>
     </entry>
 </feed>

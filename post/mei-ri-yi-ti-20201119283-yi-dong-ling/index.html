@@ -4,7 +4,7 @@
 <meta name="description" content=""/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-<title>每日一题20201105（771. 宝石与石头） | 小克的blog</title>
+<title>每日一题20201119（283. 移动零） | 小克的blog</title>
 
 <link rel="shortcut icon" href="https://wuranxu.github.io/favicon.ico?v=1605754122505">
 
@@ -93,11 +93,11 @@
         <div class="post-detail gt-bg-theme-color-second">
             <article class="gt-post-content">
                 <h2 class="post-title">
-                    每日一题20201105（771. 宝石与石头）
+                    每日一题20201119（283. 移动零）
                 </h2>
                 <div class="post-info">
                     <time class="post-time gt-c-content-color-first">
-                        · 2020-11-05 20:25:39 ·
+                        · 2020-11-19 10:48:26 ·
                     </time>
                     
                         <a href="https://wuranxu.github.io/vp-bY7-nD/" class="post-tags">
@@ -106,31 +106,32 @@
                     
                 </div>
                 <div class="post-content">
-                    <h3 id="暴力解法">暴力解法</h3>
-<pre><code class="language-Python">class Solution:
-    def numJewelsInStones(self, J: str, S: str) -&gt; int:
-        total = 0
-        for j in J:
-            for s in S:
-                if s == j:
-                    total+=1
-        return total
+                    <h4 id="283-移动零"><a href="https://leetcode-cn.com/problems/move-zeroes/">283. 移动零</a></h4>
+<figure data-type="image" tabindex="1"><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gkua7o18rbj31040j4go1.jpg" alt="image-20201119103934250" loading="lazy"></figure>
+<h4 id="思路">思路</h4>
+<p><em>双指针</em></p>
+<pre><code>左指针指向左边已经排好序的尾部，右指针指向当前数字，右指针如果指向的数字不为0，则交换左右指针。
+
+注意：当非0数字在前面时，左右指针会相等。
 </code></pre>
-<p>很简单，就不多说了，依次遍历，复杂度O(N²)</p>
-<h3 id="hash表">hash表</h3>
 <pre><code class="language-Python">class Solution:
-    def numJewelsInStones(self, J: str, S: str) -&gt; int:
-        mp = {x: 0 for x in J}
-        for s in S:
-            if mp.get(s) is not None:
-                mp[s] += 1
-        return sum(mp.values())
+    def moveZeroes(self, nums: List[int]) -&gt; None:
+        &quot;&quot;&quot;
+        Do not return anything, modify nums in-place instead.
+        &quot;&quot;&quot;
+        if len(nums) == 0:
+            return
+        i = j = 0
+        while j &lt; len(nums):
+            if nums[j] != 0:
+                # 如果i和j不等则替换
+                if i != j:
+                    nums[i], nums[j] = nums[j], nums[i]
+                i += 1
+            j += 1 
+               
 </code></pre>
-<ul>
-<li>先创建一个map, 里面存放类型</li>
-<li>遍历字符串，如果找到了类型，则map里面的值+1</li>
-<li>累加所有map的value</li>
-</ul>
+<figure data-type="image" tabindex="2"><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gkuab5jarbj30y60eeta7.jpg" alt="image-20201119104255205" loading="lazy"></figure>
 
                 </div>
             </article>
@@ -139,14 +140,14 @@
         
             <div class="next-post">
                 <div class="next gt-c-content-color-first">下一篇</div>
-                <a href="https://wuranxu.github.io/post/mei-ri-yi-ti-2020110457-cha-ru-qu-jian/" class="post-title gt-a-link">
-                    每日一题20201104（57. 插入区间）
+                <a href="https://wuranxu.github.io/post/mei-ri-yi-ti-2020111831-xia-yi-ge-pai-lie/" class="post-title gt-a-link">
+                    每日一题20201118（31. 下一个排列）
                 </a>
             </div>
         
 
         
-            <span id="/post/" class="leancloud_visitors" data-flag-title="每日一题20201105（771. 宝石与石头）">
+            <span id="/post/" class="leancloud_visitors" data-flag-title="每日一题20201119（283. 移动零）">
                 <em class="post-meta-item-text">阅读量 </em>
                 <i class="leancloud-visitors-count">0</i>
             </span>
