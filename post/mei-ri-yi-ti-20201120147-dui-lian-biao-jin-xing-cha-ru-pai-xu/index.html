@@ -4,7 +4,7 @@
 <meta name="description" content=""/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-<title>每日一题之20201102（349. 两个数组的交集） | 小克的blog</title>
+<title>每日一题20201120（147. 对链表进行插入排序） | 小克的blog</title>
 
 <link rel="shortcut icon" href="https://wuranxu.github.io/favicon.ico?v=1605854558062">
 
@@ -93,11 +93,11 @@
         <div class="post-detail gt-bg-theme-color-second">
             <article class="gt-post-content">
                 <h2 class="post-title">
-                    每日一题之20201102（349. 两个数组的交集）
+                    每日一题20201120（147. 对链表进行插入排序）
                 </h2>
                 <div class="post-info">
                     <time class="post-time gt-c-content-color-first">
-                        · 2020-11-02 20:05:18 ·
+                        · 2020-11-20 14:42:20 ·
                     </time>
                     
                         <a href="https://wuranxu.github.io/vp-bY7-nD/" class="post-tags">
@@ -106,42 +106,57 @@
                     
                 </div>
                 <div class="post-content">
-                    <p>空间换时间，hash表2次遍历(Python)</p>
-<ul>
-<li>
-<p>潇洒解法:</p>
-<p>利用Python的set数据结构，完成交集操作</p>
-</li>
-</ul>
-<pre><code class="language-Python">class Solution:
-    def intersection(self, nums1: List[int], nums2: List[int]) -&gt; List[int]:
-        return list(set(nums1) &amp; set(nums2))
+                    <h4 id="147-对链表进行插入排序"><a href="https://leetcode-cn.com/problems/insertion-sort-list/">147. 对链表进行插入排序</a></h4>
+<figure data-type="image" tabindex="1"><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gkvl8kkbehj30u011a79m.jpg" alt="image-20201120134633194" loading="lazy"></figure>
+<h3 id="思路">思路</h3>
+<pre><code>维护一个排好序的链表，剩下的值如果比已排好的大，直接放到尾部，如果比之前小，则从链表头遍历，找到对应的位置并插入。
+
+为了很好找到链表头，需要设置一个哑节点。
+</code></pre>
+<pre><code class="language-Python"># Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+
+class Solution:
+    def insertionSortList(self, head: ListNode) -&gt; ListNode:
+        # 1. 如果链表为空，直接return None
+        if head is None:
+            return None
+        # 2. 创建一个哑节点, 指向head
+        pre = ListNode(0)
+        pre.next = head
+
+        # 3. sorted_data为已经排好序的数据，current为当前要排序的元素
+        sorted_data = head
+        current = head.next
+        
+        # 4. 循环的结束条件是current走到None也就是走到最后一个元素
+        while current is not None:
+            # 当最后一个排好序的元素的值比待排序的值小，则sorted_data后移一位
+            if sorted_data.val &lt;= current.val:
+                sorted_data = sorted_data.next
+            else:
+                # prev为头节点，为了不影响哑节点
+                prev = pre
+                # 找到排好序的第一个大于当前值的节点
+                while prev.next.val &lt;= current.val:
+                    prev = prev.next
+                # 这里要注意，prev目前指向的是第一个大于当前值的节点
+                # 这里sorted_data.next = current.next
+                # 是因为当前值总是在sorted_data的下一位
+                # 这里相当于是把当前节点撤下，挪到前面去
+                sorted_data.next = current.next
+                current.next = prev.next
+                prev.next = current
+            # 当前节点继续走，往后挪一位
+            current = sorted_data.next
+        # 返回哑节点的下一位即可
+        return pre.next
 
 </code></pre>
-<figure data-type="image" tabindex="1"><img src="https://upload-images.jianshu.io/upload_images/6053915-650c186e46412d86.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="11.jpg" loading="lazy"></figure>
-<ul>
-<li>
-<p>啰嗦解法（但很快）</p>
-<p>先建立一个dict，遍历数组1，然后将数组里面的值都放到temp里面，由于dict本身不能有重复的key，相当于天然过滤掉了重复的数据此步骤约等于set(nums1)</p>
-<p>接着就是取并集，遍历数组2，如果数组2的元素在temp里面出现，则添加到result数组中。</p>
-<p><strong>但是这里要注意的是，result可能重复添加</strong></p>
-<p>所以我们在添加一个数字到result以后，将temp里面该数字对应的value改成False，以防重复添加。</p>
-</li>
-</ul>
-<figure data-type="image" tabindex="2"><img src="https://upload-images.jianshu.io/upload_images/6053915-1ef3c12edec440d8.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="222.jpg" loading="lazy"></figure>
-<pre><code class="language-Python">class Solution:
-    def intersection(self, nums1: List[int], nums2: List[int]) -&gt; List[int]:
-        temp = {}
-        result = []
-        for n in nums1:
-            temp[n] = True
-        for x in nums2:
-            if temp.get(x):
-                result.append(x)
-                temp[x] = False
-        return result
-</code></pre>
-<!-- more -->
+<figure data-type="image" tabindex="2"><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gkvmu38wlpj30wy0e4wfz.jpg" alt="image-20201120144152739" loading="lazy"></figure>
 
                 </div>
             </article>
@@ -150,14 +165,14 @@
         
             <div class="next-post">
                 <div class="next gt-c-content-color-first">下一篇</div>
-                <a href="https://wuranxu.github.io/post/tui-jian-yi-ge-jie-kou-ce-shi-gong-ju-apifox/" class="post-title gt-a-link">
-                    推荐一个接口测试工具--Apifox
+                <a href="https://wuranxu.github.io/post/mei-ri-yi-ti-20201119283-yi-dong-ling/" class="post-title gt-a-link">
+                    每日一题20201119（283. 移动零）
                 </a>
             </div>
         
 
         
-            <span id="/post/" class="leancloud_visitors" data-flag-title="每日一题之20201102（349. 两个数组的交集）">
+            <span id="/post/" class="leancloud_visitors" data-flag-title="每日一题20201120（147. 对链表进行插入排序）">
                 <em class="post-meta-item-text">阅读量 </em>
                 <i class="leancloud-visitors-count">0</i>
             </span>

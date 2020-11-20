@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://wuranxu.github.io</id>
     <title>小克的blog</title>
-    <updated>2020-11-19T02:49:31.979Z</updated>
+    <updated>2020-11-20T06:42:42.318Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://wuranxu.github.io"/>
     <link rel="self" href="https://wuranxu.github.io/atom.xml"/>
@@ -10,6 +10,65 @@
     <logo>https://wuranxu.github.io/images/avatar.png</logo>
     <icon>https://wuranxu.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 小克的blog</rights>
+    <entry>
+        <title type="html"><![CDATA[每日一题20201120（147. 对链表进行插入排序）]]></title>
+        <id>https://wuranxu.github.io/post/mei-ri-yi-ti-20201120147-dui-lian-biao-jin-xing-cha-ru-pai-xu/</id>
+        <link href="https://wuranxu.github.io/post/mei-ri-yi-ti-20201120147-dui-lian-biao-jin-xing-cha-ru-pai-xu/">
+        </link>
+        <updated>2020-11-20T06:42:20.000Z</updated>
+        <content type="html"><![CDATA[<h4 id="147-对链表进行插入排序"><a href="https://leetcode-cn.com/problems/insertion-sort-list/">147. 对链表进行插入排序</a></h4>
+<figure data-type="image" tabindex="1"><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gkvl8kkbehj30u011a79m.jpg" alt="image-20201120134633194" loading="lazy"></figure>
+<h3 id="思路">思路</h3>
+<pre><code>维护一个排好序的链表，剩下的值如果比已排好的大，直接放到尾部，如果比之前小，则从链表头遍历，找到对应的位置并插入。
+
+为了很好找到链表头，需要设置一个哑节点。
+</code></pre>
+<pre><code class="language-Python"># Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+
+class Solution:
+    def insertionSortList(self, head: ListNode) -&gt; ListNode:
+        # 1. 如果链表为空，直接return None
+        if head is None:
+            return None
+        # 2. 创建一个哑节点, 指向head
+        pre = ListNode(0)
+        pre.next = head
+
+        # 3. sorted_data为已经排好序的数据，current为当前要排序的元素
+        sorted_data = head
+        current = head.next
+        
+        # 4. 循环的结束条件是current走到None也就是走到最后一个元素
+        while current is not None:
+            # 当最后一个排好序的元素的值比待排序的值小，则sorted_data后移一位
+            if sorted_data.val &lt;= current.val:
+                sorted_data = sorted_data.next
+            else:
+                # prev为头节点，为了不影响哑节点
+                prev = pre
+                # 找到排好序的第一个大于当前值的节点
+                while prev.next.val &lt;= current.val:
+                    prev = prev.next
+                # 这里要注意，prev目前指向的是第一个大于当前值的节点
+                # 这里sorted_data.next = current.next
+                # 是因为当前值总是在sorted_data的下一位
+                # 这里相当于是把当前节点撤下，挪到前面去
+                sorted_data.next = current.next
+                current.next = prev.next
+                prev.next = current
+            # 当前节点继续走，往后挪一位
+            current = sorted_data.next
+        # 返回哑节点的下一位即可
+        return pre.next
+
+</code></pre>
+<figure data-type="image" tabindex="2"><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gkvmu38wlpj30wy0e4wfz.jpg" alt="image-20201120144152739" loading="lazy"></figure>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[每日一题20201119（283. 移动零）]]></title>
         <id>https://wuranxu.github.io/post/mei-ri-yi-ti-20201119283-yi-dong-ling/</id>
@@ -459,79 +518,6 @@ class Solution:
         return A
 </code></pre>
 <figure data-type="image" tabindex="2"><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gkm7ze4k1pj30yg0hadgw.jpg" alt="image.png" loading="lazy"></figure>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[每日一题20201109（15. 三数之和）]]></title>
-        <id>https://wuranxu.github.io/post/mei-ri-yi-ti-2020110915-san-shu-zhi-he/</id>
-        <link href="https://wuranxu.github.io/post/mei-ri-yi-ti-2020110915-san-shu-zhi-he/">
-        </link>
-        <updated>2020-11-09T12:08:27.000Z</updated>
-        <content type="html"><![CDATA[<p>题目链接:  <a href="https://leetcode-cn.com/problems/3sum/">15. 三数之和</a></p>
-<figure data-type="image" tabindex="1"><img src="https://upload-images.jianshu.io/upload_images/6053915-69e10b376ebe0244.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png" loading="lazy"></figure>
-<h4 id="解法">解法</h4>
-<ul>
-<li>
-<p><s>暴力法</s></p>
-<p>首先可以确定的是暴力法的时间复杂度是O(N³), 所以基本上不考虑此等解法。</p>
-</li>
-<li>
-<p>排序+双指针</p>
-<p>思路是先将数组排序（从小到大），然后固定数组的第一位。</p>
-<p>定义2个指针（左右指针）分别指向定位数组的后一位和数组最后一位。</p>
-<p>如果3个数字加起来比0小，则左指针右移，循环继续。</p>
-<p>如果3个数字加起来比0大，则右指针左移，循环继续。</p>
-<p>如果3个数字等于0，说明找到了结果，将3个数字放入结果数组中并把左指针右移，右指针左移。</p>
-<ol>
-<li>
-<p>这里需要注意的是，可能会有重复数据产生，为了不产生重复数据，需要确保左移/右移后的值与之前不一致。</p>
-</li>
-<li>
-<p>如果从固定的数字大于0了，说明右侧不可能有结果了，因为右侧都是大于0的数字，加起来不会大于0了。</p>
-</li>
-<li>
-<p>如果固定位置与上一个固定位置的值相同，也会产生重复数据，遇到直接跳过就行。</p>
-</li>
-</ol>
-</li>
-</ul>
-<figure data-type="image" tabindex="2"><img src="https://upload-images.jianshu.io/upload_images/6053915-1956974a795b240a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png" loading="lazy"></figure>
-<h4 id="最终代码">最终代码</h4>
-<pre><code class="language-Python">class Solution:
-    def threeSum(self, nums: List[int]) -&gt; List[List[int]]:
-        # 先对数组进行排序, 为了方便比较元素
-        nums = sorted(nums)
-        i = 0  # 数组起点
-        result = []    # 结果
-        while i &lt; len(nums):
-            if nums[i] &gt; 0:
-                # 大于0的数字可以直接跳过
-                break
-            if i &gt; 0 and nums[i] == nums[i-1]:
-                # 与上一个固定位重复的数字直接跳过
-                i += 1
-                continue 
-            front, back = i+1, len(nums)-1
-            while front &lt; back:
-                val = nums[i] + nums[back] + nums[front]
-                if val &lt; 0:
-                    # 说明需要增大数字, front+1
-                    front += 1
-                elif val &gt; 0:
-                    # 说明需要缩小数字, back-1
-                    back -= 1
-                else:
-                    result.append([nums[i], nums[back], nums[front]])
-                    front += 1
-                    back -= 1
-                    # 保证没有重复数组
-                    while front &lt; len(nums) and nums[front] == nums[front-1]:
-                        front += 1
-                    while back &gt;= 0 and nums[back] == nums[back+1]:
-                        back -= 1
-            i += 1
-        return result
-</code></pre>
 ]]></content>
     </entry>
 </feed>
