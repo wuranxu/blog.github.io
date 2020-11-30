@@ -4,7 +4,7 @@
 <meta name="description" content=""/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-<title>刷题日记·开篇 | 小克的blog</title>
+<title>每日一题20201123（62. 不同路径） | 小克的blog</title>
 
 <link rel="shortcut icon" href="https://wuranxu.github.io/favicon.ico?v=1606738074658">
 
@@ -93,11 +93,11 @@
         <div class="post-detail gt-bg-theme-color-second">
             <article class="gt-post-content">
                 <h2 class="post-title">
-                    刷题日记·开篇
+                    每日一题20201123（62. 不同路径）
                 </h2>
                 <div class="post-info">
                     <time class="post-time gt-c-content-color-first">
-                        · 2020-09-18 17:16:49 ·
+                        · 2020-11-30 20:05:53 ·
                     </time>
                     
                         <a href="https://wuranxu.github.io/vp-bY7-nD/" class="post-tags">
@@ -106,47 +106,33 @@
                     
                 </div>
                 <div class="post-content">
-                    <figure data-type="image" tabindex="1"><img src="https://wuranxu.github.io/post-images/1600420645602.png" alt="" loading="lazy"></figure>
-<pre><code>记录一下自己的刷题过程，里面可能有大概10%的抄答案，实际上估计刷了60道了吧。
+                    <h4 id="62-不同路径"><a href="https://leetcode-cn.com/problems/unique-paths/">62. 不同路径</a></h4>
+<figure data-type="image" tabindex="1"><img src="https://upload-images.jianshu.io/upload_images/6053915-56f351d58b2e3ca2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png" loading="lazy"></figure>
+<h3 id="思路">思路</h3>
+<pre><code>这题很简单，直接动态规划即可。
 
-😅说实话，做得多了，确实也慢慢熟练了一些吧。做题也是需要套路的，就好像自己以前s6之前从来不会玩旧版女警，改版以后也不会。有一次在诺克萨斯打排位，黄金分段。当时一级团拿了4杀，出门多一个十字镐，还是打不过对面奥巴马。不敢想象一盘被4个队友怒骂，硬撑到20分钟的场景了。于是我下决心一定要练好女警！
+公式如下:
 
-后面看了一些女警的教学，那段时间开始不断练习，之后女警已经成为我拿到手最有把握的英雄了。
+# 到达i j坐标可以从上往下也可以从左往右
+f(i, j) = f(i-1, j) + f(i, j-1)  (当i &gt; 0 and j &gt; 0)
 
-做题目也是一样，其实什么事情都是一样，熟能生巧~
+f(i, j) = 1  (当i=0或者j=0)  靠边只有1种方案
 </code></pre>
-<h3 id="为什么要刷题">为什么要刷题🤣</h3>
-<pre><code>有的小伙伴儿可能会有一些疑问，觉得自己只是个测试，为什么要刷题？
+<pre><code class="language-Python">class Solution:
+    def uniquePaths(self, m: int, n: int) -&gt; int:
+        if m == 0 or n == 0:
+            return 0
+        dp = [[0 for _ in range(n)] for _ in range(m)]
+        for x in range(m):
+            for y in range(n):
+                if x == 0 or y == 0:
+                    dp[x][y] = 1
+                else:
+                    dp[x][y] = dp[x-1][y] + dp[x][y-1]
+        return dp[m-1][n-1]
 
-但很多时候，就算你是测试甚至不是测开，外边公司也会对数据结构/算法有一定的要求。针对测开/开发来说，面试手撕算法就更加常见了！
-
-根据本人这几年的面试经验来说，项目相关的问题是一方面，另一个很重要的方面就是算法题了。某些公司甚至每面都会有，本人在tx的3面就因为这个败下阵来，然而后悔并没有用~
 </code></pre>
-<ul>
-<li>
-<p>诀窍🤥</p>
-<ul>
-<li>
-<p>链表:</p>
-<ol>
-<li>倒数第N个节点，可以用双指针，通过指针差将慢的指针停留在倒数第N个节点</li>
-<li>链表的中间节点，其实也很简单，也是双指针，只不过是快慢指针，快指针一次走2步，慢指针一次走1步，这样快指针走完，慢指针就<mark>留在中间节点</mark>了。</li>
-</ol>
-<p>这样的套路还有很多，还有看到什么二叉树阿之类的，都别太怕，这也是说给我自己听的。其实做下来的感觉也就是模板套一下（当然只针对easy和部分medium），树就是递归，链表大多是while迭代。</p>
-</li>
-<li>
-<p>HashMap:</p>
-<p>很多都是用来临时存储数据，比如<a href="https://leetcode-cn.com/problems/two-sum/">1. 两数之和</a>，就可以用hashmap来解决。</p>
-<p>我们用hashmap的时候，可以知道key是不可重复的，很多时候是利用了这样的特点。</p>
-</li>
-</ul>
-</li>
-</ul>
-<p>--</p>
-<p>想起以前一个实况8队友的QQ签名：</p>
-<p><mark>上一天自习不难，难的是上一辈自习！</mark></p>
-<pre><code>后续我也会继续更新这个刷题过程，一方面是为了继续鞭策自己，另一方面就是为了加深自己对数据结构与算法的印象。加油吧！
-</code></pre>
+<figure data-type="image" tabindex="2"><img src="https://upload-images.jianshu.io/upload_images/6053915-530baaab2cc83c1b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png" loading="lazy"></figure>
 
                 </div>
             </article>
@@ -155,14 +141,14 @@
         
             <div class="next-post">
                 <div class="next gt-c-content-color-first">下一篇</div>
-                <a href="https://wuranxu.github.io/post/about/" class="post-title gt-a-link">
-                    关于
+                <a href="https://wuranxu.github.io/post/mei-ri-yi-ti-20201120147-dui-lian-biao-jin-xing-cha-ru-pai-xu/" class="post-title gt-a-link">
+                    每日一题20201120（147. 对链表进行插入排序）
                 </a>
             </div>
         
 
         
-            <span id="/post/" class="leancloud_visitors" data-flag-title="刷题日记·开篇">
+            <span id="/post/" class="leancloud_visitors" data-flag-title="每日一题20201123（62. 不同路径）">
                 <em class="post-meta-item-text">阅读量 </em>
                 <i class="leancloud-visitors-count">0</i>
             </span>

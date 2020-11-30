@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://wuranxu.github.io</id>
     <title>小克的blog</title>
-    <updated>2020-11-20T06:42:42.318Z</updated>
+    <updated>2020-11-30T12:07:56.957Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://wuranxu.github.io"/>
     <link rel="self" href="https://wuranxu.github.io/atom.xml"/>
@@ -10,6 +10,164 @@
     <logo>https://wuranxu.github.io/images/avatar.png</logo>
     <icon>https://wuranxu.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 小克的blog</rights>
+    <entry>
+        <title type="html"><![CDATA[每日一题20201130（面试题 17.16. 按摩师）]]></title>
+        <id>https://wuranxu.github.io/post/mei-ri-yi-ti-20201130mian-shi-ti-1716-an-mo-shi/</id>
+        <link href="https://wuranxu.github.io/post/mei-ri-yi-ti-20201130mian-shi-ti-1716-an-mo-shi/">
+        </link>
+        <updated>2020-11-30T12:07:20.000Z</updated>
+        <content type="html"><![CDATA[<h4 id="面试题-1716-按摩师"><a href="https://leetcode-cn.com/problems/the-masseuse-lcci/">面试题 17.16. 按摩师</a></h4>
+<figure data-type="image" tabindex="1"><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gl7fozbps8j30u00vptdy.jpg" alt="image-20201130194133134" loading="lazy"></figure>
+<h3 id="思路">思路</h3>
+<pre><code>典型的动态规划题目，存在多个子问题。这题与打家劫舍一模一样
+
+这边我们设f(n)为接纳前N个客户的时长, a为预约数组
+
+当n = 0的时候，显然f(n) = 0
+
+当n = 1的时候，显然f(n) = a[n]
+
+当n &gt;= 2的时候，f(n) = max(f(n-2) + a[n], f(n-1))
+
+分2种情况，接纳第n个客户的话，那么就不能接相邻的客户a[n-1]了，所以总数为f(n-2) + a[n]
+
+如果不接纳第n个客户，那么总数就和f(n-1)一样了。我们是为了求最大的解，所以要取2者的最大值。
+</code></pre>
+<pre><code class="language-Go">// 这不就是打家劫舍吗？
+
+func massage(nums []int) int {
+    // 假设她不接第n个人
+    // n == 1 f(n) = a[n]
+    // n == 2 f(n) = max(a[n], a[n-1])
+    // f(n) = max(f(n-1), f(n-2)+a[n])
+    if len(nums) == 0 {
+        return 0
+    }
+    first, second := 0, nums[0]
+    for i:=1;i&lt;len(nums);i++ {
+        first, second = second, max(first+nums[i], second)
+    }
+    return second
+}
+
+func max(a, b int) int {
+    if a &gt; b {
+        return a
+    }
+    return b
+}
+
+</code></pre>
+<figure data-type="image" tabindex="2"><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gl7fnr4hhwj30yy0i2mz1.jpg" alt="image-20201130194020286" loading="lazy"></figure>
+<pre><code class="language-Python">class Solution:
+    def massage(self, nums: List[int]) -&gt; int:
+        if len(nums) == 0:
+            return 0
+        first, second = 0, nums[0]
+        for n in nums[1:]:
+            first, second = second, max(first+n, second)
+        return second
+</code></pre>
+<figure data-type="image" tabindex="3"><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gl7fwfzw1tj310u0e6abm.jpg" alt="image-20201130194844069" loading="lazy"></figure>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[每日一题20201129*（700. 二叉搜索树中的搜索）]]></title>
+        <id>https://wuranxu.github.io/post/mei-ri-yi-ti-20201129700-er-cha-sou-suo-shu-zhong-de-sou-suo/</id>
+        <link href="https://wuranxu.github.io/post/mei-ri-yi-ti-20201129700-er-cha-sou-suo-shu-zhong-de-sou-suo/">
+        </link>
+        <updated>2020-11-30T12:06:48.000Z</updated>
+        <content type="html"><![CDATA[<h4 id="700-二叉搜索树中的搜索"><a href="https://leetcode-cn.com/problems/search-in-a-binary-search-tree/">700. 二叉搜索树中的搜索</a></h4>
+<figure data-type="image" tabindex="1"><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gl7g403logj30yu0u0tc2.jpg" alt="image-20201130195559871" loading="lazy"></figure>
+<h4 id="思路">思路</h4>
+<pre><code>首先搞清楚二叉搜索树的机制，左儿子的值都小于当前节点，右儿子的值都大于当前节点
+
+然后就可以快速写出程序了，用递归很好实现
+
+1. 相等直接return
+2. 小于当前节点，直接去树节点的左子树寻找
+3. 大于当前节点，去树节点的右子树寻找
+</code></pre>
+<pre><code class="language-Python"># Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution:
+    def searchBST(self, root: TreeNode, val: int) -&gt; TreeNode:
+        if root is None:
+            return None
+        if val == root.val:
+            return root
+        elif val &gt; root.val:
+            return self.searchBST(root.right, val)
+        else:
+            return self.searchBST(root.left, val)
+
+</code></pre>
+<figure data-type="image" tabindex="2"><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gl7g6e7vfij311a0kiq57.jpg" alt="image-20201130195817737" loading="lazy"></figure>
+<pre><code class="language-Go">/**
+ * Definition for a binary tree node.
+ * type TreeNode struct {
+ *     Val int
+ *     Left *TreeNode
+ *     Right *TreeNode
+ * }
+ */
+func searchBST(root *TreeNode, val int) *TreeNode {
+    if root == nil {
+        return nil
+    }
+    if val &lt; root.Val {
+        return searchBST(root.Left, val)
+    }
+    if val &gt; root.Val {
+        return searchBST(root.Right, val)
+    }  
+    return root
+}
+
+</code></pre>
+<figure data-type="image" tabindex="3"><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gl7gc03g6cj310y0esdhc.jpg" alt="image-20201130200341005" loading="lazy"></figure>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[每日一题20201123（62. 不同路径）]]></title>
+        <id>https://wuranxu.github.io/post/mei-ri-yi-ti-2020112362-bu-tong-lu-jing/</id>
+        <link href="https://wuranxu.github.io/post/mei-ri-yi-ti-2020112362-bu-tong-lu-jing/">
+        </link>
+        <updated>2020-11-30T12:05:53.000Z</updated>
+        <content type="html"><![CDATA[<h4 id="62-不同路径"><a href="https://leetcode-cn.com/problems/unique-paths/">62. 不同路径</a></h4>
+<figure data-type="image" tabindex="1"><img src="https://upload-images.jianshu.io/upload_images/6053915-56f351d58b2e3ca2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png" loading="lazy"></figure>
+<h3 id="思路">思路</h3>
+<pre><code>这题很简单，直接动态规划即可。
+
+公式如下:
+
+# 到达i j坐标可以从上往下也可以从左往右
+f(i, j) = f(i-1, j) + f(i, j-1)  (当i &gt; 0 and j &gt; 0)
+
+f(i, j) = 1  (当i=0或者j=0)  靠边只有1种方案
+</code></pre>
+<pre><code class="language-Python">class Solution:
+    def uniquePaths(self, m: int, n: int) -&gt; int:
+        if m == 0 or n == 0:
+            return 0
+        dp = [[0 for _ in range(n)] for _ in range(m)]
+        for x in range(m):
+            for y in range(n):
+                if x == 0 or y == 0:
+                    dp[x][y] = 1
+                else:
+                    dp[x][y] = dp[x-1][y] + dp[x][y-1]
+        return dp[m-1][n-1]
+
+</code></pre>
+<figure data-type="image" tabindex="2"><img src="https://upload-images.jianshu.io/upload_images/6053915-530baaab2cc83c1b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png" loading="lazy"></figure>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[每日一题20201120（147. 对链表进行插入排序）]]></title>
         <id>https://wuranxu.github.io/post/mei-ri-yi-ti-20201120147-dui-lian-biao-jin-xing-cha-ru-pai-xu/</id>
@@ -364,160 +522,6 @@ matrix[i][j] == &quot;0&quot;的时候，以这个位置为边的长度肯定为
         return max_value
 </code></pre>
 <figure data-type="image" tabindex="2"><img src="https://i.loli.net/2020/11/16/87Z51lgCKFoOasz.png" alt="image.png" loading="lazy"></figure>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[每日一题20201114（1122. 数组的相对排序）]]></title>
-        <id>https://wuranxu.github.io/post/mei-ri-yi-ti-202011141122-shu-zu-de-xiang-dui-pai-xu/</id>
-        <link href="https://wuranxu.github.io/post/mei-ri-yi-ti-202011141122-shu-zu-de-xiang-dui-pai-xu/">
-        </link>
-        <updated>2020-11-16T07:36:35.000Z</updated>
-        <content type="html"><![CDATA[<figure data-type="image" tabindex="1"><img src="https://i.loli.net/2020/11/16/gexU8aKzlYApIod.png" alt="image.png" loading="lazy"></figure>
-<h4 id="重点">重点</h4>
-<pre><code>首先注意几个重点：
-
-1. arr1和arr2里最大的元素不会超过1000
-2. arr2里面没有重复的元素
-3. arr2里面每个元素必定在arr1里面出现
-</code></pre>
-<h4 id="思路">思路</h4>
-<pre><code>1. 先创建一个大小为1001的数组data用来存放arr1中每个元素出现的次数（因为最大值可能是1000），其实这里可以简化，只要这个数组的长度等于max(arr1)+1即可覆盖到所有arr1中的数字；
-2. 创建一个大小为arr1的数组或者直接沿用arr1（因为arr1的信息已经被记录到data数组里面了）
-3. 遍历arr2，去data中取出arr1中包含arr2元素的数量，分别插入这个新数组并把data里面arr2的相关数据都置为0，保证后续data中只有arr1中特有的元素。
-4. 遍历data，把剩下的数据写到新数组。
-</code></pre>
-<h3 id="方法一">方法一:</h3>
-<pre><code class="language-Python">class Solution:
-    def relativeSortArray(self, arr1: List[int], arr2: List[int]) -&gt; List[int]:
-        # 创建一个能容纳arr1最大值的数组
-        data = [0] * (max(arr1)+1)
-        # 存储arr1中的元素值和数量
-        for a in arr1:
-            data[a] += 1
-        # 最终结果数组
-        result = []
-        # 把arr2的所有元素写入result数组
-        for d in arr2:
-            length = data[d]
-            for x in range(length):
-                result.append(d)
-            data[d] = 0
-        # i是data中剩余arr1数据的值，可能会有多个，所以需要插入n个i，当n等于0的时候代表n不存在或者n是arr2里的元素，直接continue
-        for i, n in enumerate(data):
-            if n == 0:
-                continue
-            for x in range(n):
-                result.append(i)
-        return result
-</code></pre>
-<h3 id="优化少用一个result数组直接在arr1修改">优化(少用一个result数组，直接在arr1修改)</h3>
-<pre><code class="language-Python">class Solution:
-    def relativeSortArray(self, arr1: List[int], arr2: List[int]) -&gt; List[int]:
-        data = [0] * (max(arr1)+1)
-        for a in arr1:
-            data[a] += 1
-        # 定义一个指针指向当前已经替换的元素
-        i = 0
-        for d in arr2:
-            length = data[d]
-            for x in range(i, i+length):
-                arr1[x] = d
-            i += length
-            data[d] = 0
-        for j, n in enumerate(data):
-            if n == 0:
-                continue
-            for x in range(i, i+n):
-                arr1[x] = j
-            i += n
-        return arr1
-</code></pre>
-<figure data-type="image" tabindex="2"><img src="https://i.loli.net/2020/11/16/fYDsk2uK1oazCXi.png" alt="image.png" loading="lazy"></figure>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[每日一题20201113（328. 奇偶链表）]]></title>
-        <id>https://wuranxu.github.io/post/mei-ri-yi-ti-20201113328-qi-ou-lian-biao/</id>
-        <link href="https://wuranxu.github.io/post/mei-ri-yi-ti-20201113328-qi-ou-lian-biao/">
-        </link>
-        <updated>2020-11-13T13:43:41.000Z</updated>
-        <content type="html"><![CDATA[<p>题目: <a href="https://leetcode-cn.com/problems/odd-even-linked-list/">328. 奇偶链表</a></p>
-<figure data-type="image" tabindex="1"><img src="https://upload-images.jianshu.io/upload_images/6053915-771873d65639009d.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image-20201113175101832" loading="lazy"></figure>
-<h4 id="思路">思路</h4>
-<pre><code>定义3个指针，分别为jishu(指向第一个节点), oushu(第一个偶数节点)和oushu_head(第一个偶数节点)
-</code></pre>
-<pre><code class="language-Python"># Definition for singly-linked list.
-# class ListNode:
-#     def __init__(self, val=0, next=None):
-#         self.val = val
-#         self.next = next
-class Solution:
-    def oddEvenList(self, head: ListNode) -&gt; ListNode:
-        if head is None:
-            return head
-        # 指向第一个奇数节点
-        jishu = head
-        # 指向第一个偶数节点
-        oushu_head = oushu = head.next
-        # 当偶数节点不存在或者偶数节点后面没有节点时循环结束
-        while oushu is not None and oushu.next is not None:
-            # 把偶数的下一个节点（奇数节点）给jishu
-            jishu.next = oushu.next
-            # jishu奇数指针指向刚才赋予的奇数节点（这样jishu指向第二个奇数节点） 
-            jishu = jishu.next
-            # 把奇数的下一个节点（偶数节点）指向给偶数
-            oushu.next = jishu.next
-            # 把偶数节点往后挪一位 此时oushu: 2-&gt;4
-            oushu = oushu.next
-        # 把oushu_head接入jishu的后面节点（这里其实jishu节点已经到最后一个奇数了）
-        jishu.next = oushu_head
-        # 返回修改后的head即可
-        return head
-
-</code></pre>
-<figure data-type="image" tabindex="2"><img src="https://upload-images.jianshu.io/upload_images/6053915-3b1e05acacd3c84c.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image-20201113214140509" loading="lazy"></figure>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[每日一题20201112（922. 按奇偶排序数组 II）]]></title>
-        <id>https://wuranxu.github.io/post/mei-ri-yi-ti-20201112922-an-qi-ou-pai-xu-shu-zu-ii/</id>
-        <link href="https://wuranxu.github.io/post/mei-ri-yi-ti-20201112922-an-qi-ou-pai-xu-shu-zu-ii/">
-        </link>
-        <updated>2020-11-12T02:50:36.000Z</updated>
-        <content type="html"><![CDATA[<h4 id="题目链接-922-按奇偶排序数组-ii">题目链接： <a href="https://leetcode-cn.com/problems/sort-array-by-parity-ii/">922. 按奇偶排序数组 II</a></h4>
-<figure data-type="image" tabindex="1"><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gkm7yp2bvaj30yg0svmyw.jpg" alt="image.png" loading="lazy"></figure>
-<h4 id="思路">思路</h4>
-<pre><code>很简单，搞懂问题的核心就行，假设现在有奇数在偶数位上，偶数在奇数位上。
-
-那么我们要做的就是，找到分别在对方位置上的数字，然后交换他们就行。
-</code></pre>
-<pre><code class="language-Python">class Solution:
-    def sortArrayByParityII(self, A: List[int]) -&gt; List[int]:
-        # 判断数组大小是否小于等于1，是则直接返回数组
-        if len(A) &lt;= 1:
-            return A
-        # 定义2个指针，i指向第一个偶数位，j指向第一个奇数位
-        i, j = 0, 1
-        # 循环结束的条件是i或者j超出数组范围
-        while i &lt; len(A) and j &lt; len(A):
-            # i不是偶数位且j不是奇数位 直接交换，并把i j分别挪到下一个位置
-            if A[i] % 2 == 1 and A[j] % 2 == 0:
-                A[i], A[j] = A[j], A[i]
-                i += 2
-                j += 2
-            # i不是偶数, j是奇数 那么j去下一个位置
-            elif A[i] % 2 == 1:
-                j += 2
-            # j不是奇数 i去下一个位置
-            elif A[j] % 2 == 0:
-                i += 2
-            # i j位置都正确
-            else:
-                i += 2
-                j += 2
-        return A
-</code></pre>
-<figure data-type="image" tabindex="2"><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gkm7ze4k1pj30yg0hadgw.jpg" alt="image.png" loading="lazy"></figure>
 ]]></content>
     </entry>
 </feed>
