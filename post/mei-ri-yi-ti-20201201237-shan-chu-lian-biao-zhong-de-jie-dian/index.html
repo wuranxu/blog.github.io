@@ -4,7 +4,7 @@
 <meta name="description" content=""/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-<title>每日一题20201119（283. 移动零） | 小克的blog</title>
+<title>每日一题20201201（237. 删除链表中的节点） | 小克的blog</title>
 
 <link rel="shortcut icon" href="https://wuranxu.github.io/favicon.ico?v=1606802880730">
 
@@ -93,11 +93,11 @@
         <div class="post-detail gt-bg-theme-color-second">
             <article class="gt-post-content">
                 <h2 class="post-title">
-                    每日一题20201119（283. 移动零）
+                    每日一题20201201（237. 删除链表中的节点）
                 </h2>
                 <div class="post-info">
                     <time class="post-time gt-c-content-color-first">
-                        · 2020-11-19 10:48:26 ·
+                        · 2020-12-01 14:07:45 ·
                     </time>
                     
                         <a href="https://wuranxu.github.io/vp-bY7-nD/" class="post-tags">
@@ -106,32 +106,45 @@
                     
                 </div>
                 <div class="post-content">
-                    <h4 id="283-移动零"><a href="https://leetcode-cn.com/problems/move-zeroes/">283. 移动零</a></h4>
-<figure data-type="image" tabindex="1"><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gkua7o18rbj31040j4go1.jpg" alt="image-20201119103934250" loading="lazy"></figure>
-<h4 id="思路">思路</h4>
-<p><em>双指针</em></p>
-<pre><code>左指针指向左边已经排好序的尾部，右指针指向当前数字，右指针如果指向的数字不为0，则交换左右指针。
+                    <h4 id="237-删除链表中的节点"><a href="https://leetcode-cn.com/problems/delete-node-in-a-linked-list/">237. 删除链表中的节点</a></h4>
+<figure data-type="image" tabindex="1"><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gl8bi2jterj30u00z5teg.jpg" alt="image-20201201140204901" loading="lazy"></figure>
+<h3 id="思路">思路</h3>
+<pre><code>因为只能在当前节点删除，又找不到current节点的前驱节点，所以要做的很简单：
 
-注意：当非0数字在前面时，左右指针会相等。
+就是把当前元素的值换成下一个元素的，然后把下下个元素赋给当前元素的下个元素。
+
+比如 4 -&gt; 5 -&gt; 1 -&gt; 9 要删除5的话，可以先把5的值改为1，然后把5的next指向9，即可达到目的
 </code></pre>
-<pre><code class="language-Python">class Solution:
-    def moveZeroes(self, nums: List[int]) -&gt; None:
+<pre><code class="language-Python"># Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+
+class Solution:
+    def deleteNode(self, node):
         &quot;&quot;&quot;
-        Do not return anything, modify nums in-place instead.
+        :type node: ListNode
+        :rtype: void Do not return anything, modify node in-place instead.
         &quot;&quot;&quot;
-        if len(nums) == 0:
-            return
-        i = j = 0
-        while j &lt; len(nums):
-            if nums[j] != 0:
-                # 如果i和j不等则替换
-                if i != j:
-                    nums[i], nums[j] = nums[j], nums[i]
-                i += 1
-            j += 1 
-               
+        node.val = node.next.val
+        node.next = node.next.next
+
 </code></pre>
-<figure data-type="image" tabindex="2"><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gkuab5jarbj30y60eeta7.jpg" alt="image-20201119104255205" loading="lazy"></figure>
+<figure data-type="image" tabindex="2"><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gl8bki0lctj30yo0dyjsx.jpg" alt="image-20201201140425531" loading="lazy"></figure>
+<pre><code class="language-Go">/**
+ * Definition for singly-linked list.
+ * type ListNode struct {
+ *     Val int
+ *     Next *ListNode
+ * }
+ */
+func deleteNode(node *ListNode) {
+    node.Val = node.Next.Val
+    node.Next = node.Next.Next
+}
+</code></pre>
+<figure data-type="image" tabindex="3"><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gl8bli0gb0j30yc0e23zy.jpg" alt="image-20201201140523009" loading="lazy"></figure>
 
                 </div>
             </article>
@@ -140,14 +153,14 @@
         
             <div class="next-post">
                 <div class="next gt-c-content-color-first">下一篇</div>
-                <a href="https://wuranxu.github.io/post/mei-ri-yi-ti-2020111831-xia-yi-ge-pai-lie/" class="post-title gt-a-link">
-                    每日一题20201118（31. 下一个排列）
+                <a href="https://wuranxu.github.io/post/mei-ri-yi-ti-20201130mian-shi-ti-1716-an-mo-shi/" class="post-title gt-a-link">
+                    每日一题20201130（面试题 17.16. 按摩师）
                 </a>
             </div>
         
 
         
-            <span id="/post/" class="leancloud_visitors" data-flag-title="每日一题20201119（283. 移动零）">
+            <span id="/post/" class="leancloud_visitors" data-flag-title="每日一题20201201（237. 删除链表中的节点）">
                 <em class="post-meta-item-text">阅读量 </em>
                 <i class="leancloud-visitors-count">0</i>
             </span>

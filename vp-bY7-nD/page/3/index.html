@@ -4,7 +4,7 @@
 <meta name="description" content=""/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-<title>每日一题20201119（283. 移动零） | 小克的blog</title>
+<title>leetcode | 小克的blog</title>
 
 <link rel="shortcut icon" href="https://wuranxu.github.io/favicon.ico?v=1606802880730">
 
@@ -37,11 +37,11 @@
     </script>
 
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
 </head>
 <body>
 <div class="main gt-bg-theme-color-first">
-    <nav class="navbar navbar-expand-lg">
+    <div class="main-content">
+        <nav class="navbar navbar-expand-lg">
     <div class="navbar-brand">
         <img class="user-avatar" src="/images/avatar.png" alt="头像">
         <div class="site-name gt-c-content-color-first">
@@ -89,100 +89,47 @@
     </div>
 </nav>
 
-    <div class="post-container">
-        <div class="post-detail gt-bg-theme-color-second">
-            <article class="gt-post-content">
-                <h2 class="post-title">
-                    每日一题20201119（283. 移动零）
-                </h2>
-                <div class="post-info">
-                    <time class="post-time gt-c-content-color-first">
-                        · 2020-11-19 10:48:26 ·
-                    </time>
-                    
-                        <a href="https://wuranxu.github.io/vp-bY7-nD/" class="post-tags">
-                            # leetcode
-                        </a>
-                    
-                </div>
-                <div class="post-content">
-                    <h4 id="283-移动零"><a href="https://leetcode-cn.com/problems/move-zeroes/">283. 移动零</a></h4>
-<figure data-type="image" tabindex="1"><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gkua7o18rbj31040j4go1.jpg" alt="image-20201119103934250" loading="lazy"></figure>
-<h4 id="思路">思路</h4>
-<p><em>双指针</em></p>
-<pre><code>左指针指向左边已经排好序的尾部，右指针指向当前数字，右指针如果指向的数字不为0，则交换左右指针。
-
-注意：当非0数字在前面时，左右指针会相等。
-</code></pre>
-<pre><code class="language-Python">class Solution:
-    def moveZeroes(self, nums: List[int]) -&gt; None:
-        &quot;&quot;&quot;
-        Do not return anything, modify nums in-place instead.
-        &quot;&quot;&quot;
-        if len(nums) == 0:
-            return
-        i = j = 0
-        while j &lt; len(nums):
-            if nums[j] != 0:
-                # 如果i和j不等则替换
-                if i != j:
-                    nums[i], nums[j] = nums[j], nums[i]
-                i += 1
-            j += 1 
-               
-</code></pre>
-<figure data-type="image" tabindex="2"><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gkuab5jarbj30y60eeta7.jpg" alt="image-20201119104255205" loading="lazy"></figure>
-
-                </div>
-            </article>
+        <div class="current-tag-container">
+            <h2 class="title gt-c-content-color-first">
+                #leetcode
+            </h2>
         </div>
-
+        <div class="post-list-container">
+    <div class="post-inner">
         
-            <div class="next-post">
-                <div class="next gt-c-content-color-first">下一篇</div>
-                <a href="https://wuranxu.github.io/post/mei-ri-yi-ti-2020111831-xia-yi-ge-pai-lie/" class="post-title gt-a-link">
-                    每日一题20201118（31. 下一个排列）
-                </a>
+            <div class="post gt-bg-theme-color-second">
+                <div class="post-left">
+                    <div>
+                        
+                        <a href="https://wuranxu.github.io/post/shua-ti-ri-ji-kai-pian/">
+                            <span class="post-title gt-c-content-color-first">刷题日记·开篇</span>
+                        </a>
+                    </div>
+                    <div class="gt-post-content post-abstract gt-c-content-color-second">
+                        
+                    </div>
+                    <div class="post-info">
+                        <time class="post-time gt-c-content-color-first">
+                            发布于 · 2020-09-18 17:16:49 ·
+                        </time>
+                        
+                            <a href="https://wuranxu.github.io/vp-bY7-nD/" class="post-tag">
+                                # leetcode
+                            </a>
+                        
+                    </div>
+                </div>
+                
             </div>
         
-
-        
-            <span id="/post/" class="leancloud_visitors" data-flag-title="每日一题20201119（283. 移动零）">
-                <em class="post-meta-item-text">阅读量 </em>
-                <i class="leancloud-visitors-count">0</i>
-            </span>
-        
-
-        
-
-        
-            <script src='https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js'></script>
-
-<style>
-	div#vcomments{
-		width:100%;
-		max-width: 1000px;
-		padding: 2.5%
-	}
-</style>
-
-
-	<div id="vcomments"></div>
-
-<script>
-	new Valine({
-		el: '#vcomments',
-		appId: 'fT8wvEVNtx1cOcCQEs7rVwnV-gzGzoHsz',
-		appKey: 'xV6aDHKSkLfP7u0cBRIzpmcy',
-		avatar: 'monsterid',
-		pageSize: 10,
-		recordIp: true,
-		placeholder: '不要吝啬你的评论~',
-		visitor: true,
-	});
-</script>
-
-        
+    </div>
+</div>
+        <div class="pagination-container">
+    
+        <a href="https://wuranxu.github.io/vp-bY7-nD/page/2/" class="prev-page gt-a-link">上一页</a>
+    
+    
+</div>
 
         <div class="site-footer gt-c-content-color-first">
     <div class="slogan gt-c-content-color-first">欢迎来到我的小窝~这里不仅有博客，也有日记。</div>
