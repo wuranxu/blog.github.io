@@ -1,379 +1,255 @@
-
 <!DOCTYPE html>
 <html>
   <head>
-    
-<meta charset="utf-8" >
+    <meta charset="utf-8" >
 
 <title>leetcode | 小克的blog</title>
-<meta name="description" content="欢迎来到我的小窝~这里不仅有博客，也有日记。">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://wuranxu.github.io/favicon.ico?v=1614927806816">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="shortcut icon" href="https://wuranxu.github.io/favicon.ico?v=1614928407536">
 <link rel="stylesheet" href="https://wuranxu.github.io/styles/main.css">
 
 
 
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 
 
+    <meta name="description" content="欢迎来到我的小窝~这里不仅有博客，也有日记。">
   </head>
   <body>
     <div id="app" class="main">
-      <div class="site-header-container">
-  <div class="site-header">
-    <div class="left">
-      <a href="https://wuranxu.github.io">
-        <img class="avatar" src="https://wuranxu.github.io/images/avatar.png?v=1614927806816" alt="" width="32px" height="32px">
-      </a>
-      <a href="https://wuranxu.github.io">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://wuranxu.github.io">
+        <img src="https://wuranxu.github.io/images/avatar.png?v=1614928407536" class="site-logo">
         <h1 class="site-title">小克的blog</h1>
       </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
     </div>
-    <div class="right">
-      <transition name="fade">
-        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
-      </transition>
-    </div>
-  </div>
-</div>
-
-<transition name="fade">
-  <div class="menu-container" style="display: none;" v-show="menuVisible">
-    <div class="menu-list">
+    <div>
       
         
-          <a href="https://wuranxu.github.io" class="menu purple-link">
+          <a href="https://wuranxu.github.io" class="site-nav">
             首页
           </a>
         
       
         
-          <a href="/tags" class="menu purple-link">
+          <a href="/tags" class="site-nav">
             标签
           </a>
         
       
         
-          <a href="/post/about" class="menu purple-link">
+          <a href="/post/about" class="site-nav">
             关于
           </a>
         
       
     </div>
   </div>
-</transition>
-
-
-      <div class="content-container">
-
-        <div class="current-tag-container">
-          <h2 class="title">
-            <i class="icon icon-pricetags-outline"></i> leetcode
-          </h2> 
-        </div>
-
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
         
-<section class="post-item">
-    <div class="content">
-      <a href="https://wuranxu.github.io/post/mei-ri-yi-ti-20201201237-shan-chu-lian-biao-zhong-de-jie-dian/">
-        <h2 class="post-title">每日一题20201201（237. 删除链表中的节点）</h2>
-      </a>
-      <div class="post-abstract">
+      
         
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2020-12-01 14:07:45</span>
+      
         
-          <span>
-            <i class="icon icon-pricetags-outline"></i>
-            
-              <a href="https://wuranxu.github.io/vp-bY7-nD/">
-                leetcode
-                
-              </a>
-            
-          </span>
+      
         
-      </div>
+      
+        
+      
     </div>
-    
-  </section>
-
-<section class="post-item">
-    <div class="content">
-      <a href="https://wuranxu.github.io/post/mei-ri-yi-ti-20201130mian-shi-ti-1716-an-mo-shi/">
-        <h2 class="post-title">每日一题20201130（面试题 17.16. 按摩师）</h2>
-      </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2020-11-30 20:07:20</span>
-        
-          <span>
-            <i class="icon icon-pricetags-outline"></i>
-            
-              <a href="https://wuranxu.github.io/vp-bY7-nD/">
-                leetcode
-                
-              </a>
-            
-          </span>
-        
-      </div>
+    <div class="site-description">
+      欢迎来到我的小窝~这里不仅有博客，也有日记。
     </div>
-    
-  </section>
-
-<section class="post-item">
-    <div class="content">
-      <a href="https://wuranxu.github.io/post/mei-ri-yi-ti-20201129700-er-cha-sou-suo-shu-zhong-de-sou-suo/">
-        <h2 class="post-title">每日一题20201129*（700. 二叉搜索树中的搜索）</h2>
-      </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2020-11-30 20:06:48</span>
-        
-          <span>
-            <i class="icon icon-pricetags-outline"></i>
-            
-              <a href="https://wuranxu.github.io/vp-bY7-nD/">
-                leetcode
-                
-              </a>
-            
-          </span>
-        
-      </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">wuranxu's blog</a> | <a class="rss" href="https://wuranxu.github.io/atom.xml" target="_blank">RSS</a>
     </div>
-    
-  </section>
-
-<section class="post-item">
-    <div class="content">
-      <a href="https://wuranxu.github.io/post/mei-ri-yi-ti-2020112362-bu-tong-lu-jing/">
-        <h2 class="post-title">每日一题20201123（62. 不同路径）</h2>
-      </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2020-11-30 20:05:53</span>
-        
-          <span>
-            <i class="icon icon-pricetags-outline"></i>
-            
-              <a href="https://wuranxu.github.io/vp-bY7-nD/">
-                leetcode
-                
-              </a>
-            
-          </span>
-        
-      </div>
-    </div>
-    
-  </section>
-
-<section class="post-item">
-    <div class="content">
-      <a href="https://wuranxu.github.io/post/mei-ri-yi-ti-20201120147-dui-lian-biao-jin-xing-cha-ru-pai-xu/">
-        <h2 class="post-title">每日一题20201120（147. 对链表进行插入排序）</h2>
-      </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2020-11-20 14:42:20</span>
-        
-          <span>
-            <i class="icon icon-pricetags-outline"></i>
-            
-              <a href="https://wuranxu.github.io/vp-bY7-nD/">
-                leetcode
-                
-              </a>
-            
-          </span>
-        
-      </div>
-    </div>
-    
-  </section>
-
-<section class="post-item">
-    <div class="content">
-      <a href="https://wuranxu.github.io/post/mei-ri-yi-ti-20201119283-yi-dong-ling/">
-        <h2 class="post-title">每日一题20201119（283. 移动零）</h2>
-      </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2020-11-19 10:48:26</span>
-        
-          <span>
-            <i class="icon icon-pricetags-outline"></i>
-            
-              <a href="https://wuranxu.github.io/vp-bY7-nD/">
-                leetcode
-                
-              </a>
-            
-          </span>
-        
-      </div>
-    </div>
-    
-  </section>
-
-<section class="post-item">
-    <div class="content">
-      <a href="https://wuranxu.github.io/post/mei-ri-yi-ti-2020111831-xia-yi-ge-pai-lie/">
-        <h2 class="post-title">每日一题20201118（31. 下一个排列）</h2>
-      </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2020-11-18 14:28:47</span>
-        
-          <span>
-            <i class="icon icon-pricetags-outline"></i>
-            
-              <a href="https://wuranxu.github.io/vp-bY7-nD/">
-                leetcode
-                
-              </a>
-            
-          </span>
-        
-      </div>
-    </div>
-    
-  </section>
-
-<section class="post-item">
-    <div class="content">
-      <a href="https://wuranxu.github.io/post/mei-ri-er-ti-2020111734-zai-pai-xu-shu-zu-zhong-cha-zhao-yuan-su-de-di-yi-ge-he-zui-hou-yi-ge-wei-zhi/">
-        <h2 class="post-title">每日二题20201117（34. 在排序数组中查找元素的第一个和最后一个位置）</h2>
-      </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2020-11-17 15:11:05</span>
-        
-          <span>
-            <i class="icon icon-pricetags-outline"></i>
-            
-              <a href="https://wuranxu.github.io/vp-bY7-nD/">
-                leetcode
-                
-              </a>
-            
-          </span>
-        
-      </div>
-    </div>
-    
-  </section>
-
-<section class="post-item">
-    <div class="content">
-      <a href="https://wuranxu.github.io/post/mei-ri-yi-ti-20201117221-zui-da-zheng-fang-xing/">
-        <h2 class="post-title">每日一题20201117（221. 最大正方形）</h2>
-      </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2020-11-17 11:31:25</span>
-        
-          <span>
-            <i class="icon icon-pricetags-outline"></i>
-            
-              <a href="https://wuranxu.github.io/vp-bY7-nD/">
-                leetcode
-                
-              </a>
-            
-          </span>
-        
-      </div>
-    </div>
-    
-  </section>
-
-<section class="post-item">
-    <div class="content">
-      <a href="https://wuranxu.github.io/post/mei-ri-yi-ti-2020111555-tiao-yue-you-xi/">
-        <h2 class="post-title">每日一题20201115（55. 跳跃游戏）</h2>
-      </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2020-11-16 17:27:35</span>
-        
-          <span>
-            <i class="icon icon-pricetags-outline"></i>
-            
-              <a href="https://wuranxu.github.io/vp-bY7-nD/">
-                leetcode
-                
-              </a>
-            
-          </span>
-        
-      </div>
-    </div>
-    
-  </section>
+  </div>
+</div>
 
 
-<div class="pagination-container">
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <h2 class="current-tag">标签: leetcode</h2>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="https://wuranxu.github.io/post/mei-ri-yi-ti-20201201237-shan-chu-lian-biao-zhong-de-jie-dian/">
+                  <h2 class="post-title">每日一题20201201（237. 删除链表中的节点）</h2>
+                </a>
+                <div class="post-date">
+                  2020-12-01 14:07:45
+                </div>
+                <div class="post-abstract">
+                  
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="https://wuranxu.github.io/post/mei-ri-yi-ti-20201130mian-shi-ti-1716-an-mo-shi/">
+                  <h2 class="post-title">每日一题20201130（面试题 17.16. 按摩师）</h2>
+                </a>
+                <div class="post-date">
+                  2020-11-30 20:07:20
+                </div>
+                <div class="post-abstract">
+                  
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="https://wuranxu.github.io/post/mei-ri-yi-ti-20201129700-er-cha-sou-suo-shu-zhong-de-sou-suo/">
+                  <h2 class="post-title">每日一题20201129*（700. 二叉搜索树中的搜索）</h2>
+                </a>
+                <div class="post-date">
+                  2020-11-30 20:06:48
+                </div>
+                <div class="post-abstract">
+                  
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="https://wuranxu.github.io/post/mei-ri-yi-ti-2020112362-bu-tong-lu-jing/">
+                  <h2 class="post-title">每日一题20201123（62. 不同路径）</h2>
+                </a>
+                <div class="post-date">
+                  2020-11-30 20:05:53
+                </div>
+                <div class="post-abstract">
+                  
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="https://wuranxu.github.io/post/mei-ri-yi-ti-20201120147-dui-lian-biao-jin-xing-cha-ru-pai-xu/">
+                  <h2 class="post-title">每日一题20201120（147. 对链表进行插入排序）</h2>
+                </a>
+                <div class="post-date">
+                  2020-11-20 14:42:20
+                </div>
+                <div class="post-abstract">
+                  
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="https://wuranxu.github.io/post/mei-ri-yi-ti-20201119283-yi-dong-ling/">
+                  <h2 class="post-title">每日一题20201119（283. 移动零）</h2>
+                </a>
+                <div class="post-date">
+                  2020-11-19 10:48:26
+                </div>
+                <div class="post-abstract">
+                  
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="https://wuranxu.github.io/post/mei-ri-yi-ti-2020111831-xia-yi-ge-pai-lie/">
+                  <h2 class="post-title">每日一题20201118（31. 下一个排列）</h2>
+                </a>
+                <div class="post-date">
+                  2020-11-18 14:28:47
+                </div>
+                <div class="post-abstract">
+                  
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="https://wuranxu.github.io/post/mei-ri-er-ti-2020111734-zai-pai-xu-shu-zu-zhong-cha-zhao-yuan-su-de-di-yi-ge-he-zui-hou-yi-ge-wei-zhi/">
+                  <h2 class="post-title">每日二题20201117（34. 在排序数组中查找元素的第一个和最后一个位置）</h2>
+                </a>
+                <div class="post-date">
+                  2020-11-17 15:11:05
+                </div>
+                <div class="post-abstract">
+                  
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="https://wuranxu.github.io/post/mei-ri-yi-ti-20201117221-zui-da-zheng-fang-xing/">
+                  <h2 class="post-title">每日一题20201117（221. 最大正方形）</h2>
+                </a>
+                <div class="post-date">
+                  2020-11-17 11:31:25
+                </div>
+                <div class="post-abstract">
+                  
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="https://wuranxu.github.io/post/mei-ri-yi-ti-2020111555-tiao-yue-you-xi/">
+                  <h2 class="post-title">每日一题20201115（55. 跳跃游戏）</h2>
+                </a>
+                <div class="post-date">
+                  2020-11-16 17:27:35
+                </div>
+                <div class="post-abstract">
+                  
+                </div>
+              </div>
+              
+            </article>
+          
+
+          <div class="pagination-container">
   
   
     <a href="https://wuranxu.github.io/vp-bY7-nD/page/2" class="next">下一页 <i class="icon-arrow-ios-forward-outline"></i></a>
   
 </div>
 
-
+        </div>
       </div>
-
-      <div class="site-footer">
-  <div class="slogan">欢迎来到我的小窝~这里不仅有博客，也有日记。</div>
-  <div class="social-container">
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-  </div>
-  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">wuranxu's blog</a> | <a class="rss" href="https://wuranxu.github.io/atom.xml" target="_blank">RSS</a>
-</div>
-
-
     </div>
-    <script type="application/javascript">
 
-hljs.initHighlightingOnLoad()
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
 
 var app = new Vue({
   el: '#app',
@@ -383,6 +259,8 @@ var app = new Vue({
 })
 
 </script>
+
+
 
 
 

@@ -1,96 +1,101 @@
-
 <!DOCTYPE html>
 <html>
   <head>
-    
-<meta charset="utf-8" >
+    <meta charset="utf-8" >
 
 <title>每日一题20201120（147. 对链表进行插入排序） | 小克的blog</title>
-<meta name="description" content="欢迎来到我的小窝~这里不仅有博客，也有日记。">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://wuranxu.github.io/favicon.ico?v=1614927806816">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="shortcut icon" href="https://wuranxu.github.io/favicon.ico?v=1614928407536">
 <link rel="stylesheet" href="https://wuranxu.github.io/styles/main.css">
 
 
 
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 
 
+    <meta name="description" content="147. 对链表进行插入排序
+
+思路
+维护一个排好序的链表，剩下的值如果比已排好的大，直接放到尾部，如果比之前小，则从链表头遍历，找到对应的位置并插入。
+
+为了很好找到链表头，需要设置一个哑节点。
+
+# Definition for sin..." />
+    <meta name="keywords" content="leetcode" />
   </head>
   <body>
     <div id="app" class="main">
-      <div class="site-header-container">
-  <div class="site-header">
-    <div class="left">
-      <a href="https://wuranxu.github.io">
-        <img class="avatar" src="https://wuranxu.github.io/images/avatar.png?v=1614927806816" alt="" width="32px" height="32px">
-      </a>
-      <a href="https://wuranxu.github.io">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://wuranxu.github.io">
+        <img src="https://wuranxu.github.io/images/avatar.png?v=1614928407536" class="site-logo">
         <h1 class="site-title">小克的blog</h1>
       </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
     </div>
-    <div class="right">
-      <transition name="fade">
-        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
-      </transition>
-    </div>
-  </div>
-</div>
-
-<transition name="fade">
-  <div class="menu-container" style="display: none;" v-show="menuVisible">
-    <div class="menu-list">
+    <div>
       
         
-          <a href="https://wuranxu.github.io" class="menu purple-link">
+          <a href="https://wuranxu.github.io" class="site-nav">
             首页
           </a>
         
       
         
-          <a href="/tags" class="menu purple-link">
+          <a href="/tags" class="site-nav">
             标签
           </a>
         
       
         
-          <a href="/post/about" class="menu purple-link">
+          <a href="/post/about" class="site-nav">
             关于
           </a>
         
       
     </div>
   </div>
-</transition>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      欢迎来到我的小窝~这里不仅有博客，也有日记。
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">wuranxu's blog</a> | <a class="rss" href="https://wuranxu.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
 
 
-      <div class="content-container">
-        <div class="post-detail">
-          
-          <h2 class="post-title">每日一题20201120（147. 对链表进行插入排序）</h2>
-          <div class="post-info post-detail-info">
-            <span><i class="icon-calendar-outline"></i> 2020-11-20 14:42:20</span>
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">每日一题20201120（147. 对链表进行插入排序）</h2>
+            <div class="post-date">2020-11-20 14:42:20</div>
             
-              <span>
-                <i class="icon-pricetags-outline"></i>
-                
-                  <a href="https://wuranxu.github.io/vp-bY7-nD/">
-                    leetcode
-                    
-                  </a>
-                
-              </span>
-            
-          </div>
-          <div class="post-content">
-            <h4 id="147-对链表进行插入排序"><a href="https://leetcode-cn.com/problems/insertion-sort-list/">147. 对链表进行插入排序</a></h4>
+            <div class="post-content" v-pre>
+              <h4 id="147-对链表进行插入排序"><a href="https://leetcode-cn.com/problems/insertion-sort-list/">147. 对链表进行插入排序</a></h4>
 <figure data-type="image" tabindex="1"><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gkvl8kkbehj30u011a79m.jpg" alt="image-20201120134633194" loading="lazy"></figure>
 <h3 id="思路">思路</h3>
 <pre><code>维护一个排好序的链表，剩下的值如果比已排好的大，直接放到尾部，如果比之前小，则从链表头遍历，找到对应的位置并插入。
@@ -142,45 +147,39 @@ class Solution:
 </code></pre>
 <figure data-type="image" tabindex="2"><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gkvmu38wlpj30wy0e4wfz.jpg" alt="image-20201120144152739" loading="lazy"></figure>
 
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://wuranxu.github.io/vp-bY7-nD/" class="tag">
+                    leetcode
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://wuranxu.github.io/post/mei-ri-yi-ti-20201119283-yi-dong-ling/">
+                  <h3 class="post-title">
+                    每日一题20201119（283. 移动零）
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
           </div>
+
         </div>
-
-        
-          <div class="next-post">
-            <a class="purple-link" href="https://wuranxu.github.io/post/mei-ri-yi-ti-20201119283-yi-dong-ling/">
-              <h3 class="post-title">
-                下一篇：每日一题20201119（283. 移动零）
-              </h3>
-            </a>
-          </div>
-          
       </div>
-
-      
-
-      <div class="site-footer">
-  <div class="slogan">欢迎来到我的小窝~这里不仅有博客，也有日记。</div>
-  <div class="social-container">
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-  </div>
-  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">wuranxu's blog</a> | <a class="rss" href="https://wuranxu.github.io/atom.xml" target="_blank">RSS</a>
-</div>
-
-
     </div>
-    <script type="application/javascript">
 
-hljs.initHighlightingOnLoad()
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
 
 var app = new Vue({
   el: '#app',
@@ -190,6 +189,8 @@ var app = new Vue({
 })
 
 </script>
+
+
 
 
 

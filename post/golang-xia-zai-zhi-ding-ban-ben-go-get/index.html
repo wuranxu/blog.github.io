@@ -1,96 +1,96 @@
-
 <!DOCTYPE html>
 <html>
   <head>
-    
-<meta charset="utf-8" >
+    <meta charset="utf-8" >
 
 <title>golang下载指定版本（go get） | 小克的blog</title>
-<meta name="description" content="欢迎来到我的小窝~这里不仅有博客，也有日记。">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://wuranxu.github.io/favicon.ico?v=1614927806816">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="shortcut icon" href="https://wuranxu.github.io/favicon.ico?v=1614928407536">
 <link rel="stylesheet" href="https://wuranxu.github.io/styles/main.css">
 
 
 
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 
 
+    <meta name="description" content="是这样的，大概在去年的时候，自己学习grpc写了一些相关的代码包括proto和一些生成的pb。
+
+但是今年发现grpc版本有更新，对应的protoc-gen-go这样的插件也进行了一番更新，而这些更新又和etcd不太兼容。所以为了降级，需要..." />
+    <meta name="keywords" content="golang" />
   </head>
   <body>
     <div id="app" class="main">
-      <div class="site-header-container">
-  <div class="site-header">
-    <div class="left">
-      <a href="https://wuranxu.github.io">
-        <img class="avatar" src="https://wuranxu.github.io/images/avatar.png?v=1614927806816" alt="" width="32px" height="32px">
-      </a>
-      <a href="https://wuranxu.github.io">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://wuranxu.github.io">
+        <img src="https://wuranxu.github.io/images/avatar.png?v=1614928407536" class="site-logo">
         <h1 class="site-title">小克的blog</h1>
       </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
     </div>
-    <div class="right">
-      <transition name="fade">
-        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
-      </transition>
-    </div>
-  </div>
-</div>
-
-<transition name="fade">
-  <div class="menu-container" style="display: none;" v-show="menuVisible">
-    <div class="menu-list">
+    <div>
       
         
-          <a href="https://wuranxu.github.io" class="menu purple-link">
+          <a href="https://wuranxu.github.io" class="site-nav">
             首页
           </a>
         
       
         
-          <a href="/tags" class="menu purple-link">
+          <a href="/tags" class="site-nav">
             标签
           </a>
         
       
         
-          <a href="/post/about" class="menu purple-link">
+          <a href="/post/about" class="site-nav">
             关于
           </a>
         
       
     </div>
   </div>
-</transition>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      欢迎来到我的小窝~这里不仅有博客，也有日记。
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">wuranxu's blog</a> | <a class="rss" href="https://wuranxu.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
 
 
-      <div class="content-container">
-        <div class="post-detail">
-          
-          <h2 class="post-title">golang下载指定版本（go get）</h2>
-          <div class="post-info post-detail-info">
-            <span><i class="icon-calendar-outline"></i> 2020-09-29 13:41:48</span>
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">golang下载指定版本（go get）</h2>
+            <div class="post-date">2020-09-29 13:41:48</div>
             
-              <span>
-                <i class="icon-pricetags-outline"></i>
-                
-                  <a href="https://wuranxu.github.io/z9o1SKNlx/">
-                    golang
-                    
-                  </a>
-                
-              </span>
-            
-          </div>
-          <div class="post-content">
-            <pre><code>是这样的，大概在去年的时候，自己学习grpc写了一些相关的代码包括proto和一些生成的pb。
+            <div class="post-content" v-pre>
+              <pre><code>是这样的，大概在去年的时候，自己学习grpc写了一些相关的代码包括proto和一些生成的pb。
 
 但是今年发现grpc版本有更新，对应的protoc-gen-go这样的插件也进行了一番更新，而这些更新又和etcd不太兼容。所以为了降级，需要获取旧版本。
 
@@ -122,45 +122,39 @@
 <pre><code class="language-shell">export GOPROXY=https://mirrors.aliyun.com/goproxy/ 
 </code></pre>
 
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://wuranxu.github.io/z9o1SKNlx/" class="tag">
+                    golang
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://wuranxu.github.io/post/wei-fu-wu-xiang-guan-si-kao-yi/">
+                  <h3 class="post-title">
+                    微服务相关思考(一)
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
           </div>
+
         </div>
-
-        
-          <div class="next-post">
-            <a class="purple-link" href="https://wuranxu.github.io/post/wei-fu-wu-xiang-guan-si-kao-yi/">
-              <h3 class="post-title">
-                下一篇：微服务相关思考(一)
-              </h3>
-            </a>
-          </div>
-          
       </div>
-
-      
-
-      <div class="site-footer">
-  <div class="slogan">欢迎来到我的小窝~这里不仅有博客，也有日记。</div>
-  <div class="social-container">
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-  </div>
-  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">wuranxu's blog</a> | <a class="rss" href="https://wuranxu.github.io/atom.xml" target="_blank">RSS</a>
-</div>
-
-
     </div>
-    <script type="application/javascript">
 
-hljs.initHighlightingOnLoad()
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
 
 var app = new Vue({
   el: '#app',
@@ -170,6 +164,8 @@ var app = new Vue({
 })
 
 </script>
+
+
 
 
 
