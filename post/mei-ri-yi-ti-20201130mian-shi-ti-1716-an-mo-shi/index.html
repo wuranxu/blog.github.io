@@ -1,112 +1,96 @@
+
+<!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8"/>
-<meta name="description" content=""/>
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <head>
+    
+<meta charset="utf-8" >
 
 <title>每日一题20201130（面试题 17.16. 按摩师） | 小克的blog</title>
+<meta name="description" content="欢迎来到我的小窝~这里不仅有博客，也有日记。">
 
-<link rel="shortcut icon" href="https://wuranxu.github.io/favicon.ico?v=1606802880730">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
-<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://wuranxu.github.io/favicon.ico?v=1614927806816">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://wuranxu.github.io/styles/main.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css">
-
-<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dockerfile.min.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dart.min.js"></script>
-
-<script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script>
-<!-- DEMO JS -->
-<!--<script src="media/scripts/index.js"></script>-->
 
 
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-178425699-1"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
 
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-
-        gtag('js', new Date());
-        gtag('config', 'UA-178425699-1');
-    </script>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
-</head>
-<body>
-<div class="main gt-bg-theme-color-first">
-    <nav class="navbar navbar-expand-lg">
-    <div class="navbar-brand">
-        <img class="user-avatar" src="/images/avatar.png" alt="头像">
-        <div class="site-name gt-c-content-color-first">
-            小克的blog
-        </div>
+
+  </head>
+  <body>
+    <div id="app" class="main">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="https://wuranxu.github.io">
+        <img class="avatar" src="https://wuranxu.github.io/images/avatar.png?v=1614927806816" alt="" width="32px" height="32px">
+      </a>
+      <a href="https://wuranxu.github.io">
+        <h1 class="site-title">小克的blog</h1>
+      </a>
     </div>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <div class="navbar-nav mr-auto" style="text-align: center">
-            
-                <div class="nav-item">
-                    
-                        <a href="https://wuranxu.github.io" class="menu gt-a-link">
-                            首页
-                        </a>
-                    
-                </div>
-            
-                <div class="nav-item">
-                    
-                        <a href="/tags" class="menu gt-a-link">
-                            标签
-                        </a>
-                    
-                </div>
-            
-                <div class="nav-item">
-                    
-                        <a href="/post/about" class="menu gt-a-link">
-                            关于
-                        </a>
-                    
-                </div>
-            
-        </div>
-        <div style="text-align: center">
-            <form id="gridea-search-form" style="position: relative" data-update="1606802880730" action="/search/index.html">
-                <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
-                <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
-            </form>
-        </div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
     </div>
-</nav>
+  </div>
+</div>
 
-    <div class="post-container">
-        <div class="post-detail gt-bg-theme-color-second">
-            <article class="gt-post-content">
-                <h2 class="post-title">
-                    每日一题20201130（面试题 17.16. 按摩师）
-                </h2>
-                <div class="post-info">
-                    <time class="post-time gt-c-content-color-first">
-                        · 2020-11-30 20:07:20 ·
-                    </time>
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
+      
+        
+          <a href="https://wuranxu.github.io" class="menu purple-link">
+            首页
+          </a>
+        
+      
+        
+          <a href="/tags" class="menu purple-link">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="menu purple-link">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+</transition>
+
+
+      <div class="content-container">
+        <div class="post-detail">
+          
+          <h2 class="post-title">每日一题20201130（面试题 17.16. 按摩师）</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2020-11-30 20:07:20</span>
+            
+              <span>
+                <i class="icon-pricetags-outline"></i>
+                
+                  <a href="https://wuranxu.github.io/vp-bY7-nD/">
+                    leetcode
                     
-                        <a href="https://wuranxu.github.io/vp-bY7-nD/" class="post-tags">
-                            # leetcode
-                        </a>
-                    
-                </div>
-                <div class="post-content">
-                    <h4 id="面试题-1716-按摩师"><a href="https://leetcode-cn.com/problems/the-masseuse-lcci/">面试题 17.16. 按摩师</a></h4>
+                  </a>
+                
+              </span>
+            
+          </div>
+          <div class="post-content">
+            <h4 id="面试题-1716-按摩师"><a href="https://leetcode-cn.com/problems/the-masseuse-lcci/">面试题 17.16. 按摩师</a></h4>
 <figure data-type="image" tabindex="1"><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gl7fozbps8j30u00vptdy.jpg" alt="image-20201130194133134" loading="lazy"></figure>
 <h3 id="思路">思路</h3>
 <pre><code>典型的动态规划题目，存在多个子问题。这题与打家劫舍一模一样
@@ -160,88 +144,57 @@ func max(a, b int) int {
 </code></pre>
 <figure data-type="image" tabindex="3"><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gl7fwfzw1tj310u0e6abm.jpg" alt="image-20201130194844069" loading="lazy"></figure>
 
-                </div>
-            </article>
+          </div>
         </div>
 
         
-            <div class="next-post">
-                <div class="next gt-c-content-color-first">下一篇</div>
-                <a href="https://wuranxu.github.io/post/mei-ri-yi-ti-20201129700-er-cha-sou-suo-shu-zhong-de-sou-suo/" class="post-title gt-a-link">
-                    每日一题20201129*（700. 二叉搜索树中的搜索）
-                </a>
-            </div>
-        
+          <div class="next-post">
+            <a class="purple-link" href="https://wuranxu.github.io/post/mei-ri-yi-ti-20201129700-er-cha-sou-suo-shu-zhong-de-sou-suo/">
+              <h3 class="post-title">
+                下一篇：每日一题20201129*（700. 二叉搜索树中的搜索）
+              </h3>
+            </a>
+          </div>
+          
+      </div>
 
-        
-            <span id="/post/" class="leancloud_visitors" data-flag-title="每日一题20201130（面试题 17.16. 按摩师）">
-                <em class="post-meta-item-text">阅读量 </em>
-                <i class="leancloud-visitors-count">0</i>
-            </span>
-        
+      
 
-        
-
-        
-            <script src='https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js'></script>
-
-<style>
-	div#vcomments{
-		width:100%;
-		max-width: 1000px;
-		padding: 2.5%
-	}
-</style>
-
-
-	<div id="vcomments"></div>
-
-<script>
-	new Valine({
-		el: '#vcomments',
-		appId: 'fT8wvEVNtx1cOcCQEs7rVwnV-gzGzoHsz',
-		appKey: 'xV6aDHKSkLfP7u0cBRIzpmcy',
-		avatar: 'monsterid',
-		pageSize: 10,
-		recordIp: true,
-		placeholder: '不要吝啬你的评论~',
-		visitor: true,
-	});
-</script>
-
-        
-
-        <div class="site-footer gt-c-content-color-first">
-    <div class="slogan gt-c-content-color-first">欢迎来到我的小窝~这里不仅有博客，也有日记。</div>
-    <div class="social-container">
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-    </div>
-    <div class="footer-info">
-        Powered by <a href="https://github.com/getgridea/gridea" target="_blank">wuranxu's blog</a>
-    </div>
-    <div>
-        Theme by <a href="https://imhanjie.com/" target="_blank">imhanjie</a>, Powered by <a
-                href="https://github.com/getgridea/gridea" target="_blank">Gridea | <a href="https://wuranxu.github.io/atom.xml" target="_blank">RSS</a></a>
-    </div>
+      <div class="site-footer">
+  <div class="slogan">欢迎来到我的小窝~这里不仅有博客，也有日记。</div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">wuranxu's blog</a> | <a class="rss" href="https://wuranxu.github.io/atom.xml" target="_blank">RSS</a>
 </div>
 
-<script>
-  hljs.initHighlightingOnLoad()
-</script>
 
     </div>
-</div>
-</body>
+    <script type="application/javascript">
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+  </body>
 </html>
