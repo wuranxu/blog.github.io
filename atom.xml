@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://wuranxu.github.io</id>
+    <id>https://woodywrx.gitee.io/blog/</id>
     <title>小克的blog</title>
-    <updated>2021-03-06T07:52:40.776Z</updated>
+    <updated>2021-03-06T07:53:58.908Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="https://wuranxu.github.io"/>
-    <link rel="self" href="https://wuranxu.github.io/atom.xml"/>
+    <link rel="alternate" href="https://woodywrx.gitee.io/blog/"/>
+    <link rel="self" href="https://woodywrx.gitee.io/blog/atom.xml"/>
     <subtitle>欢迎来到我的小窝~这里不仅有博客，也有日记。</subtitle>
-    <logo>https://wuranxu.github.io/images/avatar.png</logo>
-    <icon>https://wuranxu.github.io/favicon.ico</icon>
+    <logo>https://woodywrx.gitee.io/blog/images/avatar.png</logo>
+    <icon>https://woodywrx.gitee.io/blog/favicon.ico</icon>
     <rights>All rights reserved 2021, 小克的blog</rights>
     <entry>
         <title type="html"><![CDATA[每日一题20210306（503. 下一个更大元素 II）]]></title>
-        <id>https://wuranxu.github.io/post/mei-ri-yi-ti-20210306503-xia-yi-ge-geng-da-yuan-su-ii/</id>
-        <link href="https://wuranxu.github.io/post/mei-ri-yi-ti-20210306503-xia-yi-ge-geng-da-yuan-su-ii/">
+        <id>https://woodywrx.gitee.io/blog/post/mei-ri-yi-ti-20210306503-xia-yi-ge-geng-da-yuan-su-ii/</id>
+        <link href="https://woodywrx.gitee.io/blog/post/mei-ri-yi-ti-20210306503-xia-yi-ge-geng-da-yuan-su-ii/">
         </link>
         <updated>2021-03-06T05:13:20.000Z</updated>
         <content type="html"><![CDATA[<section id="nice" data-tool="mdnice编辑器" data-website="https://www.mdnice.com" style="padding: 0 10px; word-spacing: 0px; word-wrap: break-word; text-align: left; font-family: Optima-Regular, Optima, PingFangSC-light, PingFangTC-light, 'PingFang SC', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; line-height: 1.6; letter-spacing: .034em; color: rgb(63, 63, 63); font-size: 16px; word-break: all;"><h3 data-tool="mdnice编辑器" style="margin-bottom: 15px; padding: 0px; font-weight: bold; color: black; font-size: 20px; margin-top: 1.2em;"><span style="background-image: url(https://files.mdnice.com/koala-3.png); background-size: 100% 100%; background-repeat: no-repeat; display: inline-block; width: 16px; height: 15px; line-height: 15px; margin-bottom: -1px;"></span><span class="prefix" style="display: none;"></span><span class="content" style="font-size: 17px; font-weight: bold; display: inline-block; margin-left: 8px; color: #48b378;">503. 下一个更大元素 II</span><span class="suffix" style="display: none;"></span></h3>
@@ -39,8 +39,8 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[每日一题20210305判断能否形成等差数列]]></title>
-        <id>https://wuranxu.github.io/post/mei-ri-yi-ti-20210305-pan-duan-neng-fou-xing-cheng-deng-chai-shu-lie/</id>
-        <link href="https://wuranxu.github.io/post/mei-ri-yi-ti-20210305-pan-duan-neng-fou-xing-cheng-deng-chai-shu-lie/">
+        <id>https://woodywrx.gitee.io/blog/post/mei-ri-yi-ti-20210305-pan-duan-neng-fou-xing-cheng-deng-chai-shu-lie/</id>
+        <link href="https://woodywrx.gitee.io/blog/post/mei-ri-yi-ti-20210305-pan-duan-neng-fou-xing-cheng-deng-chai-shu-lie/">
         </link>
         <updated>2021-03-06T05:12:19.000Z</updated>
         <content type="html"><![CDATA[<section id="nice" data-tool="mdnice编辑器" data-website="https://www.mdnice.com" style="padding: 0 10px; word-spacing: 0px; word-wrap: break-word; text-align: left; font-family: Optima-Regular, Optima, PingFangSC-light, PingFangTC-light, 'PingFang SC', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; line-height: 1.6; letter-spacing: .034em; color: rgb(63, 63, 63); font-size: 16px; word-break: all;"><h2 data-tool="mdnice编辑器" style="padding: 0px; font-weight: bold; color: black; font-size: 22px; display: block; text-align: center; background-image: url(https://files.mdnice.com/koala-2.png); background-position: center center; background-repeat: no-repeat; background-attachment: initial; background-origin: initial; background-clip: initial; background-size: 50px; margin-top: 1em; margin-bottom: 10px;"><span class="prefix" style="display: none;"></span><span class="content" style="text-align: center; display: inline-block; height: 38px; line-height: 42px; color: #48b378; background-position: left center; background-repeat: no-repeat; background-attachment: initial; background-origin: initial; background-clip: initial; background-size: 63px; margin-top: 38px; font-size: 18px; margin-bottom: 10px;">1502. 判断能否形成等差数列</span><span class="suffix"></span></h2>
@@ -69,8 +69,8 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[每日一题20201201（237. 删除链表中的节点）]]></title>
-        <id>https://wuranxu.github.io/post/mei-ri-yi-ti-20201201237-shan-chu-lian-biao-zhong-de-jie-dian/</id>
-        <link href="https://wuranxu.github.io/post/mei-ri-yi-ti-20201201237-shan-chu-lian-biao-zhong-de-jie-dian/">
+        <id>https://woodywrx.gitee.io/blog/post/mei-ri-yi-ti-20201201237-shan-chu-lian-biao-zhong-de-jie-dian/</id>
+        <link href="https://woodywrx.gitee.io/blog/post/mei-ri-yi-ti-20201201237-shan-chu-lian-biao-zhong-de-jie-dian/">
         </link>
         <updated>2020-12-01T06:07:45.000Z</updated>
         <content type="html"><![CDATA[<h4 id="237-删除链表中的节点"><a href="https://leetcode-cn.com/problems/delete-node-in-a-linked-list/">237. 删除链表中的节点</a></h4>
@@ -116,8 +116,8 @@ func deleteNode(node *ListNode) {
     </entry>
     <entry>
         <title type="html"><![CDATA[每日一题20201130（面试题 17.16. 按摩师）]]></title>
-        <id>https://wuranxu.github.io/post/mei-ri-yi-ti-20201130mian-shi-ti-1716-an-mo-shi/</id>
-        <link href="https://wuranxu.github.io/post/mei-ri-yi-ti-20201130mian-shi-ti-1716-an-mo-shi/">
+        <id>https://woodywrx.gitee.io/blog/post/mei-ri-yi-ti-20201130mian-shi-ti-1716-an-mo-shi/</id>
+        <link href="https://woodywrx.gitee.io/blog/post/mei-ri-yi-ti-20201130mian-shi-ti-1716-an-mo-shi/">
         </link>
         <updated>2020-11-30T12:07:20.000Z</updated>
         <content type="html"><![CDATA[<h4 id="面试题-1716-按摩师"><a href="https://leetcode-cn.com/problems/the-masseuse-lcci/">面试题 17.16. 按摩师</a></h4>
@@ -177,8 +177,8 @@ func max(a, b int) int {
     </entry>
     <entry>
         <title type="html"><![CDATA[每日一题20201129*（700. 二叉搜索树中的搜索）]]></title>
-        <id>https://wuranxu.github.io/post/mei-ri-yi-ti-20201129700-er-cha-sou-suo-shu-zhong-de-sou-suo/</id>
-        <link href="https://wuranxu.github.io/post/mei-ri-yi-ti-20201129700-er-cha-sou-suo-shu-zhong-de-sou-suo/">
+        <id>https://woodywrx.gitee.io/blog/post/mei-ri-yi-ti-20201129700-er-cha-sou-suo-shu-zhong-de-sou-suo/</id>
+        <link href="https://woodywrx.gitee.io/blog/post/mei-ri-yi-ti-20201129700-er-cha-sou-suo-shu-zhong-de-sou-suo/">
         </link>
         <updated>2020-11-30T12:06:48.000Z</updated>
         <content type="html"><![CDATA[<h4 id="700-二叉搜索树中的搜索"><a href="https://leetcode-cn.com/problems/search-in-a-binary-search-tree/">700. 二叉搜索树中的搜索</a></h4>
@@ -239,8 +239,8 @@ func searchBST(root *TreeNode, val int) *TreeNode {
     </entry>
     <entry>
         <title type="html"><![CDATA[每日一题20201123（62. 不同路径）]]></title>
-        <id>https://wuranxu.github.io/post/mei-ri-yi-ti-2020112362-bu-tong-lu-jing/</id>
-        <link href="https://wuranxu.github.io/post/mei-ri-yi-ti-2020112362-bu-tong-lu-jing/">
+        <id>https://woodywrx.gitee.io/blog/post/mei-ri-yi-ti-2020112362-bu-tong-lu-jing/</id>
+        <link href="https://woodywrx.gitee.io/blog/post/mei-ri-yi-ti-2020112362-bu-tong-lu-jing/">
         </link>
         <updated>2020-11-30T12:05:53.000Z</updated>
         <content type="html"><![CDATA[<h4 id="62-不同路径"><a href="https://leetcode-cn.com/problems/unique-paths/">62. 不同路径</a></h4>
@@ -274,8 +274,8 @@ f(i, j) = 1  (当i=0或者j=0)  靠边只有1种方案
     </entry>
     <entry>
         <title type="html"><![CDATA[每日一题20201120（147. 对链表进行插入排序）]]></title>
-        <id>https://wuranxu.github.io/post/mei-ri-yi-ti-20201120147-dui-lian-biao-jin-xing-cha-ru-pai-xu/</id>
-        <link href="https://wuranxu.github.io/post/mei-ri-yi-ti-20201120147-dui-lian-biao-jin-xing-cha-ru-pai-xu/">
+        <id>https://woodywrx.gitee.io/blog/post/mei-ri-yi-ti-20201120147-dui-lian-biao-jin-xing-cha-ru-pai-xu/</id>
+        <link href="https://woodywrx.gitee.io/blog/post/mei-ri-yi-ti-20201120147-dui-lian-biao-jin-xing-cha-ru-pai-xu/">
         </link>
         <updated>2020-11-20T06:42:20.000Z</updated>
         <content type="html"><![CDATA[<h4 id="147-对链表进行插入排序"><a href="https://leetcode-cn.com/problems/insertion-sort-list/">147. 对链表进行插入排序</a></h4>
@@ -333,8 +333,8 @@ class Solution:
     </entry>
     <entry>
         <title type="html"><![CDATA[每日一题20201119（283. 移动零）]]></title>
-        <id>https://wuranxu.github.io/post/mei-ri-yi-ti-20201119283-yi-dong-ling/</id>
-        <link href="https://wuranxu.github.io/post/mei-ri-yi-ti-20201119283-yi-dong-ling/">
+        <id>https://woodywrx.gitee.io/blog/post/mei-ri-yi-ti-20201119283-yi-dong-ling/</id>
+        <link href="https://woodywrx.gitee.io/blog/post/mei-ri-yi-ti-20201119283-yi-dong-ling/">
         </link>
         <updated>2020-11-19T02:48:26.000Z</updated>
         <content type="html"><![CDATA[<h4 id="283-移动零"><a href="https://leetcode-cn.com/problems/move-zeroes/">283. 移动零</a></h4>
@@ -367,8 +367,8 @@ class Solution:
     </entry>
     <entry>
         <title type="html"><![CDATA[每日一题20201118（31. 下一个排列）]]></title>
-        <id>https://wuranxu.github.io/post/mei-ri-yi-ti-2020111831-xia-yi-ge-pai-lie/</id>
-        <link href="https://wuranxu.github.io/post/mei-ri-yi-ti-2020111831-xia-yi-ge-pai-lie/">
+        <id>https://woodywrx.gitee.io/blog/post/mei-ri-yi-ti-2020111831-xia-yi-ge-pai-lie/</id>
+        <link href="https://woodywrx.gitee.io/blog/post/mei-ri-yi-ti-2020111831-xia-yi-ge-pai-lie/">
         </link>
         <updated>2020-11-18T06:28:47.000Z</updated>
         <content type="html"><![CDATA[<h4 id="31-下一个排列"><a href="https://leetcode-cn.com/problems/next-permutation/">31. 下一个排列</a></h4>
@@ -427,8 +427,8 @@ class Solution:
     </entry>
     <entry>
         <title type="html"><![CDATA[每日二题20201117（34. 在排序数组中查找元素的第一个和最后一个位置）]]></title>
-        <id>https://wuranxu.github.io/post/mei-ri-er-ti-2020111734-zai-pai-xu-shu-zu-zhong-cha-zhao-yuan-su-de-di-yi-ge-he-zui-hou-yi-ge-wei-zhi/</id>
-        <link href="https://wuranxu.github.io/post/mei-ri-er-ti-2020111734-zai-pai-xu-shu-zu-zhong-cha-zhao-yuan-su-de-di-yi-ge-he-zui-hou-yi-ge-wei-zhi/">
+        <id>https://woodywrx.gitee.io/blog/post/mei-ri-er-ti-2020111734-zai-pai-xu-shu-zu-zhong-cha-zhao-yuan-su-de-di-yi-ge-he-zui-hou-yi-ge-wei-zhi/</id>
+        <link href="https://woodywrx.gitee.io/blog/post/mei-ri-er-ti-2020111734-zai-pai-xu-shu-zu-zhong-cha-zhao-yuan-su-de-di-yi-ge-he-zui-hou-yi-ge-wei-zhi/">
         </link>
         <updated>2020-11-17T07:11:05.000Z</updated>
         <content type="html"><![CDATA[<h4 id="34-在排序数组中查找元素的第一个和最后一个位置"><a href="https://leetcode-cn.com/problems/find-first-and-last-position-of-element-in-sorted-array/">34. 在排序数组中查找元素的第一个和最后一个位置</a></h4>
