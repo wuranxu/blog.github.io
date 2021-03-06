@@ -1,107 +1,102 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8"/>
-<meta name="description" content=""/>
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta charset="utf-8" >
 
 <title>每日一题20210305判断能否形成等差数列 | 小克的blog</title>
 
-<link rel="shortcut icon" href="https://wuranxu.github.io/favicon.ico?v=1615008816908">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
-<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://wuranxu.github.io/favicon.ico?v=1615014970908">
 <link rel="stylesheet" href="https://wuranxu.github.io/styles/main.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css">
-
-<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dockerfile.min.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dart.min.js"></script>
-
-<script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script>
-<!-- DEMO JS -->
-<!--<script src="media/scripts/index.js"></script>-->
 
 
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-178425699-1"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
 
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-
-        gtag('js', new Date());
-        gtag('config', 'UA-178425699-1');
-    </script>
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
+
+    <meta name="description" content="1502. 判断能否形成等差数列
+
+解题思路
+方法一
+首先排序的思路大家都知道了，先排序然后遍历看是否是等差的。
+这也是我的第一反应，但是我觉得这肯定不是最优解。
+方法二
+我们想一下，先遍历，找出最小的2个数字，first和second。
+..."/>
+    <meta name="keywords" content=""/>
 </head>
 <body>
-<div class="main gt-bg-theme-color-first">
-    <nav class="navbar navbar-expand-lg">
-    <div class="navbar-brand">
-        <img class="user-avatar" src="/images/avatar.png" alt="头像">
-        <div class="site-name gt-c-content-color-first">
-            小克的blog
-        </div>
-    </div>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <div class="navbar-nav mr-auto" style="text-align: center">
-            
-                <div class="nav-item">
-                    
-                        <a href="https://wuranxu.github.io" class="menu gt-a-link">
-                            首页
-                        </a>
-                    
-                </div>
-            
-                <div class="nav-item">
-                    
-                        <a href="/tags" class="menu gt-a-link">
-                            标签
-                        </a>
-                    
-                </div>
-            
-                <div class="nav-item">
-                    
-                        <a href="/post/about" class="menu gt-a-link">
-                            关于
-                        </a>
-                    
-                </div>
-            
-        </div>
-        <div style="text-align: center">
-            <form id="gridea-search-form" style="position: relative" data-update="1615008816908" action="/search/index.html">
-                <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
-                <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
-            </form>
-        </div>
-    </div>
-</nav>
 
-    <div class="post-container">
-        <div class="post-detail gt-bg-theme-color-second">
-            <article class="gt-post-content">
-                <h2 class="post-title">
-                    每日一题20210305判断能否形成等差数列
-                </h2>
-                <div class="post-info">
-                    <time class="post-time gt-c-content-color-first">
-                        · 2021-03-06 13:12:19 ·
-                    </time>
-                    
-                </div>
-                <div class="post-content">
+<div id="app" class="main">
+
+    <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://wuranxu.github.io">
+        <img src="https://wuranxu.github.io/images/avatar.png?v=1615014970908" class="site-logo">
+        <h1 class="site-title">小克的blog</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="https://wuranxu.github.io" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      欢迎来到我的小窝~这里不仅有博客，也有日记。
+    </div>
+    <div class="site-footer">
+      wuranxu's blog | <a class="rss" href="https://wuranxu.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+    <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+            <div class="post-detail">
+                <h2 class="post-title">每日一题20210305判断能否形成等差数列</h2>
+                <div class="post-date">2021-03-06 13:12:19</div>
+                
+                <div class="post-content" v-pre>
                     <section id="nice" data-tool="mdnice编辑器" data-website="https://www.mdnice.com" style="padding: 0 10px; word-spacing: 0px; word-wrap: break-word; text-align: left; font-family: Optima-Regular, Optima, PingFangSC-light, PingFangTC-light, 'PingFang SC', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; line-height: 1.6; letter-spacing: .034em; color: rgb(63, 63, 63); font-size: 16px; word-break: all;"><h2 data-tool="mdnice编辑器" style="padding: 0px; font-weight: bold; color: black; font-size: 22px; display: block; text-align: center; background-image: url(https://files.mdnice.com/koala-2.png); background-position: center center; background-repeat: no-repeat; background-attachment: initial; background-origin: initial; background-clip: initial; background-size: 50px; margin-top: 1em; margin-bottom: 10px;"><span class="prefix" style="display: none;"></span><span class="content" style="text-align: center; display: inline-block; height: 38px; line-height: 42px; color: #48b378; background-position: left center; background-repeat: no-repeat; background-attachment: initial; background-origin: initial; background-clip: initial; background-size: 63px; margin-top: 38px; font-size: 18px; margin-bottom: 10px;">1502. 判断能否形成等差数列</span><span class="suffix"></span></h2>
 <figure data-tool="mdnice编辑器" style="margin: 0; margin-top: 10px; margin-bottom: 10px; display: flex; flex-direction: column; justify-content: center; align-items: center;"><img src="https://imgkr2.cn-bj.ufileos.com/a68dd957-fb64-4286-83a1-453741a86bd1.png?UCloudPublicKey=TOKEN_8d8b72be-579a-4e83-bfd0-5f6ce1546f13&amp;Signature=D0MAtuxPydiPwkJBp%252BT%252BWUitQyQ%253D&amp;Expires=1615047867" alt style="display: block; margin: 0 auto; max-width: 100%; border-radius: 4px; margin-bottom: 25px;"></figure>
 <h3 data-tool="mdnice编辑器" style="margin-bottom: 15px; padding: 0px; font-weight: bold; color: black; font-size: 20px; margin-top: 1.2em;"><span style="background-image: url(https://files.mdnice.com/koala-3.png); background-size: 100% 100%; background-repeat: no-repeat; display: inline-block; width: 16px; height: 15px; line-height: 15px; margin-bottom: -1px;"></span><span class="prefix" style="display: none;"></span><span class="content" style="font-size: 17px; font-weight: bold; display: inline-block; margin-left: 8px; color: #48b378;">解题思路</span><span class="suffix" style="display: none;"></span></h3>
@@ -126,87 +121,72 @@
 <figure data-tool="mdnice编辑器" style="margin: 0; margin-top: 10px; margin-bottom: 10px; display: flex; flex-direction: column; justify-content: center; align-items: center;"><img src="https://pic.leetcode-cn.com/1614936535-BgChdD-image.png" alt="image.png" style="display: block; margin: 0 auto; max-width: 100%; border-radius: 4px; margin-bottom: 25px;"><figcaption style="margin-top: 5px; text-align: center; color: #888; display: block; font-size: 12px; font-family: PingFangSC-Light;">image.png</figcaption></figure>
 </section>
                 </div>
-            </article>
-        </div>
+                
 
-        
-            <div class="next-post">
-                <div class="next gt-c-content-color-first">下一篇</div>
-                <a href="https://wuranxu.github.io/post/mei-ri-yi-ti-20201201237-shan-chu-lian-biao-zhong-de-jie-dian/" class="post-title gt-a-link">
-                    每日一题20201201（237. 删除链表中的节点）
-                </a>
-            </div>
-        
-
-        
-            <span id="/post/" class="leancloud_visitors" data-flag-title="每日一题20210305判断能否形成等差数列">
+                
+                    <div class="next-post">
+                        <div class="next">下一篇</div>
+                        <a href="https://wuranxu.github.io/post/mei-ri-yi-ti-20201201237-shan-chu-lian-biao-zhong-de-jie-dian/">
+                            <h3 class="post-title">
+                                每日一题20201201（237. 删除链表中的节点）
+                            </h3>
+                        </a>
+                    </div>
+                
+                
+                    <span id="/post/mei-ri-yi-ti-20210305-pan-duan-neng-fou-xing-cheng-deng-chai-shu-lie/"
+                          class="leancloud_visitors" data-flag-title="每日一题20210305判断能否形成等差数列">
                 <em class="post-meta-item-text">阅读量 </em>
                 <i class="leancloud-visitors-count">0</i>
             </span>
-        
-
-        
-
-        
-            <script src='https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js'></script>
-
-<style>
-	div#vcomments{
-		width:100%;
-		max-width: 1000px;
-		padding: 2.5%
-	}
-</style>
+                
+                
+                    <script src='https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js'></script>
 
 
-	<div id="vcomments"></div>
+	<div id="vcomments" style="width: 100%;max-width:1000%;padding:2.5%"></div>
 
-<script>
-	new Valine({
-		el: '#vcomments',
-		appId: 'fT8wvEVNtx1cOcCQEs7rVwnV-gzGzoHsz',
-		appKey: 'xV6aDHKSkLfP7u0cBRIzpmcy',
-		avatar: 'monsterid',
-		pageSize: 10,
-		recordIp: true,
-		placeholder: '不要吝啬你的评论~',
-		visitor: true,
-	});
-</script>
 
-        
 
-        <div class="site-footer gt-c-content-color-first">
-    <div class="slogan gt-c-content-color-first">欢迎来到我的小窝~这里不仅有博客，也有日记。</div>
-    <div class="social-container">
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-    </div>
-    <div class="footer-info">
-        wuranxu's blog
-    </div>
-    <div>
-        Theme by <a href="https://imhanjie.com/" target="_blank">imhanjie</a>, Powered by <a
-                href="https://github.com/getgridea/gridea" target="_blank">Gridea | <a href="https://wuranxu.github.io/atom.xml" target="_blank">RSS</a></a>
+                
+
+            </div>
+
+        </div>
     </div>
 </div>
 
-<script>
-  hljs.initHighlightingOnLoad()
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
 </script>
 
-    </div>
-</div>
+
+
+
+
+
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: 'fT8wvEVNtx1cOcCQEs7rVwnV-gzGzoHsz',
+        appKey: 'xV6aDHKSkLfP7u0cBRIzpmcy',
+        avatar: '',
+        pageSize: 5,
+        recordIp: true,
+        placeholder: 'Just Go Go',
+        visitor: true,
+    });
+</script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 </body>
 </html>
