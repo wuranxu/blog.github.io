@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://wuranxu.github.io</id>
     <title>小克的blog</title>
-    <updated>2021-03-05T07:13:44.078Z</updated>
+    <updated>2021-03-06T05:14:02.842Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://wuranxu.github.io"/>
     <link rel="self" href="https://wuranxu.github.io/atom.xml"/>
@@ -10,6 +10,63 @@
     <logo>https://wuranxu.github.io/images/avatar.png</logo>
     <icon>https://wuranxu.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, 小克的blog</rights>
+    <entry>
+        <title type="html"><![CDATA[每日一题20210306（503. 下一个更大元素 II）]]></title>
+        <id>https://wuranxu.github.io/post/mei-ri-yi-ti-20210306503-xia-yi-ge-geng-da-yuan-su-ii/</id>
+        <link href="https://wuranxu.github.io/post/mei-ri-yi-ti-20210306503-xia-yi-ge-geng-da-yuan-su-ii/">
+        </link>
+        <updated>2021-03-06T05:13:20.000Z</updated>
+        <content type="html"><![CDATA[<section id="nice" data-tool="mdnice编辑器" data-website="https://www.mdnice.com" style="padding: 0 10px; word-spacing: 0px; word-wrap: break-word; text-align: left; font-family: Optima-Regular, Optima, PingFangSC-light, PingFangTC-light, 'PingFang SC', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; line-height: 1.6; letter-spacing: .034em; color: rgb(63, 63, 63); font-size: 16px; word-break: all;"><h3 data-tool="mdnice编辑器" style="margin-bottom: 15px; padding: 0px; font-weight: bold; color: black; font-size: 20px; margin-top: 1.2em;"><span style="background-image: url(https://files.mdnice.com/koala-3.png); background-size: 100% 100%; background-repeat: no-repeat; display: inline-block; width: 16px; height: 15px; line-height: 15px; margin-bottom: -1px;"></span><span class="prefix" style="display: none;"></span><span class="content" style="font-size: 17px; font-weight: bold; display: inline-block; margin-left: 8px; color: #48b378;">503. 下一个更大元素 II</span><span class="suffix" style="display: none;"></span></h3>
+<figure data-tool="mdnice编辑器" style="margin: 0; margin-top: 10px; margin-bottom: 10px; display: flex; flex-direction: column; justify-content: center; align-items: center;"><img src="https://imgkr2.cn-bj.ufileos.com/689ca3ac-9a83-479d-9545-bc28a4a4a314.png?UCloudPublicKey=TOKEN_8d8b72be-579a-4e83-bfd0-5f6ce1546f13&amp;Signature=ej%252BI56rLNdPfmC0WfMlvknJ65HM%253D&amp;Expires=1615090822" alt style="display: block; margin: 0 auto; max-width: 100%; border-radius: 4px; margin-bottom: 25px;"></figure>
+<h3 data-tool="mdnice编辑器" style="margin-bottom: 15px; padding: 0px; font-weight: bold; color: black; font-size: 20px; margin-top: 1.2em;"><span style="background-image: url(https://files.mdnice.com/koala-3.png); background-size: 100% 100%; background-repeat: no-repeat; display: inline-block; width: 16px; height: 15px; line-height: 15px; margin-bottom: -1px;"></span><span class="prefix" style="display: none;"></span><span class="content" style="font-size: 17px; font-weight: bold; display: inline-block; margin-left: 8px; color: #48b378;">想法</span><span class="suffix" style="display: none;"></span></h3>
+<p data-tool="mdnice编辑器" style="font-size: 16px; padding-bottom: 8px; margin: 0; padding-top: 1em; color: rgb(74,74,74); line-height: 1.75em;">首先和大部分人想的一样，第一反应也是想着用暴力法，复杂度是O(n²)</p>
+<p data-tool="mdnice编辑器" style="font-size: 16px; padding-bottom: 8px; margin: 0; padding-top: 1em; color: rgb(74,74,74); line-height: 1.75em;">所以我坐在公交车🚌开始想新的解法，但也只能想出稍微优化的解法，比如[2, 1, 1, 3] 如果找到2的下一个最大值，那么后面的1也不需要继续找了，因为他们比2还小，所以他们的下一个最大值也是8。</p>
+<p data-tool="mdnice编辑器" style="font-size: 16px; padding-bottom: 8px; margin: 0; padding-top: 1em; color: rgb(74,74,74); line-height: 1.75em;">想到这里我的思路也就戛然而止了~</p>
+<h3 data-tool="mdnice编辑器" style="margin-bottom: 15px; padding: 0px; font-weight: bold; color: black; font-size: 20px; margin-top: 1.2em;"><span style="background-image: url(https://files.mdnice.com/koala-3.png); background-size: 100% 100%; background-repeat: no-repeat; display: inline-block; width: 16px; height: 15px; line-height: 15px; margin-bottom: -1px;"></span><span class="prefix" style="display: none;"></span><span class="content" style="font-size: 17px; font-weight: bold; display: inline-block; margin-left: 8px; color: #48b378;">思路</span><span class="suffix" style="display: none;"></span></h3>
+<p data-tool="mdnice编辑器" style="font-size: 16px; padding-bottom: 8px; margin: 0; padding-top: 1em; color: rgb(74,74,74); line-height: 1.75em;">这种情况下，我们可以使用单调栈来解决问题。我们用一个栈去记录数组元素的下标（因为下标记住了，所以等于记住了这个下标元素的值）</p>
+<ul data-tool="mdnice编辑器" style="margin-top: 8px; margin-bottom: 8px; padding-left: 25px; color: black; list-style-type: disc;">
+<li><section style="margin-top: 5px; margin-bottom: 5px; line-height: 26px; text-align: left; color: rgb(1,1,1); font-weight: 500;">当栈为空的时候，我们把下标直接压入栈。</section></li><li><section style="margin-top: 5px; margin-bottom: 5px; line-height: 26px; text-align: left; color: rgb(1,1,1); font-weight: 500;">当栈不为空的时候，我们和栈的顶部元素进行对比:
+<ul style="margin-top: 8px; margin-bottom: 8px; padding-left: 25px; color: black; list-style-type: square;">
+<li><section style="margin-top: 5px; margin-bottom: 5px; line-height: 26px; text-align: left; color: rgb(1,1,1); font-weight: 500;">如果当前元素比顶部元素小，那么直接入栈</section></li><li><section style="margin-top: 5px; margin-bottom: 5px; line-height: 26px; text-align: left; color: rgb(1,1,1); font-weight: 500;">如果当前元素大于顶部元素，顶部元素出栈，直到顶部元素比当前元素大为止</section></li></ul>
+</section></li></ul>
+<h4 data-tool="mdnice编辑器" style="margin-bottom: 15px; padding: 0px; font-weight: bold; color: black; font-size: 18px; margin-top: 30px;"><span class="prefix" style="display: none;"></span><span class="content">这样做的目的是为了保证栈是大的在上面，小的在下面，在找到比顶部元素大的数字的时候，就是顶部元素的下一个更大元素</span><span class="suffix" style="display: none;"></span></h4>
+<h3 data-tool="mdnice编辑器" style="margin-bottom: 15px; padding: 0px; font-weight: bold; color: black; font-size: 20px; margin-top: 1.2em;"><span style="background-image: url(https://files.mdnice.com/koala-3.png); background-size: 100% 100%; background-repeat: no-repeat; display: inline-block; width: 16px; height: 15px; line-height: 15px; margin-bottom: -1px;"></span><span class="prefix" style="display: none;"></span><span class="content" style="font-size: 17px; font-weight: bold; display: inline-block; margin-left: 8px; color: #48b378;">注意点</span><span class="suffix" style="display: none;"></span></h3>
+<p data-tool="mdnice编辑器" style="font-size: 16px; padding-bottom: 8px; margin: 0; padding-top: 1em; color: rgb(74,74,74); line-height: 1.75em;">这里存在末尾元素，所以需要遍历数组2次，我们遍历的索引从0-2n即可，可以通过取余获取到当前元素的真实索引。</p>
+<pre class="custom" data-tool="mdnice编辑器" style="margin-top: 10px; margin-bottom: 10px; border-radius: 5px; box-shadow: rgba(0, 0, 0, 0.55) 0px 2px 10px;"><span style="display: block; background: url(https://files.mdnice.com/point.png); height: 30px; width: 100%; background-size: 40px; background-repeat: no-repeat; background-color: #282c34; margin-bottom: -7px; border-radius: 5px; background-position: 10px 10px;"></span><code class="hljs" style="overflow-x: auto; padding: 16px; color: #abb2bf; display: -webkit-box; font-family: Operator Mono, Consolas, Monaco, Menlo, monospace; font-size: 12px; -webkit-overflow-scrolling: touch; padding-top: 15px; background: #282c34; border-radius: 5px;"><span class="hljs-class" style="line-height: 26px;"><span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">class</span>&nbsp;<span class="hljs-title" style="color: #e6c07b; line-height: 26px;">Solution</span>:</span><br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-function" style="line-height: 26px;"><span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">def</span>&nbsp;<span class="hljs-title" style="color: #61aeee; line-height: 26px;">nextGreaterElements</span><span class="hljs-params" style="line-height: 26px;">(self,&nbsp;nums:&nbsp;List[int])</span>&nbsp;-&gt;&nbsp;List[int]:</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;n&nbsp;=&nbsp;len(nums)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;result&nbsp;=&nbsp;[<span class="hljs-number" style="color: #d19a66; line-height: 26px;">-1</span>]&nbsp;*&nbsp;n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stack&nbsp;=&nbsp;[]<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-comment" style="color: #5c6370; font-style: italic; line-height: 26px;">#&nbsp;最底下最大</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">for</span>&nbsp;i&nbsp;<span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">in</span>&nbsp;range(<span class="hljs-number" style="color: #d19a66; line-height: 26px;">2</span>&nbsp;*&nbsp;n):<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-comment" style="color: #5c6370; font-style: italic; line-height: 26px;">#&nbsp;注意i&nbsp;%&nbsp;n是当前数字的真实索引,&nbsp;因为这里采用了遍历2倍数组长度的做法</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-comment" style="color: #5c6370; font-style: italic; line-height: 26px;">#&nbsp;当栈不为空，且当前元素比顶部元素大,&nbsp;则顶部元素要出栈，因为要保证栈单调递减</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">while</span>&nbsp;len(stack)&nbsp;&gt;&nbsp;<span class="hljs-number" style="color: #d19a66; line-height: 26px;">0</span>&nbsp;<span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">and</span>&nbsp;nums[i%n]&nbsp;&gt;&nbsp;nums[stack[<span class="hljs-number" style="color: #d19a66; line-height: 26px;">-1</span>]]:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-comment" style="color: #5c6370; font-style: italic; line-height: 26px;">#&nbsp;stack.pop()让顶部元素出栈，并且返回顶部元素的索引，当前元素&gt;顶部元素，所以赋值给result[顶部元素]</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;result[stack.pop()]&nbsp;=&nbsp;nums[i%n]<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stack.append(i%n)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">return</span>&nbsp;result<br><br></code></pre>
+<h3 data-tool="mdnice编辑器" style="margin-bottom: 15px; padding: 0px; font-weight: bold; color: black; font-size: 20px; margin-top: 1.2em;"><span style="background-image: url(https://files.mdnice.com/koala-3.png); background-size: 100% 100%; background-repeat: no-repeat; display: inline-block; width: 16px; height: 15px; line-height: 15px; margin-bottom: -1px;"></span><span class="prefix" style="display: none;"></span><span class="content" style="font-size: 17px; font-weight: bold; display: inline-block; margin-left: 8px; color: #48b378;">参考题解</span><span class="suffix" style="display: none;"></span></h3>
+<p data-tool="mdnice编辑器" style="font-size: 16px; padding-bottom: 8px; margin: 0; padding-top: 1em; color: rgb(74,74,74); line-height: 1.75em;"><a href="https://leetcode-cn.com/problems/next-greater-element-ii/solution/dong-hua-jiang-jie-dan-diao-zhan-by-fuxu-4z2g/" style="word-wrap: break-word; font-weight: bold; color: #48b378; text-decoration: none; border-bottom: 1px solid #48b378;">leetcode动画题解</a></p>
+</section>]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[每日一题20210305判断能否形成等差数列]]></title>
+        <id>https://wuranxu.github.io/post/mei-ri-yi-ti-20210305-pan-duan-neng-fou-xing-cheng-deng-chai-shu-lie/</id>
+        <link href="https://wuranxu.github.io/post/mei-ri-yi-ti-20210305-pan-duan-neng-fou-xing-cheng-deng-chai-shu-lie/">
+        </link>
+        <updated>2021-03-06T05:12:19.000Z</updated>
+        <content type="html"><![CDATA[<section id="nice" data-tool="mdnice编辑器" data-website="https://www.mdnice.com" style="padding: 0 10px; word-spacing: 0px; word-wrap: break-word; text-align: left; font-family: Optima-Regular, Optima, PingFangSC-light, PingFangTC-light, 'PingFang SC', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; line-height: 1.6; letter-spacing: .034em; color: rgb(63, 63, 63); font-size: 16px; word-break: all;"><h2 data-tool="mdnice编辑器" style="padding: 0px; font-weight: bold; color: black; font-size: 22px; display: block; text-align: center; background-image: url(https://files.mdnice.com/koala-2.png); background-position: center center; background-repeat: no-repeat; background-attachment: initial; background-origin: initial; background-clip: initial; background-size: 50px; margin-top: 1em; margin-bottom: 10px;"><span class="prefix" style="display: none;"></span><span class="content" style="text-align: center; display: inline-block; height: 38px; line-height: 42px; color: #48b378; background-position: left center; background-repeat: no-repeat; background-attachment: initial; background-origin: initial; background-clip: initial; background-size: 63px; margin-top: 38px; font-size: 18px; margin-bottom: 10px;">1502. 判断能否形成等差数列</span><span class="suffix"></span></h2>
+<figure data-tool="mdnice编辑器" style="margin: 0; margin-top: 10px; margin-bottom: 10px; display: flex; flex-direction: column; justify-content: center; align-items: center;"><img src="https://imgkr2.cn-bj.ufileos.com/a68dd957-fb64-4286-83a1-453741a86bd1.png?UCloudPublicKey=TOKEN_8d8b72be-579a-4e83-bfd0-5f6ce1546f13&amp;Signature=D0MAtuxPydiPwkJBp%252BT%252BWUitQyQ%253D&amp;Expires=1615047867" alt style="display: block; margin: 0 auto; max-width: 100%; border-radius: 4px; margin-bottom: 25px;"></figure>
+<h3 data-tool="mdnice编辑器" style="margin-bottom: 15px; padding: 0px; font-weight: bold; color: black; font-size: 20px; margin-top: 1.2em;"><span style="background-image: url(https://files.mdnice.com/koala-3.png); background-size: 100% 100%; background-repeat: no-repeat; display: inline-block; width: 16px; height: 15px; line-height: 15px; margin-bottom: -1px;"></span><span class="prefix" style="display: none;"></span><span class="content" style="font-size: 17px; font-weight: bold; display: inline-block; margin-left: 8px; color: #48b378;">解题思路</span><span class="suffix" style="display: none;"></span></h3>
+<h4 data-tool="mdnice编辑器" style="margin-bottom: 15px; padding: 0px; font-weight: bold; color: black; font-size: 18px; margin-top: 30px;"><span class="prefix" style="display: none;"></span><span class="content">方法一</span><span class="suffix" style="display: none;"></span></h4>
+<p data-tool="mdnice编辑器" style="font-size: 16px; padding-bottom: 8px; margin: 0; padding-top: 1em; color: rgb(74,74,74); line-height: 1.75em;">首先排序的思路大家都知道了，先排序然后遍历看是否是等差的。</p>
+<p data-tool="mdnice编辑器" style="font-size: 16px; padding-bottom: 8px; margin: 0; padding-top: 1em; color: rgb(74,74,74); line-height: 1.75em;">这也是我的第一反应，但是我觉得这肯定不是最优解。</p>
+<h4 data-tool="mdnice编辑器" style="margin-bottom: 15px; padding: 0px; font-weight: bold; color: black; font-size: 18px; margin-top: 30px;"><span class="prefix" style="display: none;"></span><span class="content">方法二</span><span class="suffix" style="display: none;"></span></h4>
+<p data-tool="mdnice编辑器" style="font-size: 16px; padding-bottom: 8px; margin: 0; padding-top: 1em; color: rgb(74,74,74); line-height: 1.75em;">我们想一下，先遍历，找出最小的2个数字，first和second。
+先假设他是等差数列，那么他们之间的差sub，通过一次遍历就可以拿到了。</p>
+<p data-tool="mdnice编辑器" style="font-size: 16px; padding-bottom: 8px; margin: 0; padding-top: 1em; color: rgb(74,74,74); line-height: 1.75em;">然后在第一次遍历的时候，我们可以把所有数字都存放到Map或者Set之中。</p>
+<p data-tool="mdnice编辑器" style="font-size: 16px; padding-bottom: 8px; margin: 0; padding-top: 1em; color: rgb(74,74,74); line-height: 1.75em;">然后开始第二次遍历，通过sub可以计算出等差数列的第三个数，
+判断它在不在刚才的Map/Set中即可，如果不在，直接return False, 最后return True</p>
+<h4 data-tool="mdnice编辑器" style="margin-bottom: 15px; padding: 0px; font-weight: bold; color: black; font-size: 18px; margin-top: 30px;"><span class="prefix" style="display: none;"></span><span class="content">注意点</span><span class="suffix" style="display: none;"></span></h4>
+<p data-tool="mdnice编辑器" style="font-size: 16px; padding-bottom: 8px; margin: 0; padding-top: 1em; color: rgb(74,74,74); line-height: 1.75em;">还有2个地方需要注意:</p>
+<ul data-tool="mdnice编辑器" style="margin-top: 8px; margin-bottom: 8px; padding-left: 25px; color: black; list-style-type: disc;">
+<li><section style="margin-top: 5px; margin-bottom: 5px; line-height: 26px; text-align: left; color: rgb(1,1,1); font-weight: 500;"><p style="font-size: 16px; padding-bottom: 8px; margin: 0; padding-top: 1em; color: rgb(74,74,74); line-height: 1.75em;">如果求出来的sub是0该怎么办，很简单，是0的话如果它是等差数列，那么set的长度不会超过1</p>
+</section></li><li><section style="margin-top: 5px; margin-bottom: 5px; line-height: 26px; text-align: left; color: rgb(1,1,1); font-weight: 500;"><p style="font-size: 16px; padding-bottom: 8px; margin: 0; padding-top: 1em; color: rgb(74,74,74); line-height: 1.75em;">如果数字有重复怎么办，很简单，有重复的话，会走到not in set逻辑导致直接return False</p>
+<p style="font-size: 16px; padding-bottom: 8px; margin: 0; padding-top: 1em; color: rgb(74,74,74); line-height: 1.75em;">有的同学可能觉得not in set是O(n)的操作，这里不做解释(其实不知道怎么解释好)~</p>
+</section></li></ul>
+<h3 data-tool="mdnice编辑器" style="margin-bottom: 15px; padding: 0px; font-weight: bold; color: black; font-size: 20px; margin-top: 1.2em;"><span style="background-image: url(https://files.mdnice.com/koala-3.png); background-size: 100% 100%; background-repeat: no-repeat; display: inline-block; width: 16px; height: 15px; line-height: 15px; margin-bottom: -1px;"></span><span class="prefix" style="display: none;"></span><span class="content" style="font-size: 17px; font-weight: bold; display: inline-block; margin-left: 8px; color: #48b378;">代码</span><span class="suffix" style="display: none;"></span></h3>
+<pre class="custom" data-tool="mdnice编辑器" style="margin-top: 10px; margin-bottom: 10px; border-radius: 5px; box-shadow: rgba(0, 0, 0, 0.55) 0px 2px 10px;"><span style="display: block; background: url(https://files.mdnice.com/point.png); height: 30px; width: 100%; background-size: 40px; background-repeat: no-repeat; background-color: #282c34; margin-bottom: -7px; border-radius: 5px; background-position: 10px 10px;"></span><code class="hljs" style="overflow-x: auto; padding: 16px; color: #abb2bf; display: -webkit-box; font-family: Operator Mono, Consolas, Monaco, Menlo, monospace; font-size: 12px; -webkit-overflow-scrolling: touch; padding-top: 15px; background: #282c34; border-radius: 5px;"><span class="hljs-class" style="line-height: 26px;"><span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">class</span>&nbsp;<span class="hljs-title" style="color: #e6c07b; line-height: 26px;">Solution</span>:</span><br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-function" style="line-height: 26px;"><span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">def</span>&nbsp;<span class="hljs-title" style="color: #61aeee; line-height: 26px;">canMakeArithmeticProgression</span><span class="hljs-params" style="line-height: 26px;">(self,&nbsp;arr:&nbsp;List[int])</span>&nbsp;-&gt;&nbsp;bool:</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nums&nbsp;=&nbsp;set()<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;first,&nbsp;second&nbsp;=&nbsp;float(<span class="hljs-string" style="color: #98c379; line-height: 26px;">"inf"</span>),&nbsp;float(<span class="hljs-string" style="color: #98c379; line-height: 26px;">"inf"</span>)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">for</span>&nbsp;n&nbsp;<span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">in</span>&nbsp;arr:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">if</span>&nbsp;n&nbsp;&lt;&nbsp;second:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">if</span>&nbsp;n&nbsp;&lt;&nbsp;first:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;second&nbsp;=&nbsp;first<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;first&nbsp;=&nbsp;n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">else</span>:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;second&nbsp;=&nbsp;n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nums.add(n)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sub&nbsp;=&nbsp;second&nbsp;-&nbsp;first<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">if</span>&nbsp;sub&nbsp;==&nbsp;<span class="hljs-number" style="color: #d19a66; line-height: 26px;">0</span>&nbsp;<span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">and</span>&nbsp;len(nums)&gt;<span class="hljs-number" style="color: #d19a66; line-height: 26px;">1</span>:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">return</span>&nbsp;<span class="hljs-literal" style="color: #56b6c2; line-height: 26px;">False</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">for</span>&nbsp;i&nbsp;<span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">in</span>&nbsp;range(len(arr)):<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">if</span>&nbsp;first&nbsp;+&nbsp;sub&nbsp;*&nbsp;i&nbsp;<span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">not</span>&nbsp;<span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">in</span>&nbsp;nums:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">return</span>&nbsp;<span class="hljs-literal" style="color: #56b6c2; line-height: 26px;">False</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">return</span>&nbsp;<span class="hljs-literal" style="color: #56b6c2; line-height: 26px;">True</span><br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br></code></pre>
+<figure data-tool="mdnice编辑器" style="margin: 0; margin-top: 10px; margin-bottom: 10px; display: flex; flex-direction: column; justify-content: center; align-items: center;"><img src="https://pic.leetcode-cn.com/1614936535-BgChdD-image.png" alt="image.png" style="display: block; margin: 0 auto; max-width: 100%; border-radius: 4px; margin-bottom: 25px;"><figcaption style="margin-top: 5px; text-align: center; color: #888; display: block; font-size: 12px; font-family: PingFangSC-Light;">image.png</figcaption></figure>
+</section>]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[每日一题20201201（237. 删除链表中的节点）]]></title>
         <id>https://wuranxu.github.io/post/mei-ri-yi-ti-20201201237-shan-chu-lian-biao-zhong-de-jie-dian/</id>
@@ -416,112 +473,6 @@ class Solution:
 
 </code></pre>
 <figure data-type="image" tabindex="2"><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gks6sfywz0j30xy0eg75t.jpg" alt="image-20201117151000953" loading="lazy"></figure>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[每日一题20201117（221. 最大正方形）]]></title>
-        <id>https://wuranxu.github.io/post/mei-ri-yi-ti-20201117221-zui-da-zheng-fang-xing/</id>
-        <link href="https://wuranxu.github.io/post/mei-ri-yi-ti-20201117221-zui-da-zheng-fang-xing/">
-        </link>
-        <updated>2020-11-17T03:31:25.000Z</updated>
-        <content type="html"><![CDATA[<h4 id="221-最大正方形"><a href="https://leetcode-cn.com/problems/maximal-square/">221. 最大正方形</a></h4>
-<figure data-type="image" tabindex="1"><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gkrzqo43nvj30yy0oatb4.jpg" alt="image-20201117110606881" loading="lazy"></figure>
-<h3 id="动态规划">动态规划</h3>
-<pre><code>求的是最大面积，可以转换为求最大边长。
-
-创建一个二维数组dp
-
-dp是以i, j坐标为右下角的正方形的最大边长。
-
-状态转移方程式：
-
-matrix[i][j] == &quot;1&quot;的时候:
-f(i, j) = min(f(i-1, j), f(i, j-1), f(i-1, j-1)) + 1 
-
-matrix[i][j] == &quot;0&quot;的时候，以这个位置为边的长度肯定为0：
-
- f(i, j) = 0
-</code></pre>
-<pre><code class="language-Python">class Solution:
-    def maximalSquare(self, matrix: List[List[str]]) -&gt; int:
-        # 判断数组是否为空
-        if len(matrix) == 0 or len(matrix[0]) == 0:
-            return 0
-        dp = [[0 for _ in n] for n in matrix]
-        # 定义最大边长
-        max_len = 0
-        for i in range(len(matrix)):
-            for j in range(len(matrix[i])):
-                # 如果i = 0 或者 j = 0 他们是靠边的，所以最多只能以他们本身为边
-                if i == 0 or j == 0:
-                    dp[i][j] = int(matrix[i][j])
-                    if dp[i][j] &gt; max_len:
-                        max_len = dp[i][j]
-                    continue
-                if matrix[i][j] == '0':
-                    dp[i][j] = 0
-                else:
-                    # 找到3个之中最小的+1，因为已经确定matrix[i][j]不为'0'
-                    dp[i][j] = min(dp[i-1][j], dp[i][j-1], dp[i-1][j-1]) + 1
-                    if dp[i][j] &gt; max_len:
-                        max_len = dp[i][j]
-        return max_len * max_len
-
-</code></pre>
-<hr>
-<p><strong>需要注意的是，matrix里面的元素都是字符串不是int</strong></p>
-<figure data-type="image" tabindex="2"><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gkrzpe79huj30ye0eita8.jpg" alt="image-20201117110450683" loading="lazy"></figure>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[每日一题20201115（55. 跳跃游戏）]]></title>
-        <id>https://wuranxu.github.io/post/mei-ri-yi-ti-2020111555-tiao-yue-you-xi/</id>
-        <link href="https://wuranxu.github.io/post/mei-ri-yi-ti-2020111555-tiao-yue-you-xi/">
-        </link>
-        <updated>2020-11-16T09:27:35.000Z</updated>
-        <content type="html"><![CDATA[<h4 id="55-跳跃游戏"><a href="https://leetcode-cn.com/problems/jump-game/">55. 跳跃游戏</a></h4>
-<figure data-type="image" tabindex="1"><img src="https://i.loli.net/2020/11/16/GQCFVayXdAuWOfB.png" alt="image.png" loading="lazy"></figure>
-<h3 id="方法一-贪心算法">方法一: 贪心算法</h3>
-<pre><code>维护一个能跳到最大距离的变量，遍历数组，每次更新这个变量。可以遍历完成后比较这个值与数组的长度-1，也可以每次遍历的时候判断是否大于了数组长度-1，如果是则直接return
-</code></pre>
-<pre><code class="language-Python">class Solution:
-    def canJump(self, nums: List[int]) -&gt; bool:
-        max_distance = 0
-        for i, n in enumerate(nums):
-            # 当i = 0的时候，最大距离肯定为0，i &gt; max_distance是因为第i个索引的位置都跳不到就更不可能跳到最后一个了，这时候跳出循环
-            if i &gt; max_distance and i != 0:
-                break
-            if n + i &gt; max_distance:
-                max_distance = n + i
-        # 最后判断是否大于等于数组长度-1（也就是能达到最后一个元素）
-        return max_distance &gt;= len(nums) - 1
-
-</code></pre>
-<figure data-type="image" tabindex="2"><img src="https://upload-images.jianshu.io/upload_images/6053915-0d39bdabe1cccaef.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png" loading="lazy"></figure>
-<h3 id="方法二-动态规划一开始的思路python直接超时-可以上go">方法二 动态规划（一开始的思路，Python直接超时, 可以上go）</h3>
-<pre><code>思路也很简单，类似于跳台阶，维护一个dp数组，看达到最后一个台阶的方式有多少种，并判断他是否大于0.
-</code></pre>
-<pre><code class="language-go">func canJump(nums []int) bool {
-    if len(nums) == 0 {
-        return false
-    }
-    result := make([]int, len(nums), len(nums))
-    for i, _ := range nums {
-        if i == 0 {
-            result[i] = 1
-            continue
-        }
-        for j:=0; j&lt;i; j++ {
-            if nums[j] &gt;= i-j {
-                result[i] += result[j]
-            }
-        }
-    }
-    return result[len(nums)-1] &gt; 0
-}
-
-</code></pre>
-<figure data-type="image" tabindex="3"><img src="https://i.loli.net/2020/11/16/6FRTiNpX5GsHYvr.png" alt="image.png" loading="lazy"></figure>
 ]]></content>
     </entry>
 </feed>

@@ -8,7 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://wuranxu.github.io/favicon.ico?v=1614928407536">
+<link rel="shortcut icon" href="https://wuranxu.github.io/favicon.ico?v=1615007638366">
 <link rel="stylesheet" href="https://wuranxu.github.io/styles/main.css">
 
 
@@ -28,7 +28,7 @@
   <div class="top-container" data-aos="fade-right">
     <div class="top-header-container">
       <a class="site-title-container" href="https://wuranxu.github.io">
-        <img src="https://wuranxu.github.io/images/avatar.png?v=1614928407536" class="site-logo">
+        <img src="https://wuranxu.github.io/images/avatar.png?v=1615007638366" class="site-logo">
         <h1 class="site-title">小克的blog</h1>
       </a>
       <div class="menu-btn" @click="menuVisible = !menuVisible">
@@ -75,7 +75,7 @@
       欢迎来到我的小窝~这里不仅有博客，也有日记。
     </div>
     <div class="site-footer">
-      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">wuranxu's blog</a> | <a class="rss" href="https://wuranxu.github.io/atom.xml" target="_blank">RSS</a>
+      wuranxu's blog | <a class="rss" href="https://wuranxu.github.io/atom.xml" target="_blank">RSS</a>
     </div>
   </div>
 </div>
@@ -83,6 +83,131 @@
 
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="https://wuranxu.github.io/post/mei-ri-yi-ti-2020110915-san-shu-zhi-he/">
+                  <h2 class="post-title">每日一题20201109（15. 三数之和）</h2>
+                </a>
+                <div class="post-date">
+                  2020-11-09 20:08:27
+                </div>
+                <div class="post-abstract">
+                  
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="https://wuranxu.github.io/post/mei-ri-yi-ti-20201106169-duo-shu-yuan-su/">
+                  <h2 class="post-title">每日一题20201106（169. 多数元素）</h2>
+                </a>
+                <div class="post-date">
+                  2020-11-06 11:23:00
+                </div>
+                <div class="post-abstract">
+                  
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="https://wuranxu.github.io/post/mei-ri-yi-ti-20201105771-bao-shi-yu-shi-tou/">
+                  <h2 class="post-title">每日一题20201105（771. 宝石与石头）</h2>
+                </a>
+                <div class="post-date">
+                  2020-11-05 20:25:39
+                </div>
+                <div class="post-abstract">
+                  
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="https://wuranxu.github.io/post/mei-ri-yi-ti-2020110457-cha-ru-qu-jian/">
+                  <h2 class="post-title">每日一题20201104（57. 插入区间）</h2>
+                </a>
+                <div class="post-date">
+                  2020-11-04 17:37:52
+                </div>
+                <div class="post-abstract">
+                  
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="https://wuranxu.github.io/post/mei-ri-yi-ti-zhi-20201103941-you-xiao-de-shan-mai-shu-zu/">
+                  <h2 class="post-title">每日一题之20201103（941. 有效的山脉数组）</h2>
+                </a>
+                <div class="post-date">
+                  2020-11-03 10:59:27
+                </div>
+                <div class="post-abstract">
+                  
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="https://wuranxu.github.io/post/mei-ri-yi-ti-zhi-20201102349-liang-ge-shu-zu-de-jiao-ji/">
+                  <h2 class="post-title">每日一题之20201102（349. 两个数组的交集）</h2>
+                </a>
+                <div class="post-date">
+                  2020-11-02 20:05:18
+                </div>
+                <div class="post-abstract">
+                  <p>空间换时间，hash表2次遍历(Python)</p>
+<ul>
+<li>
+<p>潇洒解法:</p>
+<p>利用Python的set数据结构，完成交集操作</p>
+</li>
+</ul>
+<pre><code class="language-Python">class Solution:
+    def intersection(self, nums1: List[int], nums2: List[int]) -&gt; List[int]:
+        return list(set(nums1) &amp; set(nums2))
+
+</code></pre>
+<figure data-type="image" tabindex="1"><img src="https://upload-images.jianshu.io/upload_images/6053915-650c186e46412d86.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="11.jpg" loading="lazy"></figure>
+<ul>
+<li>
+<p>啰嗦解法（但很快）</p>
+<p>先建立一个dict，遍历数组1，然后将数组里面的值都放到temp里面，由于dict本身不能有重复的key，相当于天然过滤掉了重复的数据此步骤约等于set(nums1)</p>
+<p>接着就是取并集，遍历数组2，如果数组2的元素在temp里面出现，则添加到result数组中。</p>
+<p><strong>但是这里要注意的是，result可能重复添加</strong></p>
+<p>所以我们在添加一个数字到result以后，将temp里面该数字对应的value改成False，以防重复添加。</p>
+</li>
+</ul>
+<figure data-type="image" tabindex="2"><img src="https://upload-images.jianshu.io/upload_images/6053915-1ef3c12edec440d8.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="222.jpg" loading="lazy"></figure>
+<pre><code class="language-Python">class Solution:
+    def intersection(self, nums1: List[int], nums2: List[int]) -&gt; List[int]:
+        temp = {}
+        result = []
+        for n in nums1:
+            temp[n] = True
+        for x in nums2:
+            if temp.get(x):
+                result.append(x)
+                temp[x] = False
+        return result
+</code></pre>
+
+                </div>
+              </div>
+              
+            </article>
           
             <article class="post-item">
               <div class="left">
@@ -114,88 +239,13 @@
               
             </article>
           
-            <article class="post-item">
-              <div class="left">
-                <a href="https://wuranxu.github.io/post/wei-fu-wu-xiang-guan-si-kao-yi/">
-                  <h2 class="post-title">微服务相关思考(一)</h2>
-                </a>
-                <div class="post-date">
-                  2020-09-23 18:59:41
-                </div>
-                <div class="post-abstract">
-                  
-                </div>
-              </div>
-              
-            </article>
-          
-            <article class="post-item">
-              <div class="left">
-                <a href="https://wuranxu.github.io/post/react-hook/">
-                  <h2 class="post-title">react hook</h2>
-                </a>
-                <div class="post-date">
-                  2020-09-21 17:38:16
-                </div>
-                <div class="post-abstract">
-                  <h3 id="背景">🙃背景</h3>
-<pre><code>在好奇心的驱使下，还是打开了==react hook==的大门，但是有些东西吧，还是得靠自己琢磨琢磨才能体会。</code></pre>
-
-                </div>
-              </div>
-              
-            </article>
-          
-            <article class="post-item">
-              <div class="left">
-                <a href="https://wuranxu.github.io/post/shua-ti-ri-ji-kai-pian/">
-                  <h2 class="post-title">刷题日记·开篇</h2>
-                </a>
-                <div class="post-date">
-                  2020-09-18 17:16:49
-                </div>
-                <div class="post-abstract">
-                  
-                </div>
-              </div>
-              
-            </article>
-          
-            <article class="post-item">
-              <div class="left">
-                <a href="https://wuranxu.github.io/post/about/">
-                  <h2 class="post-title">关于</h2>
-                </a>
-                <div class="post-date">
-                  2020-09-18 16:24:07
-                </div>
-                <div class="post-abstract">
-                  
-                </div>
-              </div>
-              
-            </article>
-          
-            <article class="post-item">
-              <div class="left">
-                <a href="https://wuranxu.github.io/post/xie-gei-da-jia-de-yi-ge-jie-kou-ce-shi-ping-tai/">
-                  <h2 class="post-title">写给大家的一个接口测试平台</h2>
-                </a>
-                <div class="post-date">
-                  2020-09-18 16:06:55
-                </div>
-                <div class="post-abstract">
-                  
-                </div>
-              </div>
-              
-            </article>
-          
 
           <div class="pagination-container">
   
     <a href="https://wuranxu.github.io/page/2/" class="prev"><i class="icon-arrow-ios-back-outline"></i> 上一页</a>
   
+  
+    <a href="https://wuranxu.github.io/page/4/" class="next">下一页 <i class="icon-arrow-ios-forward-outline"></i></a>
   
 </div>
 
