@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" >
+
+<title>测试平台(序) | 小克的blog</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://woodywrx.gitee.io/blog/favicon.ico?v=1615043602449">
+<link rel="stylesheet" href="https://woodywrx.gitee.io/blog/styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="测试平台(序)
+起因
+其实也没有什么背景可言，笔者其实已经开了很多个项目，例如「Lamb」和「Eagle」，都是没头没尾的项目。
+最近也是因为遗憾错失了某鹅云的offer，让我感到很「沮丧」吧。想着的是把自己最近几年的一些工作上的内容展示出..."/>
+    <meta name="keywords" content="自动化测试平台"/>
+</head>
+<body>
+
+<div id="app" class="main">
+
+    <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://woodywrx.gitee.io/blog">
+        <img src="https://woodywrx.gitee.io/blog/images/avatar.png?v=1615043602449" class="site-logo">
+        <h1 class="site-title">小克的blog</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="https://woodywrx.gitee.io/blog" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="https://woodywrx.gitee.io/blog/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="https://woodywrx.gitee.io/blog/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      欢迎来到我的小窝~这里不仅有博客，也有日记。
+    </div>
+    <div class="site-footer">
+      wuranxu's blog | <a class="rss" href="https://woodywrx.gitee.io/blog/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+    <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+            <div class="post-detail">
+                <h2 class="post-title">测试平台(序)</h2>
+                <div class="post-date">2021-03-06 21:45:29</div>
+                
+                <div class="post-content" v-pre>
+                    <section id="nice" data-tool="mdnice编辑器" data-website="https://www.mdnice.com" style="font-size: 16px; padding: 0 10px; word-spacing: 0px; word-break: break-word; word-wrap: break-word; text-align: left; line-height: 1.25; color: #2b2b2b; font-family: Optima-Regular, Optima, PingFangTC-Light, PingFangSC-light, PingFangTC-light; letter-spacing: 2px; background-image: linear-gradient(90deg, rgba(50, 0, 0, 0.04) 3%, rgba(0, 0, 0, 0) 3%), linear-gradient(360deg, rgba(50, 0, 0, 0.04) 3%, rgba(0, 0, 0, 0) 3%); background-size: 20px 20px; background-position: center center;"><h2 data-tool="mdnice编辑器" style="margin-top: 30px; margin-bottom: 15px; padding: 0px; font-weight: bold; color: black; font-size: 22px; display: block; border-bottom: 4px solid #40B8FA;"><span class="prefix" style="display: flex; width: 20px; height: 20px; background-size: 20px 20px; background-image: url(https://files.mdnice.com/fullstack-1.png); margin-bottom: -22px;"></span><span class="content" style="display: flex; color: #40B8FA; font-size: 20px; margin-left: 25px;">测试平台(序)</span><span class="suffix" style="display: flex; box-sizing: border-box; width: 200px; height: 10px; border-top-left-radius: 20px; background: RGBA(64, 184, 250, .5); color: rgb(255, 255, 255); font-size: 16px; letter-spacing: 0.544px; justify-content: flex-end; float: right; margin-top: -10px; box-sizing: border-box !important; overflow-wrap: break-word !important;"></span></h2>
+<h3 data-tool="mdnice编辑器" style="padding: 0px; color: black; font-size: 17px; font-weight: bold; text-align: center; position: relative; margin-top: 20px; margin-bottom: 20px;"><span class="prefix" style="display: none;"></span><span class="content" style="border-bottom: 2px solid RGBA(79, 177, 249, .65); color: #2b2b2b; padding-bottom: 2px;"><span style="width: 30px; height: 30px; display: block; background-image: url(https://files.mdnice.com/fullstack-2.png); background-position: center; background-size: 30px; margin: auto; opacity: 1; background-repeat: no-repeat; margin-bottom: -8px;"></span>起因</span><span class="suffix" style="display: none;"></span></h3>
+<p data-tool="mdnice编辑器" style="padding-top: 8px; padding-bottom: 8px; line-height: 26px; color: #2b2b2b; margin: 10px 0px; letter-spacing: 2px; font-size: 14px; word-spacing: 2px;">其实也没有什么背景可言，笔者其实已经开了很多个项目，例如<strong style="color: #3594F7; font-weight: bold;"><span>「</span>Lamb<span>」</span></strong>和<strong style="color: #3594F7; font-weight: bold;"><span>「</span>Eagle<span>」</span></strong>，都是没头没尾的项目。
+最近也是因为遗憾错失了某鹅云的offer，让我感到很<strong style="color: #3594F7; font-weight: bold;"><span>「</span>沮丧<span>」</span></strong>吧。想着的是把自己最近几年的一些工作上的内容展示出来，就打算先开个好头吧。</p>
+<p data-tool="mdnice编辑器" style="padding-top: 8px; padding-bottom: 8px; line-height: 26px; color: #2b2b2b; margin: 10px 0px; letter-spacing: 2px; font-size: 14px; word-spacing: 2px;">@我去热饭 <strong style="color: #3594F7; font-weight: bold;"><span>「</span>饭佬<span>」</span></strong>坚持更新的态度激励了我，虽然这个项目可能又更不下去，已经失败了2次了，我这个人还是比较懒，日更对我来说很难，只能说希望<strong style="color: #3594F7; font-weight: bold;"><span>「</span>有生之年<span>」</span></strong>能够慢慢写下去吧。</p>
+<p data-tool="mdnice编辑器" style="padding-top: 8px; padding-bottom: 8px; line-height: 26px; color: #2b2b2b; margin: 10px 0px; letter-spacing: 2px; font-size: 14px; word-spacing: 2px;">如果以后写完了且广为人知了，希望还能有机会去🐧！哈哈！</p>
+<h3 data-tool="mdnice编辑器" style="padding: 0px; color: black; font-size: 17px; font-weight: bold; text-align: center; position: relative; margin-top: 20px; margin-bottom: 20px;"><span class="prefix" style="display: none;"></span><span class="content" style="border-bottom: 2px solid RGBA(79, 177, 249, .65); color: #2b2b2b; padding-bottom: 2px;"><span style="width: 30px; height: 30px; display: block; background-image: url(https://files.mdnice.com/fullstack-2.png); background-position: center; background-size: 30px; margin: auto; opacity: 1; background-repeat: no-repeat; margin-bottom: -8px;"></span>说明</span><span class="suffix" style="display: none;"></span></h3>
+<p data-tool="mdnice编辑器" style="padding-top: 8px; padding-bottom: 8px; line-height: 26px; color: #2b2b2b; margin: 10px 0px; letter-spacing: 2px; font-size: 14px; word-spacing: 2px;">刚才在公交车上，大概构思了一些项目的想法，打算这次采用多种语言来做，大概梳理一下是这样的:</p>
+<ul data-tool="mdnice编辑器" style="margin-top: 8px; margin-bottom: 8px; padding-left: 25px; font-size: 15px; color: #595959; list-style-type: circle;">
+<li><section style="margin-top: 5px; margin-bottom: 5px; line-height: 26px; text-align: left; font-size: 14px; font-weight: normal; color: #595959;"><p style="padding-top: 8px; padding-bottom: 8px; line-height: 26px; color: #2b2b2b; margin: 10px 0px; letter-spacing: 2px; font-size: 14px; word-spacing: 2px;">Python</p>
+<ul style="margin-top: 8px; margin-bottom: 8px; padding-left: 25px; font-size: 15px; color: #595959; list-style-type: square;">
+<li><section style="margin-top: 5px; margin-bottom: 5px; line-height: 26px; text-align: left; font-size: 14px; font-weight: normal; color: #595959;">断言服务</section></li><li><section style="margin-top: 5px; margin-bottom: 5px; line-height: 26px; text-align: left; font-size: 14px; font-weight: normal; color: #595959;">邮件服务</section></li></ul>
+</section></li><li><section style="margin-top: 5px; margin-bottom: 5px; line-height: 26px; text-align: left; font-size: 14px; font-weight: normal; color: #595959;"><p style="padding-top: 8px; padding-bottom: 8px; line-height: 26px; color: #2b2b2b; margin: 10px 0px; letter-spacing: 2px; font-size: 14px; word-spacing: 2px;">Golang</p>
+<ul style="margin-top: 8px; margin-bottom: 8px; padding-left: 25px; font-size: 15px; color: #595959; list-style-type: square;">
+<li><section style="margin-top: 5px; margin-bottom: 5px; line-height: 26px; text-align: left; font-size: 14px; font-weight: normal; color: #595959;">Job服务</section></li></ul>
+</section></li><li><section style="margin-top: 5px; margin-bottom: 5px; line-height: 26px; text-align: left; font-size: 14px; font-weight: normal; color: #595959;"><p style="padding-top: 8px; padding-bottom: 8px; line-height: 26px; color: #2b2b2b; margin: 10px 0px; letter-spacing: 2px; font-size: 14px; word-spacing: 2px;">Java</p>
+<ul style="margin-top: 8px; margin-bottom: 8px; padding-left: 25px; font-size: 15px; color: #595959; list-style-type: square;">
+<li><section style="margin-top: 5px; margin-bottom: 5px; line-height: 26px; text-align: left; font-size: 14px; font-weight: normal; color: #595959;">造数服务</section></li></ul>
+</section></li></ul>
+<p data-tool="mdnice编辑器" style="padding-top: 8px; padding-bottom: 8px; line-height: 26px; color: #2b2b2b; margin: 10px 0px; letter-spacing: 2px; font-size: 14px; word-spacing: 2px;">还有很多细节没有去细化，<strong style="color: #3594F7; font-weight: bold;"><span>「</span>万事开头难<span>」</span></strong>，打算借着这股劲儿，好好理一理，冲！</p>
+<p data-tool="mdnice编辑器" style="padding-top: 8px; padding-bottom: 8px; line-height: 26px; color: #2b2b2b; margin: 10px 0px; letter-spacing: 2px; font-size: 14px; word-spacing: 2px;">本来打算不命名的，但是又好像需要在github对代码有所展现。那么就以<strong style="color: #3594F7; font-weight: bold;"><span>「</span>遗憾<span>」</span></strong>为主题，就叫做<strong style="color: #3594F7; font-weight: bold;"><span>「</span>Pity<span>」</span></strong>吧！</p>
+<p data-tool="mdnice编辑器" style="padding-top: 8px; padding-bottom: 8px; line-height: 26px; color: #2b2b2b; margin: 10px 0px; letter-spacing: 2px; font-size: 14px; word-spacing: 2px;">如果将来你需要做二次开发的话，需要掌握以下技术栈：</p>
+<ol data-tool="mdnice编辑器" style="margin-top: 8px; margin-bottom: 8px; padding-left: 25px; list-style-type: decimal; font-size: 15px; color: #595959;">
+<li><section style="margin-top: 5px; margin-bottom: 5px; line-height: 26px; text-align: left; font-size: 14px; font-weight: normal; color: #595959;">Golang: go相关基础知识和gorm, gin web框架等</section></li><li><section style="margin-top: 5px; margin-bottom: 5px; line-height: 26px; text-align: left; font-size: 14px; font-weight: normal; color: #595959;">Python: Python会提供一系列的造数和便捷的功能</section></li><li><section style="margin-top: 5px; margin-bottom: 5px; line-height: 26px; text-align: left; font-size: 14px; font-weight: normal; color: #595959;">Java: 笔者的Java也很差, 为了平台能够接入的用户更多，让Java同学也能够使用</section></li><li><section style="margin-top: 5px; margin-bottom: 5px; line-height: 26px; text-align: left; font-size: 14px; font-weight: normal; color: #595959;">grpc相关知识</section></li><li><section style="margin-top: 5px; margin-bottom: 5px; line-height: 26px; text-align: left; font-size: 14px; font-weight: normal; color: #595959;">react相关技术栈 含antd umi JavaScript es6等</section></li></ol>
+<p data-tool="mdnice编辑器" style="padding-top: 8px; padding-bottom: 8px; line-height: 26px; color: #2b2b2b; margin: 10px 0px; letter-spacing: 2px; font-size: 14px; word-spacing: 2px;">如果你只是使用, 不进行二次开发, 那么你掌握2或者3即可。</p>
+</section>
+                </div>
+                
+                    <div class="tag-container">
+                        
+                            <a href="https://woodywrx.gitee.io/blog/4acLnmAXU/" class="tag">
+                                自动化测试平台
+                            </a>
+                        
+                    </div>
+                
+
+                
+                    <div class="next-post">
+                        <div class="next">下一篇</div>
+                        <a href="https://woodywrx.gitee.io/blog/post/jia-ban-ri-ji-qi-er/">
+                            <h3 class="post-title">
+                                加班日记(其二)
+                            </h3>
+                        </a>
+                    </div>
+                
+                
+                    <span id="/blog/post/ce-shi-ping-tai-xu/"
+                          class="leancloud_visitors" data-flag-title="测试平台(序)">
+                <em class="post-meta-item-text">阅读量 </em>
+                <i class="leancloud-visitors-count">0</i>
+            </span>
+                
+                
+                    
+
+	<div id="vcomments" style="width: 100%;max-width:1000%;padding:2.5%"></div>
+
+
+
+                
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+<script src='https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js'></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: 'fT8wvEVNtx1cOcCQEs7rVwnV-gzGzoHsz',
+        appKey: 'xV6aDHKSkLfP7u0cBRIzpmcy',
+        avatar: '',
+        pageSize: 5,
+        recordIp: true,
+        placeholder: 'Just Go Go',
+        visitor: true,
+    });
+</script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+</body>
+</html>
